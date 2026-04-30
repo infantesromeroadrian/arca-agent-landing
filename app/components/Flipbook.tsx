@@ -45,8 +45,8 @@ const Page = forwardRef<HTMLDivElement, PageProps>(function Page(
             "repeating-linear-gradient(0deg, rgba(255,255,255,0.4) 0 1px, transparent 1px 4px)",
         }}
       />
-      <div className="relative z-10 h-full overflow-y-auto p-8">{children}</div>
-      <div className="absolute bottom-3 left-0 right-0 flex justify-between px-6 text-[9px] tracking-[0.3em] uppercase opacity-40">
+      <div className="relative z-10 h-full overflow-y-auto p-7">{children}</div>
+      <div className="absolute bottom-3 left-0 right-0 flex justify-between px-6 text-[13px] tracking-[0.3em] uppercase opacity-40">
         <span>A.R.C.A. — handbook</span>
         <span>
           {String(n).padStart(2, "0")} / {String(total).padStart(2, "0")}
@@ -58,7 +58,7 @@ const Page = forwardRef<HTMLDivElement, PageProps>(function Page(
 
 const sectionTitle = (n: string, label: string) => (
   <div className="mb-6">
-    <p className="text-[10px] tracking-[0.4em] opacity-60 uppercase">§ {n}</p>
+    <p className="text-[12px] tracking-[0.4em] opacity-60 uppercase">§ {n}</p>
     <h2 className="text-2xl md:text-3xl font-bold tracking-tight mt-1">{label}</h2>
     <div className="mt-3 h-px w-12 bg-primary opacity-60" />
   </div>
@@ -86,7 +86,7 @@ export default function Flipbook() {
   if (!ready) {
     return (
       <main className="min-h-screen flex items-center justify-center bg-navyDarker text-primary font-mono">
-        <p className="text-xs tracking-[0.3em] uppercase opacity-60">loading handbook…</p>
+        <p className="text-sm tracking-[0.3em] uppercase opacity-60">loading handbook…</p>
       </main>
     );
   }
@@ -99,8 +99,8 @@ export default function Flipbook() {
     <Page n={1} total={TOTAL} muted key="p1">
       <div className="h-full flex flex-col justify-between">
         <div>
-          <p className="text-[10px] tracking-[0.5em] uppercase opacity-50">a personal agentic system</p>
-          <p className="text-[10px] tracking-[0.5em] uppercase opacity-50 mt-1">2026 · handbook · v1</p>
+          <p className="text-[12px] tracking-[0.5em] uppercase opacity-50">a personal agentic system</p>
+          <p className="text-[12px] tracking-[0.5em] uppercase opacity-50 mt-1">2026 · handbook · v1</p>
         </div>
         <div className="text-center">
           <h1 className="text-7xl md:text-8xl font-bold tracking-tight">A.R.C.A.</h1>
@@ -112,7 +112,7 @@ export default function Flipbook() {
             architecture and honest disclosure of every limit.
           </p>
         </div>
-        <div className="flex justify-between items-end text-[10px] tracking-[0.3em] uppercase opacity-50">
+        <div className="flex justify-between items-end text-[12px] tracking-[0.3em] uppercase opacity-50">
           <span>by Adrian Infantes</span>
           <span>application · Anthropic Fellows 2026</span>
         </div>
@@ -134,15 +134,15 @@ export default function Flipbook() {
       </p>
       <div className="grid grid-cols-2 gap-4 mt-8">
         <div className="border border-line/60 p-4">
-          <p className="text-[10px] tracking-[0.3em] uppercase opacity-60 mb-2">Built by</p>
+          <p className="text-[12px] tracking-[0.3em] uppercase opacity-60 mb-2">Built by</p>
           <p className="text-base font-semibold">Adrian Infantes</p>
-          <p className="text-xs opacity-70 mt-1">ML / DL / RL / Generative & Agentic AI engineer</p>
-          <p className="text-xs opacity-70">Adversarial ML + AI red teaming</p>
+          <p className="text-sm opacity-70 mt-1">ML / DL / RL / Generative & Agentic AI engineer</p>
+          <p className="text-sm opacity-70">Adversarial ML + AI red teaming</p>
         </div>
         <div className="border border-line/60 p-4">
-          <p className="text-[10px] tracking-[0.3em] uppercase opacity-60 mb-2">Source</p>
-          <p className="text-xs"><a href={GITHUB_URL} className="underline">github.com/infantesromeroadrian/arca-claude-code</a></p>
-          <p className="text-xs mt-1"><a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a></p>
+          <p className="text-[12px] tracking-[0.3em] uppercase opacity-60 mb-2">Source</p>
+          <p className="text-sm"><a href={GITHUB_URL} className="underline">github.com/infantesromeroadrian/arca-claude-code</a></p>
+          <p className="text-sm mt-1"><a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a></p>
         </div>
       </div>
     </Page>,
@@ -169,7 +169,7 @@ export default function Flipbook() {
           <li key={n} className="flex items-baseline gap-4 text-sm border-b border-line/30 pb-2">
             <span className="font-mono opacity-60 w-8">{n}</span>
             <span className="flex-1">{label}</span>
-            <span className="font-mono text-[10px] tracking-[0.3em] uppercase opacity-50">{ref}</span>
+            <span className="font-mono text-[12px] tracking-[0.3em] uppercase opacity-50">{ref}</span>
           </li>
         ))}
       </ul>
@@ -196,11 +196,11 @@ export default function Flipbook() {
         {statRows.map(([v, l], i) => (
           <div key={i} className="border border-line/60 p-4 text-center">
             <p className="text-3xl font-bold">{v}</p>
-            <p className="text-[10px] tracking-[0.2em] uppercase opacity-60 mt-2 leading-tight">{l}</p>
+            <p className="text-[12px] tracking-[0.2em] uppercase opacity-60 mt-2 leading-tight">{l}</p>
           </div>
         ))}
       </div>
-      <p className="text-xs opacity-60 mt-8 leading-relaxed">
+      <p className="text-sm opacity-60 mt-8 leading-relaxed">
         Numbers refresh on every commit via <code className="opacity-100">scripts/obsidian-dashboard-refresh.sh</code>.
         The same counts power the Obsidian Dashboard at <code>Projects/ARCA/Dashboard.md</code> in the (private) vault repo.
       </p>
@@ -215,13 +215,13 @@ export default function Flipbook() {
         ARCA is not a metaphor. It is calibrated lexicon, obsessions, technical
         criteria and communication style — Adrian Infantes ported to an AI agent.
       </p>
-      <div className="mt-6 grid grid-cols-2 gap-4 text-xs">
+      <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
         <div>
-          <p className="text-[10px] tracking-[0.3em] uppercase opacity-60 mb-2">Tone</p>
+          <p className="text-[12px] tracking-[0.3em] uppercase opacity-60 mb-2">Tone</p>
           <p className="opacity-80 leading-relaxed">Strict manager. Professional, dry, demanding. If code reaches production and fails, you lose your job. The frame is permanent.</p>
         </div>
         <div>
-          <p className="text-[10px] tracking-[0.3em] uppercase opacity-60 mb-2">Obsessions, in order</p>
+          <p className="text-[12px] tracking-[0.3em] uppercase opacity-60 mb-2">Obsessions, in order</p>
           <ol className="list-decimal list-inside opacity-80 leading-relaxed space-y-1">
             <li>Architecture — bad foundation, nothing matters above</li>
             <li>Tests — no tests, code does not exist</li>
@@ -233,7 +233,7 @@ export default function Flipbook() {
       </div>
       <div className="mt-8 border-l-2 border-primary pl-4">
         <p className="text-sm italic opacity-90">&ldquo;Senor Infantes, esto no me convence. Y los tests?&rdquo;</p>
-        <p className="text-[10px] tracking-[0.3em] uppercase opacity-50 mt-2">— ARCA, default register</p>
+        <p className="text-[12px] tracking-[0.3em] uppercase opacity-50 mt-2">— ARCA, default register</p>
       </div>
     </Page>,
   );
@@ -246,9 +246,9 @@ export default function Flipbook() {
     pages.push(
       <Page n={6 + idx} total={TOTAL} key={`p${6 + idx}`}>
         {sectionTitle("03", `Pipeline ML — 14 cycles · ${idx === 0 ? "C1–C7" : "C8–C14"}`)}
-        <table className="w-full text-xs">
+        <table className="w-full text-sm">
           <thead>
-            <tr className="text-[10px] tracking-[0.2em] uppercase opacity-50 border-b border-line/60">
+            <tr className="text-[12px] tracking-[0.2em] uppercase opacity-50 border-b border-line/60">
               <th className="text-left pb-2 pr-4">ID</th>
               <th className="text-left pb-2 pr-4">Cycle</th>
               <th className="text-left pb-2">Owner</th>
@@ -258,14 +258,14 @@ export default function Flipbook() {
             {group.map((c, i) => (
               <tr key={i} className="border-b border-line/30">
                 <td className="py-2 pr-4 font-mono opacity-70">{c.id}</td>
-                <td className="py-2 pr-4">{c.name}{c.wait ? <span className="text-[9px] ml-2 opacity-60">[wait]</span> : null}</td>
-                <td className="py-2 font-mono text-[11px] opacity-80">@{c.owner}</td>
+                <td className="py-2 pr-4">{c.name}{c.wait ? <span className="text-[13px] ml-2 opacity-60">[wait]</span> : null}</td>
+                <td className="py-2 font-mono text-[13px] opacity-80">@{c.owner}</td>
               </tr>
             ))}
           </tbody>
         </table>
         {idx === 1 && (
-          <p className="text-[11px] opacity-60 mt-6 leading-relaxed">
+          <p className="text-[13px] opacity-60 mt-6 leading-relaxed">
             Each cycle has a blocking gate. Failed phase → returned to owner with feedback (max 2 cycles → escalate to <span className="opacity-100">@architect-ai</span>). Technical debt detected = block until resolved.
           </p>
         )}
@@ -284,13 +284,13 @@ export default function Flipbook() {
         <div className="space-y-4">
           {group.map((cat) => (
             <div key={cat.title} className="border-l-2 border-primary/50 pl-3">
-              <p className="text-[10px] tracking-[0.2em] uppercase opacity-60 mb-1">{cat.title}</p>
-              <ul className="text-[11px] opacity-90 space-y-0.5">
+              <p className="text-[12px] tracking-[0.2em] uppercase opacity-60 mb-1">{cat.title}</p>
+              <ul className="text-[13px] opacity-90 space-y-0.5">
                 {cat.agents.map((a) => (
                   <li key={a.name} className="flex items-baseline gap-2">
                     <span className="font-mono">@{a.name}</span>
-                    <span className="text-[9px] opacity-50 uppercase tracking-widest">[{a.model}]</span>
-                    <span className="text-[10px] opacity-60 ml-auto">{a.phases}</span>
+                    <span className="text-[13px] opacity-50 uppercase tracking-widest">[{a.model}]</span>
+                    <span className="text-[12px] opacity-60 ml-auto">{a.phases}</span>
                   </li>
                 ))}
               </ul>
@@ -309,10 +309,10 @@ export default function Flipbook() {
     pages.push(
       <Page n={10 + idx} total={TOTAL} key={`p${10 + idx}`}>
         {sectionTitle("05", `Skills Catalog · ${idx === 0 ? "families A–F" : "families G–L"}`)}
-        <div className="space-y-3 text-[11px]">
+        <div className="space-y-3 text-[13px]">
           {group.map((f) => (
             <div key={f.name} className="border-l-2 border-primary/40 pl-3">
-              <p className="text-[10px] tracking-[0.2em] uppercase opacity-60">{f.name} · {f.count}</p>
+              <p className="text-[12px] tracking-[0.2em] uppercase opacity-60">{f.name} · {f.count}</p>
               <p className="opacity-80 mt-1 leading-snug">{f.items}</p>
             </div>
           ))}
@@ -325,17 +325,17 @@ export default function Flipbook() {
   pages.push(
     <Page n={12} total={TOTAL} muted key="p12">
       {sectionTitle("06", "Adversarial Gates + Mortal Sins")}
-      <p className="text-[10px] tracking-[0.3em] uppercase opacity-60 mb-2">gate chain</p>
-      <ol className="text-xs space-y-2 mb-6">
+      <p className="text-[12px] tracking-[0.3em] uppercase opacity-60 mb-2">gate chain</p>
+      <ol className="text-sm space-y-2 mb-6">
         {gates.map((g) => (
           <li key={g.id} className="border-l-2 border-primary/60 pl-3">
-            <p className="font-mono opacity-90">{g.name} <span className="text-[9px] opacity-60 ml-1">— {g.label}</span></p>
+            <p className="font-mono opacity-90">{g.name} <span className="text-[13px] opacity-60 ml-1">— {g.label}</span></p>
             <p className="opacity-70 leading-snug mt-1">{g.body}</p>
           </li>
         ))}
       </ol>
-      <p className="text-[10px] tracking-[0.3em] uppercase opacity-60 mb-2">9 mortal sins</p>
-      <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-[11px]">
+      <p className="text-[12px] tracking-[0.3em] uppercase opacity-60 mb-2">9 mortal sins</p>
+      <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-[13px]">
         {sins.map((s) => (
           <li key={s.n} className={`opacity-90 ${s.highlight ? "text-red-300" : ""}`}>
             <span className="font-mono opacity-60 mr-2">{s.n}</span>{s.text}
@@ -349,12 +349,12 @@ export default function Flipbook() {
   pages.push(
     <Page n={13} total={TOTAL} key="p13">
       {sectionTitle("07", "AI Slop · 19 signals that block merge")}
-      <p className="text-xs opacity-70 mb-6 leading-relaxed">
+      <p className="text-sm opacity-70 mb-6 leading-relaxed">
         Adversarial detection of code that betrays lack of human intent.
         Anything in this list is a hard merge block until rewritten with
         decisions visible to the reader.
       </p>
-      <ol className="grid grid-cols-2 gap-x-6 gap-y-1 text-[11px] list-decimal list-inside">
+      <ol className="grid grid-cols-2 gap-x-6 gap-y-1 text-[13px] list-decimal list-inside">
         {aiSlopSignals.map((s, i) => (<li key={i} className="opacity-85 leading-snug">{s}</li>))}
       </ol>
     </Page>,
@@ -364,9 +364,9 @@ export default function Flipbook() {
   pages.push(
     <Page n={14} total={TOTAL} muted key="p14">
       {sectionTitle("08", "Architecture Decision Records")}
-      <table className="w-full text-[11px]">
+      <table className="w-full text-[13px]">
         <thead>
-          <tr className="text-[9px] tracking-[0.2em] uppercase opacity-50 border-b border-line/60">
+          <tr className="text-[13px] tracking-[0.2em] uppercase opacity-50 border-b border-line/60">
             <th className="text-left pb-2 pr-3">N</th>
             <th className="text-left pb-2 pr-3">Title</th>
             <th className="text-left pb-2 pr-3">Status</th>
@@ -378,13 +378,13 @@ export default function Flipbook() {
             <tr key={a.n} className="border-b border-line/30">
               <td className="py-1.5 pr-3 font-mono opacity-70">{a.n}</td>
               <td className="py-1.5 pr-3 opacity-90">{a.title}</td>
-              <td className="py-1.5 pr-3 opacity-70 text-[10px]">{a.status}</td>
-              <td className="py-1.5 font-mono opacity-60 text-[10px]">{a.date}</td>
+              <td className="py-1.5 pr-3 opacity-70 text-[12px]">{a.status}</td>
+              <td className="py-1.5 font-mono opacity-60 text-[12px]">{a.date}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <p className="text-[10px] opacity-60 mt-6 leading-relaxed">
+      <p className="text-[12px] opacity-60 mt-6 leading-relaxed">
         Nygard-lite format. Append-only: never edit an Accepted ADR's Decision field — write a new one that supersedes it.
       </p>
     </Page>,
@@ -394,26 +394,26 @@ export default function Flipbook() {
   pages.push(
     <Page n={15} total={TOTAL} key="p15">
       {sectionTitle("09", "Hardware · Stack · Cases")}
-      <p className="text-[10px] tracking-[0.3em] uppercase opacity-60 mb-2">runtime</p>
-      <ul className="text-[11px] space-y-1 mb-6">
+      <p className="text-[12px] tracking-[0.3em] uppercase opacity-60 mb-2">runtime</p>
+      <ul className="text-[13px] space-y-1 mb-6">
         {stack.map((s) => (
           <li key={s.k} className="flex gap-3 border-b border-line/30 py-1">
-            <span className="font-mono opacity-60 min-w-[140px] uppercase text-[10px] tracking-widest">{s.k}</span>
+            <span className="font-mono opacity-60 min-w-[140px] uppercase text-[12px] tracking-widest">{s.k}</span>
             <span className="opacity-90">{s.v}</span>
           </li>
         ))}
       </ul>
-      <p className="text-[10px] tracking-[0.3em] uppercase opacity-60 mb-2">selected cases</p>
+      <p className="text-[12px] tracking-[0.3em] uppercase opacity-60 mb-2">selected cases</p>
       <div className="space-y-3">
         {cases.map((c) => (
           <div key={c.code} className="border-l-2 border-primary/50 pl-3">
-            <p className="text-[10px] font-mono opacity-60">{c.code} · {c.title}</p>
-            <p className="text-[11px] opacity-90 leading-snug">{c.body}</p>
+            <p className="text-[12px] font-mono opacity-60">{c.code} · {c.title}</p>
+            <p className="text-[13px] opacity-90 leading-snug">{c.body}</p>
           </div>
         ))}
       </div>
-      <p className="text-[10px] tracking-[0.3em] uppercase opacity-60 mt-6 mb-2">forbidden patterns</p>
-      <ul className="text-[10px] opacity-75 space-y-0.5">
+      <p className="text-[12px] tracking-[0.3em] uppercase opacity-60 mt-6 mb-2">forbidden patterns</p>
+      <ul className="text-[12px] opacity-75 space-y-0.5">
         {forbiddenPatterns.slice(0, 5).map((p, i) => (<li key={i}>· {p}</li>))}
       </ul>
     </Page>,
@@ -434,7 +434,7 @@ export default function Flipbook() {
             <p className="text-sm font-semibold">This site is my application to the Anthropic Fellows program 2026.</p>
           </div>
         </div>
-        <div className="space-y-2 text-xs">
+        <div className="space-y-2 text-sm">
           <a href={GITHUB_URL} className="block underline opacity-90 hover:opacity-100">→ Source on GitHub (arca-claude-code)</a>
           <a href={`${GITHUB_URL}/tree/main/docs/adr`} className="block underline opacity-90 hover:opacity-100">→ Read all 10 ADRs</a>
           <a href="/scroll" className="block underline opacity-90 hover:opacity-100">→ Prefer scroll? Open the scroll edition</a>
@@ -451,7 +451,7 @@ export default function Flipbook() {
   return (
     <main className="min-h-screen bg-navyDarker flex flex-col items-center justify-center px-4 py-3">
       <div className="absolute top-4 right-4 z-10">
-        <a href="/scroll" className="text-[10px] tracking-[0.3em] uppercase opacity-50 hover:opacity-100 underline">
+        <a href="/scroll" className="text-[12px] tracking-[0.3em] uppercase opacity-50 hover:opacity-100 underline">
           /scroll
         </a>
       </div>
@@ -483,7 +483,7 @@ export default function Flipbook() {
       >
         {pages}
       </HTMLFlipBook>
-      <p className="mt-3 text-[10px] tracking-[0.3em] uppercase opacity-40">
+      <p className="mt-3 text-[12px] tracking-[0.3em] uppercase opacity-40">
         click corner · drag · arrows · 16 pages
       </p>
     </main>
