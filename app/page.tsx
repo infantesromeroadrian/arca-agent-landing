@@ -230,7 +230,7 @@ export default function Home() {
               ADVERSARIAL MULTI-AGENT SYSTEM<br />FOR ML/AI ENGINEERING
             </h2>
             <p className="text-base opacity-80 max-w-2xl mx-auto mb-12">
-              43 specialized agents · 85 skills · 14-cycle ML pipeline<br />9 mortal sins as quality gates
+              43 specialized agents · 86 skills · 14-cycle ML pipeline<br />9 mortal sins as quality gates
             </p>
             <div className="w-full max-w-3xl border border-line bg-navy mb-12 text-left relative shadow-2xl">
               <div className="border-b border-line flex px-4 py-2 items-center justify-between bg-primary/5">
@@ -263,7 +263,7 @@ export default function Home() {
         {/* STATS */}
         <section className="border-b border-line grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 text-sm uppercase tracking-wider relative">
           <div className="stat-pane"><div className="font-mondwest text-4xl mb-2 text-primary">43</div><div className="text-[10px] opacity-60 leading-tight">Agents<br />(20·14·9)</div></div>
-          <div className="stat-pane"><div className="font-mondwest text-4xl mb-2 text-primary">85</div><div className="text-[10px] opacity-60 leading-tight">Specialized<br />Skills</div></div>
+          <div className="stat-pane"><div className="font-mondwest text-4xl mb-2 text-primary">86</div><div className="text-[10px] opacity-60 leading-tight">Specialized<br />Skills</div></div>
           <div className="stat-pane"><div className="font-mondwest text-4xl mb-2 text-primary">44</div><div className="text-[10px] opacity-60 leading-tight">Hooks<br />(34 + 10 lib)</div></div>
           <div className="stat-pane"><div className="font-mondwest text-4xl mb-2 text-primary">8</div><div className="text-[10px] opacity-60 leading-tight">Architecture<br />Decision Records</div></div>
           <div className="stat-pane"><div className="font-mondwest text-4xl mb-2 text-primary">248</div><div className="text-[10px] opacity-60 leading-tight">Commits<br />(Last 30 Days)</div></div>
@@ -424,7 +424,7 @@ export default function Home() {
         {/* SKILLS CATALOG */}
         <section className="border-b border-line">
           <div className="p-8 border-b border-line">
-            <h3 className="text-xs tracking-[0.3em] uppercase opacity-50"><span>06</span> / Skills Catalog — 85 Specialized Skills (11 Families)</h3>
+            <h3 className="text-xs tracking-[0.3em] uppercase opacity-50"><span>06</span> / Skills Catalog — 86 Specialized Skills (11 Families)</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x lg:divide-x divide-primary/25">
             {skillFamilies.map((f) => (
