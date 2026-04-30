@@ -153,6 +153,7 @@ const adrs = [
   { n: "007", title: "Slash command $ARGUMENTS hardening (ARCA-SEC-1)", date: "2026-04-29", status: "Accepted" },
   { n: "008", title: "Diff Comprehension Gate v2 (timed read + LLM judge)", date: "2026-04-29", status: "Accepted" },
   { n: "009", title: "Hybrid LLM-as-judge — Opus 4.7 SDK + Qwen 7B", date: "2026-04-30", status: "Accepted" },
+  { n: "010", title: "Obsidian vault as ARCA's auto-doc second-brain", date: "2026-04-30", status: "Accepted" },
 ];
 
 const aiSlopSignals = [
@@ -543,7 +544,7 @@ export default function Home() {
             <span className="pl-4 lg:pl-0">GitHub repo (arca-claude-code)</span>
           </a>
           <div className="grid grid-cols-2 gap-4">
-            <a href={`${GITHUB_URL}/tree/main/docs/adr`} target="_blank" rel="noreferrer" className="border border-line px-4 py-4 text-[10px] tracking-[0.1em] uppercase hover:bg-primary/10 transition-colors text-center opacity-80 hover:opacity-100">Read all 9 ADRs</a>
+            <a href={`${GITHUB_URL}/tree/main/docs/adr`} target="_blank" rel="noreferrer" className="border border-line px-4 py-4 text-[10px] tracking-[0.1em] uppercase hover:bg-primary/10 transition-colors text-center opacity-80 hover:opacity-100">Read all 10 ADRs</a>
             <a href={`mailto:${CONTACT_EMAIL}?subject=A.R.C.A.%20%E2%80%94%20Fellows%202026`} className="border border-line px-4 py-4 text-[10px] tracking-[0.1em] uppercase bg-primary text-navyDarker hover:opacity-90 transition-opacity text-center font-bold">Contact</a>
           </div>
         </div>
