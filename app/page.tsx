@@ -49,15 +49,15 @@ const cases = [
   { code: "ERR_MIT_01", title: "ARCA-SEC-1", subject: "$ARGUMENTS hardening",
     body: "Heredoc terminator injection is structurally irreducible in bash. We accept the limit and document it via inverted-style canary tests (T7b/T16b). If a future change accidentally closes the residual, the test fails and forces re-audit." },
   { code: "ARCH_04", title: "E.2 Auto-ADR", subject: "Closing sin #4",
-    body: "Closes mortal sin #4 (architecture without ADR). PostToolUse heuristic detects decisional output from architect-ai without ADR. Optional Ollama LLM-as-judge validates 7 Nygard sections prior to local persistence." },
+    body: "Closes mortal sin #4 (architecture without ADR). PostToolUse heuristic detects decisional output from architect-ai without ADR. Claude Opus 4.7 LLM-as-judge (via Code SDK) validates 7 Nygard sections prior to local persistence." },
   { code: "GATE_V2", title: "E.3 Diff Compress", subject: "Gate evaluation tuning",
-    body: "v1 word-count was defeated by Lorem Ipsum bodies. v2 captures diff, 90s countdown, free-text summary, Ollama Qwen 2.5 7B judge with random fence prompt-injection guard. Verdicts: APPROVED / INCOHERENT / TOO_SHALLOW (fail-closed to v1)." },
+    body: "v1 word-count was defeated by Lorem Ipsum bodies. v2 captures diff, 90s countdown, free-text summary, Claude Opus 4.7 judge (via Code SDK) with random fence prompt-injection guard. Verdicts: APPROVED / INCOHERENT / TOO_SHALLOW (fail-closed to v1)." },
 ];
 
 const stack = [
   { k: "MODELS", v: "Opus 4.7 (1M ctx) · Sonnet 4.6 · Haiku 4.5" },
   { k: "PERSISTENCE", v: "Engram MCP (Local SQLite)" },
-  { k: "LLM-AS-JUDGE", v: "Ollama Qwen 2.5 7B @127.0.0.1:11434" },
+  { k: "LLM-AS-JUDGE", v: "Hybrid: Opus 4.7 SDK (high-stakes) + Qwen 2.5 7B (hot-path)" },
   { k: "RUNTIME", v: "100% bash hooks (Zero startup latency)" },
   { k: "PLAN TIER", v: "Claude MAX flat-rate" },
   { k: "COMPUTE NODE", v: "RTX 2000 Ada Lovelace SM 8.9 (8GB VRAM)" },
@@ -152,6 +152,7 @@ const adrs = [
   { n: "006", title: "Auto-ADR detector + skill (E.2)", date: "2026-04-29", status: "Accepted" },
   { n: "007", title: "Slash command $ARGUMENTS hardening (ARCA-SEC-1)", date: "2026-04-29", status: "Accepted" },
   { n: "008", title: "Diff Comprehension Gate v2 (timed read + LLM judge)", date: "2026-04-29", status: "Accepted" },
+  { n: "009", title: "Hybrid LLM-as-judge — Opus 4.7 SDK + Qwen 7B", date: "2026-04-30", status: "Accepted" },
 ];
 
 const aiSlopSignals = [
@@ -542,7 +543,7 @@ export default function Home() {
             <span className="pl-4 lg:pl-0">GitHub repo (arca-claude-code)</span>
           </a>
           <div className="grid grid-cols-2 gap-4">
-            <a href={`${GITHUB_URL}/tree/main/docs/adr`} target="_blank" rel="noreferrer" className="border border-line px-4 py-4 text-[10px] tracking-[0.1em] uppercase hover:bg-primary/10 transition-colors text-center opacity-80 hover:opacity-100">Read all 8 ADRs</a>
+            <a href={`${GITHUB_URL}/tree/main/docs/adr`} target="_blank" rel="noreferrer" className="border border-line px-4 py-4 text-[10px] tracking-[0.1em] uppercase hover:bg-primary/10 transition-colors text-center opacity-80 hover:opacity-100">Read all 9 ADRs</a>
             <a href={FELLOWS_URL} target="_blank" rel="noreferrer" className="border border-line px-4 py-4 text-[10px] tracking-[0.1em] uppercase bg-primary text-navyDarker hover:opacity-90 transition-opacity text-center font-bold">Apply to Fellows</a>
           </div>
         </div>
