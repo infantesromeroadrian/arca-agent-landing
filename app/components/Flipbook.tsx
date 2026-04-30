@@ -449,26 +449,26 @@ export default function Flipbook() {
 
   // Render
   return (
-    <main className="min-h-screen bg-navyDarker flex flex-col items-center justify-center py-8">
+    <main className="min-h-screen bg-navyDarker flex flex-col items-center justify-center px-4 py-3">
       <div className="absolute top-4 right-4 z-10">
         <a href="/scroll" className="text-[10px] tracking-[0.3em] uppercase opacity-50 hover:opacity-100 underline">
           /scroll
         </a>
       </div>
       <HTMLFlipBook
-        width={520}
-        height={720}
-        size="fixed"
-        minWidth={400}
-        maxWidth={620}
-        minHeight={560}
-        maxHeight={820}
+        width={620}
+        height={880}
+        size="stretch"
+        minWidth={420}
+        maxWidth={780}
+        minHeight={620}
+        maxHeight={1080}
         showCover={true}
         mobileScrollSupport={false}
         flippingTime={650}
         usePortrait={false}
         startZIndex={0}
-        autoSize={false}
+        autoSize={true}
         maxShadowOpacity={0.5}
         clickEventForward={false}
         useMouseEvents={true}
@@ -483,7 +483,7 @@ export default function Flipbook() {
       >
         {pages}
       </HTMLFlipBook>
-      <p className="mt-6 text-[10px] tracking-[0.3em] uppercase opacity-40">
+      <p className="mt-3 text-[10px] tracking-[0.3em] uppercase opacity-40">
         click corner · drag · arrows · 16 pages
       </p>
     </main>
