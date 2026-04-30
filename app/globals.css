@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0D1B2A;
+    background-image:
+      linear-gradient(rgba(123, 179, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(123, 179, 255, 0.04) 1px, transparent 1px),
+      radial-gradient(ellipse at top, rgba(123, 179, 255, 0.06), transparent 60%);
+    background-size: 48px 48px, 48px 48px, 100% 100%;
+    background-position: 0 0, 0 0, center top;
+    color: #7BB3FF;
+    font-family: "Courier Prime", monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: #7BB3FF;
+    color: #0D1B2A;
+  }
+}
+
+@layer components {
+  .font-mondwest {
+    font-family: "Cormorant", serif;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+  .border-line {
+    border-color: rgba(123, 179, 255, 0.25);
+  }
+  .relief-section {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 22px,
+      rgba(123, 179, 255, 0.025) 22px,
+      rgba(123, 179, 255, 0.025) 23px
+    );
+  }
+  .scanline-section {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(123, 179, 255, 0.02) 0px,
+      rgba(123, 179, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  }
+  .hover-invert {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hover-invert:hover {
+    background-color: #7BB3FF;
+    color: #0D1B2A;
+  }
+  .tree-line::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 24px;
+    bottom: -40px;
+    width: 1px;
+    background: rgba(123, 179, 255, 0.25);
+  }
+  .tree-node:last-child .tree-line::before {
+    display: none;
+  }
+  .tree-branch::before {
+    content: "";
+    position: absolute;
+    left: -32px;
+    top: 24px;
+    width: 24px;
+    height: 1px;
+    background: rgba(123, 179, 255, 0.25);
+  }
+  .stat-pane {
+    border-right: 1px solid rgba(123, 179, 255, 0.25);
+    border-bottom: 1px solid rgba(123, 179, 255, 0.25);
+    padding: 2rem 1.5rem;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+.caret-blink {
+  animation: blink 1s step-end infinite;
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background-color: #7BB3FF;
+  vertical-align: text-bottom;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@media (min-width: 768px) {
+  .stat-pane:nth-last-child(-n + 4) {
+    border-bottom: none;
+  }
+}
+@media (min-width: 1024px) {
+  .stat-pane {
+    border-bottom: none;
+  }
+  .stat-pane:last-child {
+    border-right: none;
+  }
+}
+
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0D1B2A;
+  border-top: 1px solid rgba(123, 179, 255, 0.1);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(123, 179, 255, 0.4);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(123, 179, 255, 0.8);
+}
