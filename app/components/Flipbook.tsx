@@ -56,7 +56,12 @@ export default function Flipbook() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (window.innerWidth < 1024 || matchMedia("(pointer: coarse)").matches) {
+    // Only redirect actual touch devices or genuinely tiny windows.
+    // 1024px was too aggressive — split-screen desktop, secondary
+    // monitors, and Chrome with side-panel docked all fall under it.
+    const isTouch = matchMedia("(pointer: coarse)").matches;
+    const isTinyViewport = window.innerWidth < 700;
+    if (isTouch || isTinyViewport) {
       router.replace("/scroll");
       return;
     }
