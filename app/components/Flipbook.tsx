@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import HTMLFlipBook from "react-pageflip";
 import {
@@ -24,22 +24,37 @@ const TOTAL_SKILLS = skillFamilies.reduce((acc, f) => acc + f.count, 0);
 
 type PageProps = { children: React.ReactNode; n: number; total: number; muted?: boolean };
 
-const Page = ({ children, n, total, muted }: PageProps) => (
-  <div
-    className={`relative w-full h-full overflow-hidden ${muted ? "bg-navyDarker" : "bg-navy"} text-primary border border-line/40`}
-    style={{ fontFamily: "var(--font-mono, ui-monospace)" }}
-  >
-    <div className="absolute inset-0 pointer-events-none opacity-[0.06] mix-blend-screen"
-         style={{ backgroundImage: "repeating-linear-gradient(0deg, rgba(255,255,255,0.4) 0 1px, transparent 1px 4px)" }} />
-    <div className="relative z-10 h-full overflow-y-auto p-8 md:p-12">
-      {children}
+// react-pageflip uses React.Children.map + ref-attaching to wrap each
+// page. Function components without forwardRef silently drop the ref,
+// which is why the book collapses to a vertical stack. forwardRef +
+// fixed dimensions in the inner div restore the book layout.
+const Page = forwardRef<HTMLDivElement, PageProps>(function Page(
+  { children, n, total, muted },
+  ref,
+) {
+  return (
+    <div
+      ref={ref}
+      className={`relative overflow-hidden ${muted ? "bg-navyDarker" : "bg-navy"} text-primary border border-line/40`}
+      style={{ fontFamily: "var(--font-mono, ui-monospace)", width: "100%", height: "100%" }}
+    >
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.06] mix-blend-screen"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, rgba(255,255,255,0.4) 0 1px, transparent 1px 4px)",
+        }}
+      />
+      <div className="relative z-10 h-full overflow-y-auto p-8">{children}</div>
+      <div className="absolute bottom-3 left-0 right-0 flex justify-between px-6 text-[9px] tracking-[0.3em] uppercase opacity-40">
+        <span>A.R.C.A. — handbook</span>
+        <span>
+          {String(n).padStart(2, "0")} / {String(total).padStart(2, "0")}
+        </span>
+      </div>
     </div>
-    <div className="absolute bottom-3 left-0 right-0 flex justify-between px-6 text-[9px] tracking-[0.3em] uppercase opacity-40">
-      <span>A.R.C.A. — handbook</span>
-      <span>{String(n).padStart(2, "0")} / {String(total).padStart(2, "0")}</span>
-    </div>
-  </div>
-);
+  );
+});
 
 const sectionTitle = (n: string, label: string) => (
   <div className="mb-6">
@@ -466,7 +481,7 @@ export default function Flipbook() {
         style={{ background: "transparent" }}
         ref={bookRef as never}
       >
-        {pages.map((p) => p)}
+        {pages}
       </HTMLFlipBook>
       <p className="mt-6 text-[10px] tracking-[0.3em] uppercase opacity-40">
         click corner · drag · arrows · 16 pages
