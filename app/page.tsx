@@ -186,7 +186,7 @@ const forbiddenPatterns = [
 ];
 
 const GITHUB_URL = "https://github.com/infantesromeroadrian/arca-claude-code";
-const FELLOWS_URL = "https://www.anthropic.com/fellows-program";
+const CONTACT_EMAIL = "infantesromeroadrian@gmail.com";
 
 function ModelTag({ model }: { model: "opus" | "sonnet" | "haiku" }) {
   const styles = {
@@ -534,7 +534,7 @@ export default function Home() {
           <p className="text-xs leading-loose opacity-60 font-mono mb-6">
             A.R.C.A. was built by Adrian Infantes as a personal research system. Every architectural decision is documented in ADRs. Every code change passes the gate chain. Every limitation is honestly disclosed.
             <br /><br />
-            <span className="text-primary opacity-100 border border-line px-2 py-1 bg-primary/5">Built with Claude — applied to the Anthropic Fellows program 2026.</span>
+            <span className="text-primary opacity-100 border border-line px-2 py-1 bg-primary/5">This site is my application to the Anthropic Fellows program 2026.</span>
           </p>
         </div>
         <div className="flex flex-col gap-4 w-full lg:w-auto shrink-0">
@@ -544,7 +544,7 @@ export default function Home() {
           </a>
           <div className="grid grid-cols-2 gap-4">
             <a href={`${GITHUB_URL}/tree/main/docs/adr`} target="_blank" rel="noreferrer" className="border border-line px-4 py-4 text-[10px] tracking-[0.1em] uppercase hover:bg-primary/10 transition-colors text-center opacity-80 hover:opacity-100">Read all 9 ADRs</a>
-            <a href={FELLOWS_URL} target="_blank" rel="noreferrer" className="border border-line px-4 py-4 text-[10px] tracking-[0.1em] uppercase bg-primary text-navyDarker hover:opacity-90 transition-opacity text-center font-bold">Apply to Fellows</a>
+            <a href={`mailto:${CONTACT_EMAIL}?subject=A.R.C.A.%20%E2%80%94%20Fellows%202026`} className="border border-line px-4 py-4 text-[10px] tracking-[0.1em] uppercase bg-primary text-navyDarker hover:opacity-90 transition-opacity text-center font-bold">Contact</a>
           </div>
         </div>
       </footer>
