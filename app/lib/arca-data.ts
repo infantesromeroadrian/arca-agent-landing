@@ -57,6 +57,10 @@ export const cases = [
     body: "Closes mortal sin #4 (architecture without ADR). PostToolUse heuristic detects decisional output from architect-ai without ADR. Claude Opus 4.7 LLM-as-judge (via Code SDK) validates 7 Nygard sections prior to local persistence." },
   { code: "GATE_V2", title: "E.3 Diff Compress", subject: "Gate evaluation tuning",
     body: "v1 word-count was defeated by Lorem Ipsum bodies. v2 captures diff, 90s countdown, free-text summary, Claude Opus 4.7 judge (via Code SDK) with random fence prompt-injection guard. Verdicts: APPROVED / INCOHERENT / TOO_SHALLOW (fail-closed to v1)." },
+  { code: "VAULT_T3", title: "Obsidian Tier-3", subject: "Vault as auto-doc second-brain",
+    body: "Stop hook writes Status.md per project on every session close, then auto-pushes the ARCA-relevant subset (Status / CICLO-N / Templates / Engram digests) to a private companion repo arca-vault-notes. Plan-A 'git init the vault root' rejected: 7+ GB and personal medical data. ADR-010 documents the rationale." },
+  { code: "CC_2_1_X", title: "Claude Code 2.1.x adoption", subject: "10 platform knobs wired to ARCA",
+    body: "Adopted: ENABLE_PROMPT_CACHING_1H, CLAUDE_CODE_FORK_SUBAGENT, engram alwaysLoad, PreCompact / CwdChanged / FileChanged / TaskCreated hooks, PostToolUse secrets-mask via updatedToolOutput, UserPromptSubmit sessionTitle, ultrareview --json wrapper. Deferred (with explicit reason): disableSkillShellExecution (breaks 12 core skills), xhigh effort (per-session)." },
 ];
 
 export const stack = [
