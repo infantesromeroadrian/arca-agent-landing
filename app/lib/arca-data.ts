@@ -111,6 +111,7 @@ export const agentCategories: { title: string; agents: { name: string; model: "o
     { name: "math-critic", model: "opus", phases: "C3, C5, C6, C8 — BLOCKING" },
     { name: "debt-detector", model: "sonnet", phases: "C6, C8 — INLINE" },
     { name: "code-critic", model: "opus", phases: "all — BLOCKING" },
+    { name: "maintainability-engineer", model: "opus", phases: "C8 — BLOCKING (parallel to code-critic)" },
     { name: "chief-architect", model: "opus", phases: "C10, C14 — BLOCKING" },
     { name: "tester", model: "sonnet", phases: "C8" },
     { name: "ai-red-teamer", model: "opus", phases: "C2, C8, C10, C12" },
@@ -135,6 +136,7 @@ export const agentCategories: { title: string; agents: { name: string; model: "o
     { name: "docs-writer", model: "haiku", phases: "C10, C14" },
     { name: "python-specialist", model: "opus", phases: "C8" },
     { name: "arca-ambient-monitor", model: "sonnet", phases: "all" },
+    { name: "code-narrator", model: "sonnet", phases: "C3, C5, C6, C8 — auto post-producer" },
   ]},
 ];
 

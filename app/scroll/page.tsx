@@ -44,7 +44,7 @@ export default function Home() {
               ADVERSARIAL MULTI-AGENT SYSTEM<br />FOR ML/AI ENGINEERING
             </h2>
             <p className="text-base opacity-80 max-w-2xl mx-auto mb-12">
-              43 specialized agents · 86 skills · 14-cycle ML pipeline<br />9 mortal sins as quality gates
+              45 specialized agents · 86 skills · 14-cycle ML pipeline<br />9 mortal sins as quality gates
             </p>
             <div className="w-full max-w-3xl border border-line bg-navy mb-12 text-left relative shadow-2xl">
               <div className="border-b border-line flex px-4 py-2 items-center justify-between bg-primary/5">
