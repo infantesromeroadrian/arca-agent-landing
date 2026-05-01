@@ -74,8 +74,7 @@ export const stack = [
 
 export const agentCategories: { title: string; agents: { name: string; model: "opus" | "sonnet" | "haiku"; phases: string }[] }[] = [
   { title: "Discovery & Planning", agents: [
-    { name: "requirements-analyst", model: "sonnet", phases: "C1" },
-    { name: "scrum-master", model: "haiku", phases: "C1" },
+    { name: "project-planner", model: "sonnet", phases: "C1 — BLOCKING (gate)" },
     { name: "architect-ai", model: "opus", phases: "C1, C4, C14" },
   ]},
   { title: "Data", agents: [
