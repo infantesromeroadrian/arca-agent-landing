@@ -164,6 +164,7 @@ export const adrs = [
   { n: "008", title: "Diff Comprehension Gate v2 (timed read + LLM judge)", date: "2026-04-29", status: "Accepted" },
   { n: "009", title: "Hybrid LLM-as-judge — Opus 4.7 SDK + Qwen 7B", date: "2026-04-30", status: "Accepted" },
   { n: "010", title: "Obsidian vault as ARCA's auto-doc second-brain", date: "2026-04-30", status: "Accepted" },
+  { n: "011", title: "Phase-gate enforcement is no longer aspirational", date: "2026-05-01", status: "Accepted" },
 ];
 
 export const aiSlopSignals = [
