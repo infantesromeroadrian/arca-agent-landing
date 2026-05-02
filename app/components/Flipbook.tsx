@@ -59,7 +59,7 @@ const Page = forwardRef<HTMLDivElement, PageProps>(function Page(
 const sectionTitle = (n: string, label: string) => (
   <div className="mb-6">
     <p className="text-[14px] tracking-[0.4em] opacity-60 uppercase">§ {n}</p>
-    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-1">{label}</h2>
+    <h2 className="text-2xl md:text-2xl font-bold tracking-tight mt-1">{label}</h2>
     <div className="mt-3 h-px w-12 bg-primary opacity-60" />
   </div>
 );
@@ -86,7 +86,7 @@ export default function Flipbook() {
   if (!ready) {
     return (
       <main className="min-h-screen flex items-center justify-center bg-navyDarker text-primary font-mono">
-        <p className="text-xl tracking-[0.3em] uppercase opacity-60">loading handbook…</p>
+        <p className="text-lg tracking-[0.3em] uppercase opacity-60">loading handbook…</p>
       </main>
     );
   }
@@ -103,10 +103,10 @@ export default function Flipbook() {
           <p className="text-[14px] tracking-[0.5em] uppercase opacity-50 mt-1">2026 · handbook · v1</p>
         </div>
         <div className="text-center">
-          <h1 className="text-7xl md:text-8xl font-bold tracking-tight">A.R.C.A.</h1>
-          <p className="mt-4 text-xl opacity-70 tracking-[0.3em] uppercase">Adversarial Research &amp; Code Architect</p>
+          <h1 className="text-6xl md:text-7xl font-bold tracking-tight">A.R.C.A.</h1>
+          <p className="mt-4 text-lg opacity-70 tracking-[0.3em] uppercase">Adversarial Research &amp; Code Architect</p>
           <div className="mt-10 mx-auto h-px w-16 bg-primary opacity-50" />
-          <p className="mt-10 max-w-xl mx-auto text-xl leading-relaxed opacity-80">
+          <p className="mt-10 max-w-xl mx-auto text-lg leading-relaxed opacity-80">
             A multi-agent orchestration layer for Claude Code that turns one
             assistant into {TOTAL_AGENTS} specialists with adversarial gates, ADR-driven
             architecture and honest disclosure of every limit.
@@ -124,25 +124,25 @@ export default function Flipbook() {
   pages.push(
     <Page n={2} total={TOTAL} key="p2">
       {sectionTitle("00", "About this handbook")}
-      <p className="text-xl leading-relaxed opacity-80 mb-4">
+      <p className="text-lg leading-relaxed opacity-80 mb-4">
         This is the printable companion to <a href={ARCA_LIVE} className="underline">arca-agent-landing.vercel.app</a>.
         Same content, paginated for sequential reading. The scroll edition lives at <span className="opacity-100">/scroll</span> if you prefer it.
       </p>
-      <p className="text-xl leading-relaxed opacity-80 mb-6">
+      <p className="text-lg leading-relaxed opacity-80 mb-6">
         ARCA is not an assistant — it is Adrian Infantes converted into an AI agent. Lexicon,
         obsessions and decision criteria calibrated. JARVIS to my Stark.
       </p>
       <div className="grid grid-cols-2 gap-4 mt-8">
         <div className="border border-line/60 p-4">
           <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mb-2">Built by</p>
-          <p className="text-xl font-semibold">Adrian Infantes</p>
-          <p className="text-xl opacity-70 mt-1">ML / DL / RL / Generative & Agentic AI engineer</p>
-          <p className="text-xl opacity-70">Adversarial ML + AI red teaming</p>
+          <p className="text-lg font-semibold">Adrian Infantes</p>
+          <p className="text-lg opacity-70 mt-1">ML / DL / RL / Generative & Agentic AI engineer</p>
+          <p className="text-lg opacity-70">Adversarial ML + AI red teaming</p>
         </div>
         <div className="border border-line/60 p-4">
           <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mb-2">Source</p>
-          <p className="text-xl"><a href={GITHUB_URL} className="underline">github.com/infantesromeroadrian/arca-claude-code</a></p>
-          <p className="text-xl mt-1"><a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a></p>
+          <p className="text-lg"><a href={GITHUB_URL} className="underline">github.com/infantesromeroadrian/arca-claude-code</a></p>
+          <p className="text-lg mt-1"><a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a></p>
         </div>
       </div>
     </Page>,
@@ -166,7 +166,7 @@ export default function Flipbook() {
       {sectionTitle("TOC", "Table of contents")}
       <ul className="space-y-3 mt-6">
         {toc.map(([n, label, ref]) => (
-          <li key={n} className="flex items-baseline gap-4 text-xl border-b border-line/30 pb-2">
+          <li key={n} className="flex items-baseline gap-4 text-lg border-b border-line/30 pb-2">
             <span className="font-mono opacity-60 w-8">{n}</span>
             <span className="flex-1">{label}</span>
             <span className="font-mono text-[14px] tracking-[0.3em] uppercase opacity-50">{ref}</span>
@@ -191,16 +191,16 @@ export default function Flipbook() {
   pages.push(
     <Page n={4} total={TOTAL} key="p4">
       {sectionTitle("01", "The shape of A.R.C.A.")}
-      <p className="text-xl opacity-70 mb-6">A snapshot of the system as of <span className="opacity-100">2026-05-02</span>.</p>
+      <p className="text-lg opacity-70 mb-6">A snapshot of the system as of <span className="opacity-100">2026-05-02</span>.</p>
       <div className="grid grid-cols-3 gap-4">
         {statRows.map(([v, l], i) => (
           <div key={i} className="border border-line/60 p-4 text-center">
-            <p className="text-3xl font-bold">{v}</p>
+            <p className="text-2xl font-bold">{v}</p>
             <p className="text-[14px] tracking-[0.2em] uppercase opacity-60 mt-2 leading-tight">{l}</p>
           </div>
         ))}
       </div>
-      <p className="text-xl opacity-60 mt-8 leading-relaxed">
+      <p className="text-lg opacity-60 mt-8 leading-relaxed">
         Numbers refresh on every commit via <code className="opacity-100">scripts/obsidian-dashboard-refresh.sh</code>.
         The same counts power the Obsidian Dashboard at <code>Projects/ARCA/Dashboard.md</code> in the (private) vault repo.
       </p>
@@ -211,11 +211,11 @@ export default function Flipbook() {
   pages.push(
     <Page n={5} total={TOTAL} muted key="p5">
       {sectionTitle("02", "Identity")}
-      <p className="text-xl leading-relaxed mb-4">
+      <p className="text-lg leading-relaxed mb-4">
         ARCA is not a metaphor. It is calibrated lexicon, obsessions, technical
         criteria and communication style — Adrian Infantes ported to an AI agent.
       </p>
-      <div className="mt-6 grid grid-cols-2 gap-4 text-xl">
+      <div className="mt-6 grid grid-cols-2 gap-4 text-lg">
         <div>
           <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mb-2">Tone</p>
           <p className="opacity-80 leading-relaxed">Strict manager. Professional, dry, demanding. If code reaches production and fails, you lose your job. The frame is permanent.</p>
@@ -232,7 +232,7 @@ export default function Flipbook() {
         </div>
       </div>
       <div className="mt-8 border-l-2 border-primary pl-4">
-        <p className="text-xl italic opacity-90">&ldquo;Senor Infantes, esto no me convence. Y los tests?&rdquo;</p>
+        <p className="text-lg italic opacity-90">&ldquo;Senor Infantes, esto no me convence. Y los tests?&rdquo;</p>
         <p className="text-[14px] tracking-[0.3em] uppercase opacity-50 mt-2">— ARCA, default register</p>
       </div>
     </Page>,
@@ -246,7 +246,7 @@ export default function Flipbook() {
     pages.push(
       <Page n={6 + idx} total={TOTAL} key={`p${6 + idx}`}>
         {sectionTitle("03", `Pipeline ML — 14 cycles · ${idx === 0 ? "C1–C7" : "C8–C14"}`)}
-        <table className="w-full text-xl">
+        <table className="w-full text-lg">
           <thead>
             <tr className="text-[14px] tracking-[0.2em] uppercase opacity-50 border-b border-line/60">
               <th className="text-left pb-2 pr-4">ID</th>
@@ -326,7 +326,7 @@ export default function Flipbook() {
     <Page n={12} total={TOTAL} muted key="p12">
       {sectionTitle("06", "Adversarial Gates + Mortal Sins")}
       <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mb-2">gate chain</p>
-      <ol className="text-xl space-y-2 mb-6">
+      <ol className="text-lg space-y-2 mb-6">
         {gates.map((g) => (
           <li key={g.id} className="border-l-2 border-primary/60 pl-3">
             <p className="font-mono opacity-90">{g.name} <span className="text-[15px] opacity-60 ml-1">— {g.label}</span></p>
@@ -349,7 +349,7 @@ export default function Flipbook() {
   pages.push(
     <Page n={13} total={TOTAL} key="p13">
       {sectionTitle("07", "AI Slop · 19 signals that block merge")}
-      <p className="text-xl opacity-70 mb-6 leading-relaxed">
+      <p className="text-lg opacity-70 mb-6 leading-relaxed">
         Adversarial detection of code that betrays lack of human intent.
         Anything in this list is a hard merge block until rewritten with
         decisions visible to the reader.
@@ -425,16 +425,16 @@ export default function Flipbook() {
       <div className="h-full flex flex-col justify-between">
         <div>
           {sectionTitle("10", "End of handbook")}
-          <p className="text-xl leading-relaxed opacity-90 mb-4">
+          <p className="text-lg leading-relaxed opacity-90 mb-4">
             A.R.C.A. was built by Adrian Infantes as a personal research system.
             Every architectural decision is documented in ADRs. Every code change
             passes the gate chain. Every limitation is honestly disclosed.
           </p>
           <div className="border border-line/60 p-4 mt-6 bg-primary/5">
-            <p className="text-xl font-semibold">This site is my application to the Anthropic Fellows program 2026.</p>
+            <p className="text-lg font-semibold">This site is my application to the Anthropic Fellows program 2026.</p>
           </div>
         </div>
-        <div className="space-y-2 text-xl">
+        <div className="space-y-2 text-lg">
           <a href={GITHUB_URL} className="block underline opacity-90 hover:opacity-100">→ Source on GitHub (arca-claude-code)</a>
           <a href={`${GITHUB_URL}/tree/main/docs/adr`} className="block underline opacity-90 hover:opacity-100">→ Read all {adrs.length} ADRs</a>
           <a href="/scroll" className="block underline opacity-90 hover:opacity-100">→ Prefer scroll? Open the scroll edition</a>
