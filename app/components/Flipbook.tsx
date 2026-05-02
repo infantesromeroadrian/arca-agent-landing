@@ -222,7 +222,7 @@ export default function Flipbook() {
         </div>
         <div>
           <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mb-2">Obsessions, in order</p>
-          <ol className="list-decimal list-inside opacity-80 leading-relaxed space-y-1">
+          <ol className="list-decimal list-inside opacity-80 leading-relaxed space-y-2">
             <li>Architecture — bad foundation, nothing matters above</li>
             <li>Tests — no tests, code does not exist</li>
             <li>Deploy — no &lt;5min rollback, not ready</li>
@@ -257,9 +257,9 @@ export default function Flipbook() {
           <tbody>
             {group.map((c, i) => (
               <tr key={i} className="border-b border-line/30 hover:bg-primary/5 transition-colors">
-                <td className="py-2 pr-4 font-mono opacity-70">{c.id}</td>
-                <td className="py-2 pr-4">{c.name}{c.wait ? <span className="text-[15px] ml-2 opacity-60">[wait]</span> : null}</td>
-                <td className="py-2 font-mono text-[15px] opacity-80">@{c.owner}</td>
+                <td className="py-3 pr-4 font-mono opacity-70">{c.id}</td>
+                <td className="py-3 pr-4">{c.name}{c.wait ? <span className="text-[15px] ml-2 opacity-60">[wait]</span> : null}</td>
+                <td className="py-3 font-mono text-[15px] opacity-80">@{c.owner}</td>
               </tr>
             ))}
           </tbody>
@@ -285,7 +285,7 @@ export default function Flipbook() {
           {group.map((cat) => (
             <div key={cat.title} className="border-l-2 border-primary/50 pl-3">
               <p className="text-[14px] tracking-[0.2em] uppercase opacity-60 mb-1">{cat.title}</p>
-              <ul className="text-[15px] opacity-90 space-y-0.5">
+              <ul className="text-[15px] opacity-90 space-y-1.5">
                 {cat.agents.map((a) => (
                   <li key={a.name} className="flex items-baseline gap-2">
                     <span className="font-mono">@{a.name}</span>
@@ -313,7 +313,7 @@ export default function Flipbook() {
           {group.map((f) => (
             <div key={f.name} className="border-l-2 border-primary/40 pl-3">
               <p className="text-[14px] tracking-[0.2em] uppercase opacity-60">{f.name} · {f.count}</p>
-              <p className="opacity-80 mt-1 leading-snug">{f.items}</p>
+              <p className="opacity-80 mt-1 leading-relaxed">{f.items}</p>
             </div>
           ))}
         </div>
@@ -330,12 +330,12 @@ export default function Flipbook() {
         {gates.map((g) => (
           <li key={g.id} className="border-l-2 border-primary/60 pl-3">
             <p className="font-mono opacity-90">{g.name} <span className="text-[15px] opacity-60 ml-1">— {g.label}</span></p>
-            <p className="opacity-70 leading-snug mt-1">{g.body}</p>
+            <p className="opacity-70 leading-relaxed mt-1">{g.body}</p>
           </li>
         ))}
       </ol>
       <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mb-2">9 mortal sins</p>
-      <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-[15px]">
+      <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-[15px]">
         {sins.map((s) => (
           <li key={s.n} className={`opacity-90 ${s.highlight ? "text-red-300" : ""}`}>
             <span className="font-mono opacity-60 mr-2">{s.n}</span>{s.text}
@@ -354,11 +354,11 @@ export default function Flipbook() {
         Anything in this list is a hard merge block until rewritten with
         decisions visible to the reader.
       </p>
-      <ol className="grid grid-cols-2 gap-x-6 gap-y-1 text-[15px] list-decimal list-inside">
-        {aiSlopSignals.map((s, i) => (<li key={i} className="opacity-85 leading-snug">{s}</li>))}
+      <ol className="grid grid-cols-2 gap-x-6 gap-y-2 text-[15px] list-decimal list-inside">
+        {aiSlopSignals.map((s, i) => (<li key={i} className="opacity-85 leading-relaxed">{s}</li>))}
       </ol>
       <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mt-6 mb-2">forbidden patterns</p>
-      <ul className="text-[14px] opacity-75 space-y-0.5">
+      <ul className="text-[14px] opacity-75 space-y-1.5">
         {forbiddenPatterns.slice(0, 5).map((p, i) => (<li key={i}>· {p}</li>))}
       </ul>
     </Page>,
@@ -380,10 +380,10 @@ export default function Flipbook() {
         <tbody>
           {adrs.map((a) => (
             <tr key={a.n} className="border-b border-line/30 hover:bg-primary/5 transition-colors">
-              <td className="py-1.5 pr-3 font-mono opacity-70">{a.n}</td>
-              <td className="py-1.5 pr-3 opacity-90">{a.title}</td>
-              <td className="py-1.5 pr-3 opacity-70 text-[14px]">{a.status}</td>
-              <td className="py-1.5 font-mono opacity-60 text-[14px]">{a.date}</td>
+              <td className="py-2.5 pr-3 font-mono opacity-70">{a.n}</td>
+              <td className="py-2.5 pr-3 opacity-90">{a.title}</td>
+              <td className="py-2.5 pr-3 opacity-70 text-[14px]">{a.status}</td>
+              <td className="py-2.5 font-mono opacity-60 text-[14px]">{a.date}</td>
             </tr>
           ))}
         </tbody>
@@ -422,7 +422,7 @@ export default function Flipbook() {
               {c.code} · {c.title}
               {c.highlight ? <span className="ml-2 text-[12px] tracking-[0.3em] uppercase opacity-100">new</span> : null}
             </p>
-            <p className="text-[15px] opacity-90 leading-snug">{c.body}</p>
+            <p className="text-[15px] opacity-90 leading-relaxed">{c.body}</p>
           </div>
         ))}
       </div>
