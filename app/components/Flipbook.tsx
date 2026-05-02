@@ -256,7 +256,7 @@ export default function Flipbook() {
           </thead>
           <tbody>
             {group.map((c, i) => (
-              <tr key={i} className="border-b border-line/30">
+              <tr key={i} className="border-b border-line/30 hover:bg-primary/5 transition-colors">
                 <td className="py-2 pr-4 font-mono opacity-70">{c.id}</td>
                 <td className="py-2 pr-4">{c.name}{c.wait ? <span className="text-[15px] ml-2 opacity-60">[wait]</span> : null}</td>
                 <td className="py-2 font-mono text-[15px] opacity-80">@{c.owner}</td>
@@ -379,7 +379,7 @@ export default function Flipbook() {
         </thead>
         <tbody>
           {adrs.map((a) => (
-            <tr key={a.n} className="border-b border-line/30">
+            <tr key={a.n} className="border-b border-line/30 hover:bg-primary/5 transition-colors">
               <td className="py-1.5 pr-3 font-mono opacity-70">{a.n}</td>
               <td className="py-1.5 pr-3 opacity-90">{a.title}</td>
               <td className="py-1.5 pr-3 opacity-70 text-[14px]">{a.status}</td>
