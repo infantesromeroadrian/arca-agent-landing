@@ -195,7 +195,7 @@ export default function Flipbook() {
       <div className="grid grid-cols-3 gap-4">
         {statRows.map(([v, l], i) => (
           <div key={i} className="border border-line/60 p-4 text-center">
-            <p className="text-2xl font-bold">{v}</p>
+            <p className="text-3xl md:text-4xl font-bold">{v}</p>
             <p className="text-[14px] tracking-[0.2em] uppercase opacity-60 mt-2 leading-tight">{l}</p>
           </div>
         ))}
