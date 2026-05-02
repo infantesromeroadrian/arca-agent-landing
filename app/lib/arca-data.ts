@@ -50,7 +50,7 @@ export const sins = [
   { n: "09", text: "Ignoring escalation protocols" },
 ];
 
-export const cases = [
+export const cases: { code: string; title: string; subject: string; body: string; highlight?: boolean }[] = [
   { code: "ERR_MIT_01", title: "ARCA-SEC-1", subject: "$ARGUMENTS hardening",
     body: "Heredoc terminator injection is structurally irreducible in bash. We accept the limit and document it via inverted-style canary tests (T7b/T16b). If a future change accidentally closes the residual, the test fails and forces re-audit." },
   { code: "ARCH_04", title: "E.2 Auto-ADR", subject: "Closing sin #4",
@@ -61,7 +61,7 @@ export const cases = [
     body: "Stop hook writes Status.md per project on every session close, then auto-pushes the ARCA-relevant subset (Status / CICLO-N / Templates / Engram digests) to a private companion repo arca-vault-notes. Plan-A 'git init the vault root' rejected: 7+ GB and personal medical data. ADR-010 documents the rationale." },
   { code: "CC_2_1_X", title: "Claude Code 2.1.x adoption", subject: "10 platform knobs wired to ARCA",
     body: "Adopted: ENABLE_PROMPT_CACHING_1H, CLAUDE_CODE_FORK_SUBAGENT, engram alwaysLoad, PreCompact / CwdChanged / FileChanged / TaskCreated hooks, PostToolUse secrets-mask via updatedToolOutput, UserPromptSubmit sessionTitle, ultrareview --json wrapper. Deferred (with explicit reason): disableSkillShellExecution (breaks 12 core skills), xhigh effort (per-session)." },
-  { code: "CCAUDIT", title: "Weekly self-audit", subject: "ARCA audits ARCA against Anthropic docs",
+  { code: "CCAUDIT", title: "Weekly self-audit", subject: "ARCA audits ARCA against Anthropic docs", highlight: true,
     body: "skills/claude-config-audit fires every Monday 07:07 via systemd user timer. Delegates to @claude-code-guide which fetches docs.anthropic.com/claude-code in vivo (no training-data trust) and runs a 20-point structured checklist over 6 categories: hook payloads, env vars, skill runtime, subagent scoping, multi-process state, common misuses. Output is severity-graded; BLOCKER findings emit a flag that gates further edits to settings.json and hooks/. Born after a manual audit on 2026-05-01 caught 3 latent bugs in the same session." },
 ];
 

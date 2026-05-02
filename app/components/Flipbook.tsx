@@ -410,8 +410,18 @@ export default function Flipbook() {
       <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mb-2">selected cases</p>
       <div className="space-y-3">
         {cases.map((c) => (
-          <div key={c.code} className="border-l-2 border-primary/50 pl-3">
-            <p className="text-[14px] font-mono opacity-60">{c.code} · {c.title}</p>
+          <div
+            key={c.code}
+            className={
+              c.highlight
+                ? "border-l-2 border-primary pl-3 bg-primary/5 -mx-2 px-3 py-2"
+                : "border-l-2 border-primary/50 pl-3"
+            }
+          >
+            <p className="text-[14px] font-mono opacity-60">
+              {c.code} · {c.title}
+              {c.highlight ? <span className="ml-2 text-[12px] tracking-[0.3em] uppercase opacity-100">new</span> : null}
+            </p>
             <p className="text-[15px] opacity-90 leading-snug">{c.body}</p>
           </div>
         ))}
