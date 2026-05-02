@@ -152,7 +152,7 @@ export const skillFamilies = [
   { name: "Security", count: 13, items: "cybersecurity · htb-methodology · web3-audit · owasp-security · ml-security · bug-bounty · ..." },
   { name: "Pipeline / Utilities", count: 13, items: "requirements-engineering · agile-ml · cicd · git · testing · python-init · ..." },
   { name: "Reviews / Voting", count: 6, items: "review-pr · voting-review · team-debug · team-ml-review · team-refactor · team-security" },
-  { name: "Vercel ecosystem", count: 18, items: "vercel:ai-sdk · vercel:nextjs · vercel:deploy · vercel:shadcn · ..." },
+  { name: "Vercel ecosystem", count: 15, items: "vercel:ai-sdk · vercel:nextjs · vercel:deploy · vercel:shadcn · ..." },
 ];
 
 export const adrs = [
