@@ -194,6 +194,93 @@ export const aiSlopSignals = [
   "Exhaustive typing in privates (NOT slop — good practice)",
 ];
 
+// Empirical metrics — pulled from real telemetry logs in ~/.claude/state/
+// and ~/.claude/logs/ on 2026-05-02. window: justification stats first
+// observed 2026-04-29, mirror-sync running since 2026-04-25, telemetry
+// jsonl since project inception.
+export const metrics = {
+  windowFrom: "2026-04-25",
+  windowTo: "2026-05-02",
+  groups: [
+    {
+      title: "Justification gate (forced-justification.sh)",
+      window: "since 2026-04-29 · 4 days in production",
+      rows: [
+        { v: 77, l: "Edits approved by LLM judge (coherent)" },
+        { v: 10, l: "Edits blocked — judge verdict INCOHERENT" },
+        { v: 30, l: "Double-consume attempts blocked (ADV-7 lock)" },
+        { v: 11, l: "Edits without prior /justify — blocked" },
+        { v: 8, l: "Justify expired (TTL 120s) — blocked" },
+        { v: 1, l: "Manual bypass declared (audited)" },
+      ],
+    },
+    {
+      title: "Repo mirror sync (repo-mirror-sync.sh)",
+      window: "since 2026-04-25",
+      rows: [
+        { v: 55, l: "Successful syncs repo → ~/.claude/" },
+        { v: 1, l: "Settings.json propagation blocked (regression guard)" },
+      ],
+    },
+    {
+      title: "Worktree isolation enforcer",
+      window: "since project inception",
+      rows: [
+        { v: 191, l: "Direct main-repo write attempts blocked from agent worktrees" },
+        { v: 13, l: "Cron-context git operations denied" },
+      ],
+    },
+    {
+      title: "Activity baseline",
+      window: "2026 to date",
+      rows: [
+        { v: 390, l: "Claude Code session starts" },
+        { v: 346, l: "Commits to arca-claude-code main" },
+        { v: 5166, l: "Hook telemetry events recorded" },
+        { v: 14, l: "ADRs written" },
+      ],
+    },
+  ],
+};
+
+// Sample ADR rendered in full inside the handbook so reviewers can see
+// the actual depth of an architectural record without needing repo access.
+// ADR-009 chosen because it documents a non-obvious tradeoff (hybrid
+// backend) with explicit alternatives + consequences + limits.
+export const sampleADR = {
+  n: "009",
+  title: "Hybrid LLM-as-judge — Opus 4.7 high-stakes, Qwen 7B hot-path",
+  status: "Accepted",
+  date: "2026-04-30",
+  related: "ADR-006, ADR-008",
+  context: "ARCA's hook stack accumulated 4 LLM-as-judge instances assuming a single backend (local Ollama Qwen 2.5 7B). After two weeks running in parallel, two failure modes emerged: (1) Qwen 7B confuses surface-token overlap with comprehension on the diff judge, and (2) using Qwen uniformly contradicts ARCA's own model-tiering philosophy (Opus for high-stakes/low-frequency, Haiku for routing).",
+  decision: "Adopt a hybrid posture. Migrate adr-judge.sh and diff-judge-opus.sh to Opus 4.7 via Claude Code SDK CLI (~12s per call, low-frequency manual/PR-merge paths). Keep llm-judge.sh and engram-nudge-judge.sh on Ollama Qwen 2.5 7B (~2s, hot-path forced-justification + weekly cron classifier).",
+  rationale: [
+    "Hot-path latency non-negotiable: forced-justification fires on ~30% of Edits; 12s would push session friction past disable-it-out-of-frustration threshold.",
+    "High-stakes judges benefit from Opus reasoning: ADR completeness and diff comprehension are tasks where false APPROVED costs more than slowness.",
+    "Plan MAX flat-rate eliminates billing pressure (180 EUR/mo covers SDK calls). Decision is purely latency vs quality.",
+    "Fork over refactor minimizes blast radius: existing tests continue, rollback is one symlink swap, parent hook's preference logic is 3 lines of bash.",
+  ],
+  alternatives: [
+    "All four judges on Opus 4.7 — Rejected: hot-path latency unacceptable.",
+    "Keep all four on Ollama Qwen — Rejected: Qwen measurably worse on Comprehension Gate v2 tricks; false APPROVED on merge or ADR is high-cost.",
+    "Refactor-in-place (delete diff-judge.sh) — Rejected: a fork lets the parent hook fall back if Opus regresses; preserves existing test suite.",
+  ],
+  consequences: [
+    "Latency /adr-validate: 2s → 12s (invisible — manual command, not watcher).",
+    "Latency PR merge gate: 8s → 12s judge call (within 120s settings.json ceiling).",
+    "Forced-justification + Engram cron: unchanged at ~2s.",
+    "CI/non-interactive shells: parent hook's v1 fallback (40-word check) preserves graceful degradation when claude CLI missing.",
+    "Defense-in-depth idioms preserved: random fence, sanitization regex, fail-closed defaults.",
+  ],
+  limits: [
+    "Adoption tied to claude CLI binary — if removed, fail-open documented.",
+    "Plan MAX rate limits — burst of 50 PR merges/10min could throttle (mitigated by TIMEOUT → v1).",
+    "Code duplication tracked as ARCA-DEBT-001 (~70% shared structure; refactor deferred until 5th judge appears).",
+    "No regression test comparing Opus vs Qwen verdicts on identical inputs — eval harness future work.",
+  ],
+};
+
 export const forbiddenPatterns = [
   "Don't duplicate capabilities of existing agents",
   "Don't embed full API documentation in prompts",

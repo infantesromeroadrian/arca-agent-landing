@@ -16,6 +16,8 @@ import {
   aiSlopSignals,
   forbiddenPatterns,
   cases,
+  metrics,
+  sampleADR,
 } from "@/app/lib/arca-data";
 
 const ARCA_LIVE = "https://arca-agent-landing.vercel.app";
@@ -91,7 +93,7 @@ export default function Flipbook() {
     );
   }
 
-  const TOTAL = 16;
+  const TOTAL = 18;
   const pages: React.ReactNode[] = [];
 
   // 1. Cover
@@ -151,15 +153,17 @@ export default function Flipbook() {
   // 3. TOC
   const toc = [
     ["01", "Stats panorámicos", "p4"],
-    ["02", "Identity", "p5"],
-    ["03", `Pipeline ML — ${cycles.length} cycles`, "p6-7"],
-    ["04", `Agent Roster · ${TOTAL_AGENTS} specialists`, "p8-9"],
-    ["05", `Skills Catalog · ${TOTAL_SKILLS} specialized`, "p10-11"],
-    ["06", "Adversarial Gates + Mortal Sins", "p12"],
-    ["07", `AI Slop — ${aiSlopSignals.length} signals`, "p13"],
-    ["08", `ADRs · ${adrs.length} architectural records`, "p14"],
-    ["09", "Hardware · Stack · Cases", "p15"],
-    ["10", "Closing / CTA", "p16"],
+    ["02", "Empirical metrics", "p5"],
+    ["03", "Identity", "p6"],
+    ["04", `Pipeline ML — ${cycles.length} cycles`, "p7-8"],
+    ["05", `Agent Roster · ${TOTAL_AGENTS} specialists`, "p9-10"],
+    ["06", `Skills Catalog · ${TOTAL_SKILLS} specialized`, "p11-12"],
+    ["07", "Adversarial Gates + Mortal Sins", "p13"],
+    ["08", `AI Slop — ${aiSlopSignals.length} signals`, "p14"],
+    ["09", `ADRs · ${adrs.length} architectural records`, "p15"],
+    ["10", "Hardware · Stack · Cases", "p16"],
+    ["11", `ADR sample · #${sampleADR.n} ${sampleADR.title.split(" — ")[0]}`, "p17"],
+    ["12", "Closing / CTA", "p18"],
   ];
   pages.push(
     <Page n={3} total={TOTAL} muted key="p3">
@@ -207,9 +211,37 @@ export default function Flipbook() {
     </Page>,
   );
 
-  // 5. Identity
+  // 5. Empirical metrics — real telemetry from hook logs
   pages.push(
     <Page n={5} total={TOTAL} muted key="p5">
+      {sectionTitle("02", "Empirical metrics")}
+      <p className="text-lg opacity-70 mb-4 leading-relaxed">
+        Numbers below are pulled from real hook telemetry between{" "}
+        <span className="opacity-100">{metrics.windowFrom}</span> and{" "}
+        <span className="opacity-100">{metrics.windowTo}</span>. No vanity counts — only actions the gate chain actually took.
+      </p>
+      <div className="space-y-4">
+        {metrics.groups.map((g) => (
+          <div key={g.title} className="border-l-2 border-primary/50 pl-3">
+            <p className="text-[14px] tracking-[0.2em] uppercase opacity-60">{g.title}</p>
+            <p className="text-[13px] opacity-50 mb-2">{g.window}</p>
+            <ul className="text-[15px] space-y-1.5">
+              {g.rows.map((r, i) => (
+                <li key={i} className="flex items-baseline gap-3">
+                  <span className="font-mono font-bold opacity-100 min-w-[60px] text-right">{r.v}</span>
+                  <span className="opacity-80 leading-relaxed">{r.l}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </Page>,
+  );
+
+  // 6. Identity
+  pages.push(
+    <Page n={6} total={TOTAL} muted key="p6">
       {sectionTitle("02", "Identity")}
       <p className="text-lg leading-relaxed mb-4">
         ARCA is not a metaphor. It is calibrated lexicon, obsessions, technical
@@ -238,14 +270,14 @@ export default function Flipbook() {
     </Page>,
   );
 
-  // 6-7. Pipeline 14 cycles, split in two
+  // 7-8. Pipeline 14 cycles, split in two
   const half = Math.ceil(cycles.length / 2);
   const cyclesA = cycles.slice(0, half);
   const cyclesB = cycles.slice(half);
   [cyclesA, cyclesB].forEach((group, idx) => {
     pages.push(
-      <Page n={6 + idx} total={TOTAL} key={`p${6 + idx}`}>
-        {sectionTitle("03", `Pipeline ML — 14 cycles · ${idx === 0 ? "C1–C7" : "C8–C14"}`)}
+      <Page n={7 + idx} total={TOTAL} key={`p${7 + idx}`}>
+        {sectionTitle("04", `Pipeline ML — ${cycles.length} cycles · ${idx === 0 ? "C1–C7" : "C8–C14"}`)}
         <table className="w-full text-lg">
           <thead>
             <tr className="text-[14px] tracking-[0.2em] uppercase opacity-50 border-b border-line/60">
@@ -273,14 +305,14 @@ export default function Flipbook() {
     );
   });
 
-  // 8-9. Agent roster, split
+  // 9-10. Agent roster, split
   const halfAg = Math.ceil(agentCategories.length / 2);
   const agA = agentCategories.slice(0, halfAg);
   const agB = agentCategories.slice(halfAg);
   [agA, agB].forEach((group, idx) => {
     pages.push(
-      <Page n={8 + idx} total={TOTAL} muted key={`p${8 + idx}`}>
-        {sectionTitle("04", `Agent Roster · part ${idx + 1}/2`)}
+      <Page n={9 + idx} total={TOTAL} muted key={`p${9 + idx}`}>
+        {sectionTitle("05", `Agent Roster · part ${idx + 1}/2`)}
         <div className="space-y-4">
           {group.map((cat) => (
             <div key={cat.title} className="border-l-2 border-primary/50 pl-3">
@@ -301,14 +333,14 @@ export default function Flipbook() {
     );
   });
 
-  // 10-11. Skills, split
+  // 11-12. Skills, split
   const halfSk = Math.ceil(skillFamilies.length / 2);
   const skA = skillFamilies.slice(0, halfSk);
   const skB = skillFamilies.slice(halfSk);
   [skA, skB].forEach((group, idx) => {
     pages.push(
-      <Page n={10 + idx} total={TOTAL} key={`p${10 + idx}`}>
-        {sectionTitle("05", `Skills Catalog · ${idx === 0 ? "families A–F" : "families G–L"}`)}
+      <Page n={11 + idx} total={TOTAL} key={`p${11 + idx}`}>
+        {sectionTitle("06", `Skills Catalog · ${idx === 0 ? "families A–F" : "families G–L"}`)}
         <div className="space-y-3 text-[15px]">
           {group.map((f) => (
             <div key={f.name} className="border-l-2 border-primary/40 pl-3">
@@ -321,10 +353,10 @@ export default function Flipbook() {
     );
   });
 
-  // 12. Gates + Mortal Sins
+  // 13. Gates + Mortal Sins
   pages.push(
-    <Page n={12} total={TOTAL} muted key="p12">
-      {sectionTitle("06", "Adversarial Gates + Mortal Sins")}
+    <Page n={13} total={TOTAL} muted key="p13">
+      {sectionTitle("07", "Adversarial Gates + Mortal Sins")}
       <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mb-2">gate chain</p>
       <ol className="text-lg space-y-2 mb-6">
         {gates.map((g) => (
@@ -345,10 +377,10 @@ export default function Flipbook() {
     </Page>,
   );
 
-  // 13. AI Slop
+  // 14. AI Slop
   pages.push(
-    <Page n={13} total={TOTAL} key="p13">
-      {sectionTitle("07", "AI Slop · 19 signals that block merge")}
+    <Page n={14} total={TOTAL} key="p14">
+      {sectionTitle("08", `AI Slop · ${aiSlopSignals.length} signals that block merge`)}
       <p className="text-lg opacity-70 mb-6 leading-relaxed">
         Adversarial detection of code that betrays lack of human intent.
         Anything in this list is a hard merge block until rewritten with
@@ -364,10 +396,10 @@ export default function Flipbook() {
     </Page>,
   );
 
-  // 14. ADRs
+  // 15. ADRs
   pages.push(
-    <Page n={14} total={TOTAL} muted key="p14">
-      {sectionTitle("08", "Architecture Decision Records")}
+    <Page n={15} total={TOTAL} muted key="p15">
+      {sectionTitle("09", "Architecture Decision Records")}
       <table className="w-full text-[15px]">
         <thead>
           <tr className="text-[15px] tracking-[0.2em] uppercase opacity-50 border-b border-line/60">
@@ -394,10 +426,10 @@ export default function Flipbook() {
     </Page>,
   );
 
-  // 15. Hardware + Stack + Cases
+  // 16. Hardware + Stack + Cases
   pages.push(
-    <Page n={15} total={TOTAL} key="p15">
-      {sectionTitle("09", "Hardware · Stack · Cases")}
+    <Page n={16} total={TOTAL} key="p16">
+      {sectionTitle("10", "Hardware · Stack · Cases")}
       <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mb-2">runtime</p>
       <ul className="text-[15px] space-y-1 mb-6">
         {stack.map((s) => (
@@ -429,9 +461,53 @@ export default function Flipbook() {
     </Page>,
   );
 
-  // 16. Closing / CTA
+  // 17. ADR sample — full Nygard structure rendered in-line
   pages.push(
-    <Page n={16} total={TOTAL} muted key="p16">
+    <Page n={17} total={TOTAL} muted key="p17">
+      {sectionTitle("11", `ADR ${sampleADR.n} · ${sampleADR.title.split(" — ")[0]}`)}
+      <p className="text-[13px] tracking-[0.2em] uppercase opacity-60 mb-3">
+        {sampleADR.status} · {sampleADR.date} · related: {sampleADR.related}
+      </p>
+      <div className="space-y-3 text-[14px] leading-relaxed">
+        <div>
+          <p className="text-[12px] tracking-[0.25em] uppercase opacity-70 mb-1">context</p>
+          <p className="opacity-85">{sampleADR.context}</p>
+        </div>
+        <div>
+          <p className="text-[12px] tracking-[0.25em] uppercase opacity-70 mb-1">decision</p>
+          <p className="opacity-85">{sampleADR.decision}</p>
+        </div>
+        <div>
+          <p className="text-[12px] tracking-[0.25em] uppercase opacity-70 mb-1">rationale</p>
+          <ul className="opacity-85 space-y-1.5 list-disc list-inside">
+            {sampleADR.rationale.map((r, i) => <li key={i}>{r}</li>)}
+          </ul>
+        </div>
+        <div>
+          <p className="text-[12px] tracking-[0.25em] uppercase opacity-70 mb-1">alternatives rejected</p>
+          <ul className="opacity-85 space-y-1.5 list-disc list-inside">
+            {sampleADR.alternatives.map((a, i) => <li key={i}>{a}</li>)}
+          </ul>
+        </div>
+        <div>
+          <p className="text-[12px] tracking-[0.25em] uppercase opacity-70 mb-1">consequences</p>
+          <ul className="opacity-85 space-y-1.5 list-disc list-inside">
+            {sampleADR.consequences.map((c, i) => <li key={i}>{c}</li>)}
+          </ul>
+        </div>
+        <div>
+          <p className="text-[12px] tracking-[0.25em] uppercase opacity-70 mb-1">known limits</p>
+          <ul className="opacity-85 space-y-1.5 list-disc list-inside">
+            {sampleADR.limits.map((l, i) => <li key={i}>{l}</li>)}
+          </ul>
+        </div>
+      </div>
+    </Page>,
+  );
+
+  // 18. Closing / CTA
+  pages.push(
+    <Page n={18} total={TOTAL} key="p18">
       <div className="h-full flex flex-col justify-between">
         <div>
           {sectionTitle("10", "End of handbook")}
@@ -494,7 +570,7 @@ export default function Flipbook() {
         {pages}
       </HTMLFlipBook>
       <p className="mt-3 text-[14px] tracking-[0.3em] uppercase opacity-40">
-        click corner · drag · arrows · 16 pages
+        click corner · drag · arrows · {TOTAL} pages
       </p>
     </main>
   );
