@@ -357,6 +357,10 @@ export default function Flipbook() {
       <ol className="grid grid-cols-2 gap-x-6 gap-y-1 text-[15px] list-decimal list-inside">
         {aiSlopSignals.map((s, i) => (<li key={i} className="opacity-85 leading-snug">{s}</li>))}
       </ol>
+      <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mt-6 mb-2">forbidden patterns</p>
+      <ul className="text-[14px] opacity-75 space-y-0.5">
+        {forbiddenPatterns.slice(0, 5).map((p, i) => (<li key={i}>· {p}</li>))}
+      </ul>
     </Page>,
   );
 
@@ -412,10 +416,6 @@ export default function Flipbook() {
           </div>
         ))}
       </div>
-      <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mt-6 mb-2">forbidden patterns</p>
-      <ul className="text-[14px] opacity-75 space-y-0.5">
-        {forbiddenPatterns.slice(0, 5).map((p, i) => (<li key={i}>· {p}</li>))}
-      </ul>
     </Page>,
   );
 
