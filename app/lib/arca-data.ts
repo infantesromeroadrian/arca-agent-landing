@@ -4,7 +4,7 @@ export const GITHUB_URL = "https://github.com/infantesromeroadrian/arca-claude-c
 export const CONTACT_EMAIL = "infantesromeroadrian@gmail.com";
 
 export const cycles = [
-  { id: "C1", name: "Discovery", owner: "requirements-analyst" },
+  { id: "C1", name: "Discovery", owner: "project-planner" },
   { id: "C2", name: "Data", owner: "data-validator" },
   { id: "C3", name: "Feature", owner: "math-critic" },
   { id: "C4", name: "Design", owner: "architect-ai", wait: true },
@@ -61,6 +61,8 @@ export const cases = [
     body: "Stop hook writes Status.md per project on every session close, then auto-pushes the ARCA-relevant subset (Status / CICLO-N / Templates / Engram digests) to a private companion repo arca-vault-notes. Plan-A 'git init the vault root' rejected: 7+ GB and personal medical data. ADR-010 documents the rationale." },
   { code: "CC_2_1_X", title: "Claude Code 2.1.x adoption", subject: "10 platform knobs wired to ARCA",
     body: "Adopted: ENABLE_PROMPT_CACHING_1H, CLAUDE_CODE_FORK_SUBAGENT, engram alwaysLoad, PreCompact / CwdChanged / FileChanged / TaskCreated hooks, PostToolUse secrets-mask via updatedToolOutput, UserPromptSubmit sessionTitle, ultrareview --json wrapper. Deferred (with explicit reason): disableSkillShellExecution (breaks 12 core skills), xhigh effort (per-session)." },
+  { code: "CCAUDIT", title: "Weekly self-audit", subject: "ARCA audits ARCA against Anthropic docs",
+    body: "skills/claude-config-audit fires every Monday 07:07 via systemd user timer. Delegates to @claude-code-guide which fetches docs.anthropic.com/claude-code in vivo (no training-data trust) and runs a 20-point structured checklist over 6 categories: hook payloads, env vars, skill runtime, subagent scoping, multi-process state, common misuses. Output is severity-graded; BLOCKER findings emit a flag that gates further edits to settings.json and hooks/. Born after a manual audit on 2026-05-01 caught 3 latent bugs in the same session." },
 ];
 
 export const stack = [
@@ -140,7 +142,7 @@ export const agentCategories: { title: string; agents: { name: string; model: "o
 ];
 
 export const skillFamilies = [
-  { name: "ARCA core", count: 7, items: "adr-new · justify · skill-effectiveness · skill-router · token-optimizer · engram-rehydrate · claude-code-patterns" },
+  { name: "ARCA core", count: 8, items: "adr-new · justify · skill-effectiveness · skill-router · token-optimizer · engram-rehydrate · claude-code-patterns · claude-config-audit" },
   { name: "Anti-AI-slop", count: 3, items: "karpathy-guidelines · verbalized-sampling · gentleman-ai" },
   { name: "LangChain ecosystem", count: 10, items: "langchain · langgraph · langchain-rag · langsmith · ..." },
   { name: "Deep Agents", count: 3, items: "deep-agents-core · deep-agents-memory · deep-agents-orchestration" },
@@ -150,7 +152,7 @@ export const skillFamilies = [
   { name: "Security", count: 13, items: "cybersecurity · htb-methodology · web3-audit · owasp-security · ml-security · bug-bounty · ..." },
   { name: "Pipeline / Utilities", count: 13, items: "requirements-engineering · agile-ml · cicd · git · testing · python-init · ..." },
   { name: "Reviews / Voting", count: 6, items: "review-pr · voting-review · team-debug · team-ml-review · team-refactor · team-security" },
-  { name: "Vercel ecosystem", count: 26, items: "vercel:ai-sdk · vercel:nextjs · vercel:deploy · vercel:shadcn · ..." },
+  { name: "Vercel ecosystem", count: 18, items: "vercel:ai-sdk · vercel:nextjs · vercel:deploy · vercel:shadcn · ..." },
 ];
 
 export const adrs = [
@@ -165,6 +167,9 @@ export const adrs = [
   { n: "009", title: "Hybrid LLM-as-judge — Opus 4.7 SDK + Qwen 7B", date: "2026-04-30", status: "Accepted" },
   { n: "010", title: "Obsidian vault as ARCA's auto-doc second-brain", date: "2026-04-30", status: "Accepted" },
   { n: "011", title: "Phase-gate enforcement is no longer aspirational", date: "2026-05-01", status: "Accepted" },
+  { n: "012", title: "Async subagent notification stall — fail-safe to v1 fallback", date: "2026-05-01", status: "Accepted" },
+  { n: "013", title: "Scheduled-git guardrails — block git ops from cron context", date: "2026-05-01", status: "Accepted" },
+  { n: "014", title: "Slash-command test harness — bash hermetic fixtures", date: "2026-05-01", status: "Accepted" },
 ];
 
 export const aiSlopSignals = [

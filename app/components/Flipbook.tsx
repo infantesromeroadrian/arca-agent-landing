@@ -108,7 +108,7 @@ export default function Flipbook() {
           <div className="mt-10 mx-auto h-px w-16 bg-primary opacity-50" />
           <p className="mt-10 max-w-xl mx-auto text-xl leading-relaxed opacity-80">
             A multi-agent orchestration layer for Claude Code that turns one
-            assistant into 43 specialists with adversarial gates, ADR-driven
+            assistant into {TOTAL_AGENTS} specialists with adversarial gates, ADR-driven
             architecture and honest disclosure of every limit.
           </p>
         </div>
@@ -152,12 +152,12 @@ export default function Flipbook() {
   const toc = [
     ["01", "Stats panorámicos", "p4"],
     ["02", "Identity", "p5"],
-    ["03", "Pipeline ML — 14 cycles", "p6-7"],
-    ["04", "Agent Roster · 43 specialists", "p8-9"],
-    ["05", "Skills Catalog · 86 specialized", "p10-11"],
+    ["03", `Pipeline ML — ${cycles.length} cycles`, "p6-7"],
+    ["04", `Agent Roster · ${TOTAL_AGENTS} specialists`, "p8-9"],
+    ["05", `Skills Catalog · ${TOTAL_SKILLS} specialized`, "p10-11"],
     ["06", "Adversarial Gates + Mortal Sins", "p12"],
-    ["07", "AI Slop — 19 signals", "p13"],
-    ["08", "ADRs · 10 architectural records", "p14"],
+    ["07", `AI Slop — ${aiSlopSignals.length} signals`, "p13"],
+    ["08", `ADRs · ${adrs.length} architectural records`, "p14"],
     ["09", "Hardware · Stack · Cases", "p15"],
     ["10", "Closing / CTA", "p16"],
   ];
@@ -179,8 +179,8 @@ export default function Flipbook() {
   // 4. Stats panorámicos
   const statRows = [
     [TOTAL_AGENTS, "Specialized agents"],
-    [TOTAL_SKILLS, "Skills (86)"],
-    ["14", "Pipeline ML cycles"],
+    [TOTAL_SKILLS, "Skills"],
+    [cycles.length, "Pipeline ML cycles"],
     [adrs.length, "ADRs"],
     [sins.length, "Mortal sins as gates"],
     [aiSlopSignals.length, "AI-slop signals"],
@@ -191,7 +191,7 @@ export default function Flipbook() {
   pages.push(
     <Page n={4} total={TOTAL} key="p4">
       {sectionTitle("01", "The shape of A.R.C.A.")}
-      <p className="text-xl opacity-70 mb-6">A snapshot of the system as of <span className="opacity-100">2026-04-30</span>.</p>
+      <p className="text-xl opacity-70 mb-6">A snapshot of the system as of <span className="opacity-100">2026-05-02</span>.</p>
       <div className="grid grid-cols-3 gap-4">
         {statRows.map(([v, l], i) => (
           <div key={i} className="border border-line/60 p-4 text-center">
@@ -436,7 +436,7 @@ export default function Flipbook() {
         </div>
         <div className="space-y-2 text-xl">
           <a href={GITHUB_URL} className="block underline opacity-90 hover:opacity-100">→ Source on GitHub (arca-claude-code)</a>
-          <a href={`${GITHUB_URL}/tree/main/docs/adr`} className="block underline opacity-90 hover:opacity-100">→ Read all 10 ADRs</a>
+          <a href={`${GITHUB_URL}/tree/main/docs/adr`} className="block underline opacity-90 hover:opacity-100">→ Read all {adrs.length} ADRs</a>
           <a href="/scroll" className="block underline opacity-90 hover:opacity-100">→ Prefer scroll? Open the scroll edition</a>
           <a href={`mailto:${CONTACT_EMAIL}?subject=A.R.C.A.%20%E2%80%94%20Fellows%202026`}
              className="block mt-4 border border-primary px-4 py-3 text-center bg-primary text-navyDarker font-semibold tracking-widest uppercase">
