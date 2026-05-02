@@ -59,7 +59,7 @@ const Page = forwardRef<HTMLDivElement, PageProps>(function Page(
 const sectionTitle = (n: string, label: string) => (
   <div className="mb-6">
     <p className="text-[14px] tracking-[0.4em] opacity-60 uppercase">§ {n}</p>
-    <h2 className="text-2xl md:text-2xl font-bold tracking-tight mt-1">{label}</h2>
+    <h2 className="text-[26px] md:text-3xl font-bold tracking-tight mt-1">{label}</h2>
     <div className="mt-3 h-px w-12 bg-primary opacity-60" />
   </div>
 );
