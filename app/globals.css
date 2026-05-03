@@ -1,6 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Tailwind v4 CSS-first theme config (replaces tailwind.config.ts colors).
+   Custom palette tokens accessible as bg-navy, text-primary, border-line, etc. */
+@theme {
+  --color-navy: #0D1B2A;
+  --color-navyDarker: #08111C;
+  --color-primary: #7BB3FF;
+  --color-accent: #00E5FF;
+  --color-line: rgb(123 179 255 / 0.25);
+  --font-mono: "Courier Prime", ui-monospace, monospace;
+  --font-serif: "Cormorant", serif;
+}
 
 @layer base {
   body {

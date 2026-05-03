@@ -1,9 +1,4 @@
-import dynamic from "next/dynamic";
-
-// react-pageflip is client-only (touches DOM directly).
-const Flipbook = dynamic(() => import("@/app/components/Flipbook"), {
-  ssr: false,
-});
+import FlipbookLoader from "@/app/components/FlipbookLoader";
 
 export const metadata = {
   title: "A.R.C.A. — handbook",
@@ -14,5 +9,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <Flipbook />;
+  return <FlipbookLoader />;
 }
