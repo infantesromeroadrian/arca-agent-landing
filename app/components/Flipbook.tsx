@@ -18,6 +18,7 @@ import {
   cases,
   metrics,
   sampleADR,
+  enterprisePosture,
 } from "@/app/lib/arca-data";
 
 const ARCA_LIVE = "https://arca-agent-landing.vercel.app";
@@ -93,7 +94,7 @@ export default function Flipbook() {
     );
   }
 
-  const TOTAL = 18;
+  const TOTAL = 19;
   const pages: React.ReactNode[] = [];
 
   // 1. Cover
@@ -163,7 +164,8 @@ export default function Flipbook() {
     ["09", `ADRs · ${adrs.length} architectural records`, "p15"],
     ["10", "Hardware · Stack · Cases", "p16"],
     ["11", `ADR sample · #${sampleADR.n} ${sampleADR.title.split(" — ")[0]}`, "p17"],
-    ["12", "Closing / CTA", "p18"],
+    ["12", `Enterprise compliance · ${enterprisePosture.length} frameworks`, "p18"],
+    ["13", "Closing / CTA", "p19"],
   ];
   pages.push(
     <Page n={3} total={TOTAL} muted key="p3">
@@ -195,7 +197,7 @@ export default function Flipbook() {
   pages.push(
     <Page n={4} total={TOTAL} key="p4">
       {sectionTitle("01", "The shape of A.R.C.A.")}
-      <p className="text-lg opacity-70 mb-6">A snapshot of the system as of <span className="opacity-100">2026-05-02</span>.</p>
+      <p className="text-lg opacity-70 mb-6">A snapshot of the system as of <span className="opacity-100">2026-05-03</span> (post v3.0 enterprise sweep).</p>
       <div className="grid grid-cols-3 gap-4">
         {statRows.map(([v, l], i) => (
           <div key={i} className="border border-line/60 p-4 text-center">
@@ -505,12 +507,38 @@ export default function Flipbook() {
     </Page>,
   );
 
-  // 18. Closing / CTA
+  // 18. Enterprise compliance posture — v3.0 frameworks rendered
   pages.push(
     <Page n={18} total={TOTAL} key="p18">
+      {sectionTitle("12", `Enterprise compliance · ${enterprisePosture.length} frameworks`)}
+      <p className="text-[15px] opacity-70 mb-4 leading-relaxed">
+        On <span className="opacity-100">2026-05-03</span>, sixteen agents underwent enterprise rewrite
+        calibrated for these regulatory frameworks. Each agent cited as &ldquo;BLOCKING gate&rdquo;
+        in its respective phase enforces the obligations of the framework(s) listed.
+      </p>
+      <div className="space-y-3">
+        {enterprisePosture.map((p) => (
+          <div key={p.framework} className="border-l-2 border-primary/50 pl-3">
+            <p className="text-[13px] tracking-[0.2em] uppercase opacity-90 leading-snug">{p.framework}</p>
+            <p className="text-[13px] opacity-70 leading-relaxed mt-0.5">{p.scope}</p>
+            <p className="text-[12px] tracking-[0.05em] opacity-50 mt-0.5 font-mono">{p.agents}</p>
+          </div>
+        ))}
+      </div>
+      <p className="text-[13px] opacity-50 mt-5 leading-relaxed">
+        Full per-agent enforcement details live in <code className="opacity-100">agents/&lt;name&gt;.md</code> v3.0
+        bodies (see GitHub repo). Each anti-pattern enumerated there is tagged with the
+        regulatory consequence (e.g., &ldquo;PII en localStorage = breach GDPR Art 33 72h&rdquo;).
+      </p>
+    </Page>,
+  );
+
+  // 19. Closing / CTA
+  pages.push(
+    <Page n={19} total={TOTAL} key="p19">
       <div className="h-full flex flex-col justify-between">
         <div>
-          {sectionTitle("10", "End of handbook")}
+          {sectionTitle("13", "End of handbook")}
           <p className="text-lg leading-relaxed opacity-90 mb-4">
             A.R.C.A. was built by Adrian Infantes as a personal research system.
             Every architectural decision is documented in ADRs. Every code change
