@@ -1,4 +1,5 @@
 // Data constants for the A.R.C.A. landing — used by both /scroll (legacy) and / (flipbook).
+// Last sync with arca-claude-code roster: 2026-05-03 (post v3.0 enterprise rewrites).
 
 export const GITHUB_URL = "https://github.com/infantesromeroadrian/arca-claude-code";
 export const CONTACT_EMAIL = "infantesromeroadrian@gmail.com";
@@ -22,11 +23,11 @@ export const cycles = [
 
 export const htbPhases = [
   { id: "F0", name: "Setup", desc: "Directory scaffolding (nmap/, loot/, exploits/, notes/, flags/)." },
-  { id: "F1", name: "Recon", desc: "@htb-recon mechanical enumeration → loot/recon.json." },
-  { id: "F2", name: "CVE Gate", desc: "@cve-hunter ranks CVEs by service+version (BLOCKING)." },
-  { id: "F3", name: "Cred Hunt", desc: "@credential-hunter cross-service reuse matrix." },
-  { id: "F4", name: "Exploit", desc: "@exploit-executor PoC rank #1, minimal toolkit (curl/git/ssh/python3/nc)." },
-  { id: "F5", name: "Flag Gate", desc: "@flag-validator <60s GO/ABORT decision." },
+  { id: "F1", name: "Recon", desc: "@htb-recon ProjectDiscovery stack 2026 + ATT&CK mapping → loot/recon.json." },
+  { id: "F2", name: "CVE Gate", desc: "@cve-hunter NVD v2.0 + CISA KEV + EPSS + CVSS v4.0 ranking (BLOCKING)." },
+  { id: "F3", name: "Cred Hunt", desc: "@credential-hunter cross-service reuse + AD attacks (Kerberoast/AS-REP/BloodHound CE) + cloud creds." },
+  { id: "F4", name: "Exploit", desc: "@exploit-executor PoC #1 + LOLBAS/GTFOBins + AT&CK mapping + minimal toolkit." },
+  { id: "F5", name: "Flag Gate", desc: "@flag-validator <60s GO/ABORT + container escape + cloud metadata check." },
 ];
 
 export const gates = [
@@ -36,6 +37,8 @@ export const gates = [
     body: "Catches unused imports/functions, TODOs without tickets, logical duplication >3 sites across the workspace, and enforces cyclomatic complexity limits (max 10)." },
   { id: "gate.03", name: "@code-critic", label: "Terminal",
     body: 'Analyzes 19 isolated "AI Slop" signals. Audits architecture, strict security adherence, runtime performance bounds, and deep maintainability limits. No code is final without approval.' },
+  { id: "gate.04", name: "@maintainability-engineer", label: "Parallel-Blocking",
+    body: "Runs in parallel with @code-critic at C8 Quality. Catches longevity decay (naming-versionado embebido, magic constants, premature abstractions, undocumented invariants, implicit coupling, behavior-validating tests, reversibility risk). Both gates blocking — either rejection halts the cycle." },
 ];
 
 export const sins = [
@@ -51,8 +54,8 @@ export const sins = [
 ];
 
 export const cases: { code: string; title: string; subject: string; body: string; highlight?: boolean }[] = [
-  { code: "ERR_MIT_01", title: "ARCA-SEC-1", subject: "$ARGUMENTS hardening",
-    body: "Heredoc terminator injection is structurally irreducible in bash. We accept the limit and document it via inverted-style canary tests (T7b/T16b). If a future change accidentally closes the residual, the test fails and forces re-audit." },
+  { code: "ERR_MIT_01", title: "ARCA-SEC-1", subject: "$ARGUMENTS hardening (Superseded 2026-05-03)",
+    body: "Heredoc terminator injection was structurally irreducible in bash. Mitigation accepted via inverted-style canary tests (T7b/T16b). ADR-007 superseded on 2026-05-03 when /justify feature removed entirely (operational friction outweighed value once @code-critic + @maintainability-engineer gates matured). Pattern documented as reference for future shell-parser slash commands." },
   { code: "ARCH_04", title: "E.2 Auto-ADR", subject: "Closing sin #4",
     body: "Closes mortal sin #4 (architecture without ADR). PostToolUse heuristic detects decisional output from architect-ai without ADR. Claude Opus 4.7 LLM-as-judge (via Code SDK) validates 7 Nygard sections prior to local persistence." },
   { code: "GATE_V2", title: "E.3 Diff Compress", subject: "Gate evaluation tuning",
@@ -63,10 +66,14 @@ export const cases: { code: string; title: string; subject: string; body: string
     body: "Adopted: ENABLE_PROMPT_CACHING_1H, CLAUDE_CODE_FORK_SUBAGENT, engram alwaysLoad, PreCompact / CwdChanged / FileChanged / TaskCreated hooks, PostToolUse secrets-mask via updatedToolOutput, UserPromptSubmit sessionTitle, ultrareview --json wrapper. Deferred (with explicit reason): disableSkillShellExecution (breaks 12 core skills), xhigh effort (per-session)." },
   { code: "CCAUDIT", title: "Weekly self-audit", subject: "ARCA audits ARCA against Anthropic docs", highlight: true,
     body: "skills/claude-config-audit fires every Monday 07:07 via systemd user timer. Delegates to @claude-code-guide which fetches docs.anthropic.com/claude-code in vivo (no training-data trust) and runs a 20-point structured checklist over 6 categories: hook payloads, env vars, skill runtime, subagent scoping, multi-process state, common misuses. Output is severity-graded; BLOCKER findings emit a flag that gates further edits to settings.json and hooks/. Born after a manual audit on 2026-05-01 caught 3 latent bugs in the same session." },
+  { code: "ENT_V3", title: "Enterprise rewrite sweep v3.0", subject: "16 agents promoted to regulated-grade", highlight: true,
+    body: "On 2026-05-03 sixteen agents underwent enterprise-grade rewrite (~10,400 LOC added) calibrated for SOC 2 Type II, EU AI Act (Art 15/50/55/73), GDPR Art 22, HIPAA BAA, DORA Art 17, PCI-DSS Level 1, FedRAMP, ISO/IEC 42001, NIST AI RMF + AI 600-1 GenAI Profile, MITRE ATT&CK v15+ / ATLAS, OWASP LLM Top 10:2025, SLSA Level 3, WCAG 2.2 + EU European Accessibility Act (effective 28 June 2025). Spans MLOps + serving + cloud + DevOps + security + frontend + HTB pipeline. Rationale documented per agent in commits 6cbc4dd through a8c3cb2." },
 ];
 
 export const stack = [
   { k: "MODELS", v: "Opus 4.7 (1M ctx) · Sonnet 4.6 · Haiku 4.5" },
+  { k: "DISTRIBUTION", v: "26 Opus · 11 Sonnet · 7 Haiku (post v3.0 sweep)" },
+  { k: "ENTERPRISE TIER", v: "16 agents v3.0 regulated-grade (SOC 2 / EU AI Act / GDPR / DORA / HIPAA / PCI-DSS)" },
   { k: "PERSISTENCE", v: "Engram MCP (Local SQLite)" },
   { k: "LLM-AS-JUDGE", v: "Hybrid: Opus 4.7 SDK (high-stakes) + Qwen 2.5 7B (hot-path)" },
   { k: "RUNTIME", v: "100% bash hooks (Zero startup latency)" },
@@ -74,67 +81,100 @@ export const stack = [
   { k: "COMPUTE NODE", v: "RTX 2000 Ada Lovelace SM 8.9 (8GB VRAM)" },
 ];
 
+export const enterprisePosture = [
+  { framework: "NIST AI RMF 1.0 + AI 600-1 GenAI Profile",
+    scope: "AI red team activity (MS-2.7) over 12 risks (CBRN, confabulation, harmful bias, info security, IP, etc.)",
+    agents: "@ai-red-teamer, @mlops-engineer, @ai-production-engineer" },
+  { framework: "EU AI Act (Regulation 2024/1689)",
+    scope: "Art 15 high-risk testing, Art 50 transparency (2026-08-02), Art 51/55 GPAI 10^25 FLOPS systemic risk, Art 73 incident reporting 15/10/2 days",
+    agents: "@ai-production-engineer, @mlops-engineer, @ai-red-teamer, @frontend-ai" },
+  { framework: "MITRE ATT&CK v15+ Enterprise + MITRE ATLAS",
+    scope: "ATT&CK techniques mapping per pipeline phase + ATLAS adversarial threat landscape AI/ML",
+    agents: "@ai-red-teamer, @htb-orchestrator + 5 HTB pipeline" },
+  { framework: "OWASP LLM Top 10:2025",
+    scope: "LLM01-LLM10 with red team test mapping (PromptBench, AdvBench, BadNets activation, InjecAgent corpus)",
+    agents: "@ai-red-teamer, @ai-production-engineer" },
+  { framework: "SLSA Level 3 supply chain",
+    scope: "SBOM Syft SPDX + Cosign signing OIDC + provenance attestation + Trivy CVE scan",
+    agents: "@devops, @aws-engineer, @deployment" },
+  { framework: "WCAG 2.2 AA + EU EAA Directive 2019/882",
+    scope: "9 nuevos success criteria vs 2.1, EAA effective 28 June 2025 (multas member state Spain hasta EUR 1M)",
+    agents: "@frontend-ai" },
+  { framework: "SOC 2 Type II CC6.x/CC7.x",
+    scope: "Audit trail inmutable + change management + RBAC segregation of duties + continuous monitoring",
+    agents: "@mlops-engineer, @deployment, @devops, @monitoring" },
+  { framework: "DORA Article 17 (financial EU)",
+    scope: "ICT incident detection <24h + operational resilience testing (TLPT every 3 years) + third-party risk",
+    agents: "@deployment, @monitoring, @ai-red-teamer" },
+  { framework: "HIPAA + GDPR Art 22/30/32",
+    scope: "BAA-eligible services + PHI encryption TLS 1.3 + KMS CMK + right to explanation UI + records of processing",
+    agents: "@aws-engineer, @ai-production-engineer, @frontend-ai, @mlops-engineer" },
+  { framework: "PTES + NIST SP 800-115 + OWASP WSTG 4.2",
+    scope: "Pentest methodology canónica con 7 sections per engagement",
+    agents: "@ai-red-teamer, @htb-orchestrator + 5 HTB pipeline" },
+];
+
 export const agentCategories: { title: string; agents: { name: string; model: "opus" | "sonnet" | "haiku"; phases: string }[] }[] = [
   { title: "Discovery & Planning", agents: [
-    { name: "project-planner", model: "sonnet", phases: "C1 — BLOCKING (gate)" },
+    { name: "project-planner", model: "opus", phases: "C1 — BLOCKING gate, recurrente cada sprint" },
     { name: "architect-ai", model: "opus", phases: "C1, C4, C14" },
   ]},
   { title: "Data", agents: [
-    { name: "data-engineer", model: "sonnet", phases: "C2, C6, C7" },
+    { name: "data-engineer", model: "opus", phases: "C2, C6, C7" },
     { name: "data-scientist", model: "opus", phases: "C2, C3" },
     { name: "data-validator", model: "opus", phases: "C2 — BLOCKING" },
   ]},
   { title: "ML / DL / AI", agents: [
-    { name: "ml-engineer", model: "opus", phases: "C5, C6" },
-    { name: "dl-engineer", model: "opus", phases: "C5, C6" },
-    { name: "ai-engineer", model: "opus", phases: "C4, C5, C8" },
-    { name: "agent-engineer", model: "sonnet", phases: "C4, C5, C8" },
+    { name: "ml-engineer", model: "opus", phases: "C5, C6, C8" },
+    { name: "dl-engineer", model: "opus", phases: "C5, C6, C8" },
+    { name: "ai-engineer", model: "opus", phases: "C4, C6" },
+    { name: "agent-engineer", model: "opus", phases: "C4, C5, C8" },
     { name: "rag-engineer", model: "opus", phases: "C4, C5, C8" },
   ]},
   { title: "GPU / Performance", agents: [
     { name: "gpu-engineer", model: "opus", phases: "C2, C6" },
     { name: "perf-engineer", model: "opus", phases: "C8, C9" },
   ]},
-  { title: "Production", agents: [
-    { name: "mlops-engineer", model: "sonnet", phases: "C7, C8, C12, C13, C14" },
+  { title: "Production (v3.0 enterprise)", agents: [
+    { name: "mlops-engineer", model: "opus", phases: "C7, C8, C12, C13 — 4-eyes + lineage + EU AI Act" },
     { name: "model-evaluator", model: "opus", phases: "C8 — FINAL gate" },
-    { name: "ai-production-engineer", model: "opus", phases: "C10, C12" },
-    { name: "deployment", model: "sonnet", phases: "C9, C10, C11, C14" },
-    { name: "devops", model: "sonnet", phases: "C7, C9, C10, C14" },
-    { name: "monitoring", model: "sonnet", phases: "C12" },
+    { name: "ai-production-engineer", model: "opus", phases: "C10, C12 — OWASP LLM Top 10:2025" },
+    { name: "deployment", model: "opus", phases: "C9, C10, C11 — Argo Rollouts + game day" },
+    { name: "devops", model: "opus", phases: "C7, C9, C10, C12 — SLSA L3 + LGTM stack" },
+    { name: "monitoring", model: "opus", phases: "C12 — SLO multi-window burn-rate + drift triple" },
   ]},
-  { title: "Frontend / API / Cloud", agents: [
-    { name: "frontend-ai", model: "sonnet", phases: "C12" },
-    { name: "api-designer", model: "sonnet", phases: "C4" },
-    { name: "aws-engineer", model: "opus", phases: "C2-C14" },
+  { title: "Frontend / API / Cloud (v3.0 enterprise)", agents: [
+    { name: "frontend-ai", model: "opus", phases: "C12 — WCAG 2.2 + EAA + Stack 2026" },
+    { name: "api-designer", model: "opus", phases: "C4 — OpenAPI 3.1 + Pact + GDPR Art 22" },
+    { name: "aws-engineer", model: "opus", phases: "C2-C14 — Well-Architected ML Lens" },
   ]},
   { title: "Adversarial Gates", agents: [
     { name: "math-critic", model: "opus", phases: "C3, C5, C6, C8 — BLOCKING" },
     { name: "debt-detector", model: "sonnet", phases: "C6, C8 — INLINE" },
     { name: "code-critic", model: "opus", phases: "all — BLOCKING" },
     { name: "maintainability-engineer", model: "opus", phases: "C8 — BLOCKING (parallel to code-critic)" },
-    { name: "chief-architect", model: "opus", phases: "C10, C14 — BLOCKING" },
-    { name: "tester", model: "sonnet", phases: "C8" },
-    { name: "ai-red-teamer", model: "opus", phases: "C2, C8, C10, C12" },
+    { name: "chief-architect", model: "opus", phases: "C10, C14 — BLOCKING + 3 triggers no-estándar" },
+    { name: "tester", model: "opus", phases: "C8" },
+    { name: "ai-red-teamer", model: "opus", phases: "C2, C4, C8, C9, C10, C12, C13 — NIST AI RMF + ATLAS + OWASP LLM" },
   ]},
-  { title: "HTB Pipeline (CVP-only)", agents: [
-    { name: "htb-orchestrator", model: "opus", phases: "all HTB" },
-    { name: "htb-recon", model: "haiku", phases: "F1" },
-    { name: "cve-hunter", model: "sonnet", phases: "F2 — BLOCKING" },
-    { name: "credential-hunter", model: "haiku", phases: "F3" },
-    { name: "exploit-executor", model: "sonnet", phases: "F4" },
-    { name: "flag-validator", model: "haiku", phases: "F5 — BLOCKING" },
+  { title: "HTB Pipeline (CVP-only, v3.0 enterprise)", agents: [
+    { name: "htb-orchestrator", model: "opus", phases: "all HTB — PTES + ATT&CK + OSCP+/CPTS alignment" },
+    { name: "htb-recon", model: "opus", phases: "F1 — ProjectDiscovery stack 2026" },
+    { name: "cve-hunter", model: "opus", phases: "F2 — CISA KEV + EPSS + CVSS v4.0" },
+    { name: "credential-hunter", model: "opus", phases: "F3 — AD attacks + cloud creds" },
+    { name: "exploit-executor", model: "opus", phases: "F4, F6 — toolkit escalation + LOLBAS/GTFOBins" },
+    { name: "flag-validator", model: "opus", phases: "F5 — container escape + cloud metadata" },
   ]},
   { title: "Utilities — Preflight", agents: [
-    { name: "token-optimizer", model: "haiku", phases: "all — FIRST in delegation" },
-    { name: "skill-router", model: "haiku", phases: "all — SECOND in delegation" },
+    { name: "token-optimizer", model: "sonnet", phases: "all — FIRST in delegation" },
+    { name: "skill-router", model: "sonnet", phases: "all — SECOND in delegation" },
   ]},
   { title: "Utilities — Other", agents: [
     { name: "prompt-engineer", model: "opus", phases: "all" },
-    { name: "cost-analyzer", model: "haiku", phases: "all" },
-    { name: "sensei", model: "opus", phases: "all — read-only mentor" },
-    { name: "git-master", model: "haiku", phases: "all — commit gatekeeper" },
-    { name: "docs-writer", model: "haiku", phases: "C10, C14" },
+    { name: "cost-analyzer", model: "sonnet", phases: "all" },
+    { name: "sensei", model: "opus", phases: "all — cognitive science 2024-2026 mentor" },
+    { name: "git-master", model: "sonnet", phases: "all — commit gatekeeper" },
+    { name: "docs-writer", model: "sonnet", phases: "C10, C14" },
     { name: "python-specialist", model: "opus", phases: "C8" },
     { name: "arca-ambient-monitor", model: "sonnet", phases: "all" },
     { name: "code-narrator", model: "sonnet", phases: "C3, C5, C6, C8 — auto post-producer" },
@@ -142,7 +182,7 @@ export const agentCategories: { title: string; agents: { name: string; model: "o
 ];
 
 export const skillFamilies = [
-  { name: "ARCA core", count: 8, items: "adr-new · justify · skill-effectiveness · skill-router · token-optimizer · engram-rehydrate · claude-code-patterns · claude-config-audit" },
+  { name: "ARCA core", count: 7, items: "adr-new · skill-effectiveness · skill-router · token-optimizer · engram-rehydrate · claude-code-patterns · claude-config-audit (justify removed 2026-05-03)" },
   { name: "Anti-AI-slop", count: 3, items: "karpathy-guidelines · verbalized-sampling · gentleman-ai" },
   { name: "LangChain ecosystem", count: 10, items: "langchain · langgraph · langchain-rag · langsmith · ..." },
   { name: "Deep Agents", count: 3, items: "deep-agents-core · deep-agents-memory · deep-agents-orchestration" },
@@ -162,9 +202,9 @@ export const adrs = [
   { n: "004", title: "Hooks implemented in Bash, not Python", date: "2026-03-24", status: "Accepted" },
   { n: "005", title: "Piper as local TTS fallback over ElevenLabs", date: "2026-03-28", status: "Accepted" },
   { n: "006", title: "Auto-ADR detector + skill (E.2)", date: "2026-04-29", status: "Accepted" },
-  { n: "007", title: "Slash command $ARGUMENTS hardening (ARCA-SEC-1)", date: "2026-04-29", status: "Accepted" },
+  { n: "007", title: "Slash command $ARGUMENTS hardening (ARCA-SEC-1)", date: "2026-04-29", status: "Superseded 2026-05-03" },
   { n: "008", title: "Diff Comprehension Gate v2 (timed read + LLM judge)", date: "2026-04-29", status: "Accepted" },
-  { n: "009", title: "Hybrid LLM-as-judge — Opus 4.7 SDK + Qwen 7B", date: "2026-04-30", status: "Accepted" },
+  { n: "009", title: "Hybrid LLM-as-judge — Opus 4.7 SDK + Qwen 7B", date: "2026-04-30", status: "Accepted (partially superseded — Forced Justification judge removed 2026-05-03)" },
   { n: "010", title: "Obsidian vault as ARCA's auto-doc second-brain", date: "2026-04-30", status: "Accepted" },
   { n: "011", title: "Phase-gate enforcement is no longer aspirational", date: "2026-05-01", status: "Accepted" },
   { n: "012", title: "Async subagent notification stall — fail-safe to v1 fallback", date: "2026-05-01", status: "Accepted" },
@@ -195,16 +235,16 @@ export const aiSlopSignals = [
 ];
 
 // Empirical metrics — pulled from real telemetry logs in ~/.claude/state/
-// and ~/.claude/logs/ on 2026-05-02. window: justification stats first
-// observed 2026-04-29, mirror-sync running since 2026-04-25, telemetry
-// jsonl since project inception.
+// and ~/.claude/logs/. window: justification stats observed 2026-04-29 to
+// 2026-05-03 (when /justify removed entirely), mirror-sync running since
+// 2026-04-25, telemetry jsonl since project inception.
 export const metrics = {
   windowFrom: "2026-04-25",
-  windowTo: "2026-05-02",
+  windowTo: "2026-05-03",
   groups: [
     {
-      title: "Justification gate (forced-justification.sh)",
-      window: "since 2026-04-29 · 4 days in production",
+      title: "Justification gate (forced-justification.sh — REMOVED 2026-05-03)",
+      window: "active 2026-04-29 to 2026-05-03 · 4 days in production",
       rows: [
         { v: 77, l: "Edits approved by LLM judge (coherent)" },
         { v: 10, l: "Edits blocked — judge verdict INCOHERENT" },
@@ -218,7 +258,7 @@ export const metrics = {
       title: "Repo mirror sync (repo-mirror-sync.sh)",
       window: "since 2026-04-25",
       rows: [
-        { v: 55, l: "Successful syncs repo → ~/.claude/" },
+        { v: 62, l: "Successful syncs repo → ~/.claude/" },
         { v: 1, l: "Settings.json propagation blocked (regression guard)" },
       ],
     },
@@ -226,7 +266,7 @@ export const metrics = {
       title: "Worktree isolation enforcer",
       window: "since project inception",
       rows: [
-        { v: 191, l: "Direct main-repo write attempts blocked from agent worktrees" },
+        { v: 207, l: "Direct main-repo write attempts blocked from agent worktrees" },
         { v: 13, l: "Cron-context git operations denied" },
       ],
     },
@@ -234,10 +274,11 @@ export const metrics = {
       title: "Activity baseline",
       window: "2026 to date",
       rows: [
-        { v: 390, l: "Claude Code session starts" },
-        { v: 346, l: "Commits to arca-claude-code main" },
-        { v: 5166, l: "Hook telemetry events recorded" },
-        { v: 14, l: "ADRs written" },
+        { v: 415, l: "Claude Code session starts" },
+        { v: 415, l: "Commits to arca-claude-code main" },
+        { v: 5800, l: "Hook telemetry events recorded" },
+        { v: 14, l: "ADRs written (007 superseded)" },
+        { v: 16, l: "Agents v3.0 enterprise-grade rewrites (2026-05-03 sweep)" },
       ],
     },
   ],
@@ -250,10 +291,10 @@ export const metrics = {
 export const sampleADR = {
   n: "009",
   title: "Hybrid LLM-as-judge — Opus 4.7 high-stakes, Qwen 7B hot-path",
-  status: "Accepted",
+  status: "Accepted (partially superseded 2026-05-03)",
   date: "2026-04-30",
-  related: "ADR-006, ADR-008",
-  context: "ARCA's hook stack accumulated 4 LLM-as-judge instances assuming a single backend (local Ollama Qwen 2.5 7B). After two weeks running in parallel, two failure modes emerged: (1) Qwen 7B confuses surface-token overlap with comprehension on the diff judge, and (2) using Qwen uniformly contradicts ARCA's own model-tiering philosophy (Opus for high-stakes/low-frequency, Haiku for routing).",
+  related: "ADR-006, ADR-008, ADR-007 (Superseded)",
+  context: "ARCA's hook stack accumulated 4 LLM-as-judge instances assuming a single backend (local Ollama Qwen 2.5 7B). After two weeks running in parallel, two failure modes emerged: (1) Qwen 7B confuses surface-token overlap with comprehension on the diff judge, and (2) using Qwen uniformly contradicts ARCA's own model-tiering philosophy (Opus for high-stakes/low-frequency, Haiku for routing). Note: Forced Justification judge (one of the four) was removed entirely on 2026-05-03 — three judges remain (diff comprehension, ADR completeness, engram nudge).",
   decision: "Adopt a hybrid posture. Migrate adr-judge.sh and diff-judge-opus.sh to Opus 4.7 via Claude Code SDK CLI (~12s per call, low-frequency manual/PR-merge paths). Keep llm-judge.sh and engram-nudge-judge.sh on Ollama Qwen 2.5 7B (~2s, hot-path forced-justification + weekly cron classifier).",
   rationale: [
     "Hot-path latency non-negotiable: forced-justification fires on ~30% of Edits; 12s would push session friction past disable-it-out-of-frustration threshold.",
@@ -269,7 +310,7 @@ export const sampleADR = {
   consequences: [
     "Latency /adr-validate: 2s → 12s (invisible — manual command, not watcher).",
     "Latency PR merge gate: 8s → 12s judge call (within 120s settings.json ceiling).",
-    "Forced-justification + Engram cron: unchanged at ~2s.",
+    "Forced-justification + Engram cron: unchanged at ~2s (forced-justification removed 2026-05-03).",
     "CI/non-interactive shells: parent hook's v1 fallback (40-word check) preserves graceful degradation when claude CLI missing.",
     "Defense-in-depth idioms preserved: random fence, sanitization regex, fail-closed defaults.",
   ],
@@ -288,4 +329,3 @@ export const forbiddenPatterns = [
   "Don't advance phases without explicit approval",
   "Don't commit AI-smelling code (19 signals)",
 ];
-
