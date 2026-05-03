@@ -1,4 +1,5 @@
 import { GITHUB_URL, CONTACT_EMAIL, cycles, htbPhases, gates, sins, cases, stack, agentCategories, skillFamilies, adrs, aiSlopSignals, forbiddenPatterns } from "@/app/lib/arca-data";
+import { RevealOnScroll } from "@/app/components/RevealOnScroll";
 
 
 
@@ -37,7 +38,7 @@ export default function Home() {
 
       <main className="flex-grow">
         {/* HERO */}
-        <section className="border-b border-line relative overflow-hidden flex flex-col items-center justify-center py-24 md:py-32 px-6 scanline-section">
+        <RevealOnScroll className="border-b border-line relative overflow-hidden flex flex-col items-center justify-center py-24 md:py-32 px-6 scanline-section">
           <div className="z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
             <span className="text-xs tracking-[0.3em] uppercase opacity-70 mb-8 border border-line px-4 py-1 inline-block">System Init</span>
             <h2 className="font-mondwest text-[40px] md:text-[64px] leading-[0.9] mb-8">
@@ -72,7 +73,7 @@ export default function Home() {
               <a href="#adrs" className="border border-line px-8 py-4 text-xs tracking-[0.2em] uppercase bg-primary text-navyDarker hover:bg-transparent hover:text-primary transition-colors">Read ADRs</a>
             </div>
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* STATS */}
         <section className="border-b border-line grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 text-sm uppercase tracking-wider relative">
@@ -135,7 +136,7 @@ export default function Home() {
         </section>
 
         {/* PIPELINE ML */}
-        <section className="border-b border-line overflow-hidden bg-navy flex flex-col relief-section">
+        <RevealOnScroll className="border-b border-line overflow-hidden bg-navy flex flex-col relief-section">
           <div className="p-8 pb-0 border-b border-line flex flex-col md:flex-row md:items-end justify-between gap-4">
             <h3 className="text-xs tracking-[0.3em] uppercase opacity-50 flex items-center gap-4"><span>02</span><span>Pipeline ML v4.0 — 14 Cycles</span></h3>
             <p className="text-[10px] opacity-60 max-w-sm md:text-right pb-4">Each cycle blocks until its gate is signed. Failed phase returns to producer with feedback.<br />(max 2 loops → escalate to architect-ai).</p>
@@ -158,7 +159,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* HTB PIPELINE */}
         <section className="border-b border-line bg-navy">
@@ -193,7 +194,7 @@ export default function Home() {
         </section>
 
         {/* AGENT ROSTER */}
-        <section id="agents" className="border-b border-line">
+        <RevealOnScroll id="agents" className="border-b border-line">
           <div className="p-8 border-b border-line">
             <h3 className="text-xs tracking-[0.3em] uppercase opacity-50"><span>05</span> / Agent Roster — 43 Specialized Agents</h3>
           </div>
@@ -233,7 +234,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* SKILLS CATALOG */}
         <section className="border-b border-line">
@@ -254,7 +255,7 @@ export default function Home() {
         </section>
 
         {/* ADRs */}
-        <section id="adrs" className="border-b border-line">
+        <RevealOnScroll id="adrs" className="border-b border-line">
           <div className="p-8 border-b border-line">
             <h3 className="text-xs tracking-[0.3em] uppercase opacity-50"><span>07</span> / Architecture Decision Records — 8 Accepted</h3>
           </div>
@@ -286,7 +287,7 @@ export default function Home() {
               </tbody>
             </table>
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* AI SLOP DETECTION */}
         <section className="border-b border-line bg-navy relief-section">
