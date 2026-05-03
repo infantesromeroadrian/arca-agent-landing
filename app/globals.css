@@ -12,6 +12,16 @@
   --font-serif: "Cormorant", serif;
 }
 
+/* Custom easing curves — Emil Kowalski's animations.dev recommendations.
+   Built-in CSS easings are weak; these custom curves give the punch that
+   signals intentional motion. Reusable across all CSS animations + Motion
+   library transitions. */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
 @layer base {
   body {
     background-color: #0D1B2A;
@@ -62,12 +72,12 @@
     );
   }
   /* Per Emil Kowalski's Animation Decision Framework: avoid `transition: all`,
-     specify properties explicitly. Use stronger custom ease-out curve over
-     the weak built-in cubic-bezier(0.4, 0, 0.2, 1). */
+     specify properties explicitly. Curves come from :root --ease-* variables
+     (Emil's animations.dev recommendations). */
   .hover-invert {
     transition:
-      background-color 200ms cubic-bezier(0.23, 1, 0.32, 1),
-      color 200ms cubic-bezier(0.23, 1, 0.32, 1);
+      background-color 200ms var(--ease-out),
+      color 200ms var(--ease-out);
   }
   .hover-invert:hover {
     background-color: #7BB3FF;
@@ -76,10 +86,35 @@
   /* Buttons must feel responsive to press — Emil's mandatory rule.
      Subtle scale on :active gives instant feedback that the UI heard the user. */
   .press-feedback {
-    transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 160ms var(--ease-out);
   }
   .press-feedback:active {
     transform: scale(0.97);
+  }
+  /* Glassmorphism — Krehel's "production polish" depth without shouting.
+     Use SPARINGLY on cards or panels that need elevation hierarchy. Heavy
+     blur kills perf especially on Safari, kept under 20px (Emil's caveat). */
+  .glass {
+    background: rgb(13 27 42 / 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgb(123 179 255 / 0.18);
+  }
+  /* Accent CTA — uses the unused #00E5FF token from the palette to give
+     the primary action a distinct visual weight without breaking the
+     mono-blue handbook aesthetic. */
+  .cta-accent {
+    background-color: rgb(0 229 255 / 0.08);
+    color: #00E5FF;
+    border: 1px solid rgb(0 229 255 / 0.4);
+    transition:
+      background-color 200ms var(--ease-out),
+      color 200ms var(--ease-out),
+      border-color 200ms var(--ease-out);
+  }
+  .cta-accent:hover {
+    background-color: rgb(0 229 255 / 0.18);
+    border-color: rgb(0 229 255 / 0.7);
   }
   .tree-line::before {
     content: "";
@@ -135,7 +170,7 @@
   50%      { opacity: 0.3; }
 }
 .pulse-once {
-  animation: pulse 2s cubic-bezier(0.23, 1, 0.32, 1) 1;
+  animation: pulse 2s var(--ease-out) 1;
 }
 .pulse {
   animation: pulse 2s infinite;

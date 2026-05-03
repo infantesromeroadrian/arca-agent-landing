@@ -1,5 +1,6 @@
 import { GITHUB_URL, CONTACT_EMAIL, cycles, htbPhases, gates, sins, cases, stack, agentCategories, skillFamilies, adrs, aiSlopSignals, forbiddenPatterns } from "@/app/lib/arca-data";
 import { RevealOnScroll } from "@/app/components/RevealOnScroll";
+import { StaggeredList, StaggeredItem } from "@/app/components/StaggeredList";
 
 
 
@@ -141,12 +142,12 @@ export default function Home() {
             <h3 className="text-xs tracking-[0.3em] uppercase opacity-50 flex items-center gap-4"><span>02</span><span>Pipeline ML v4.0 — 14 Cycles</span></h3>
             <p className="text-[10px] opacity-60 max-w-sm md:text-right pb-4">Each cycle blocks until its gate is signed. Failed phase returns to producer with feedback.<br />(max 2 loops → escalate to architect-ai).</p>
           </div>
-          <div className="flex overflow-x-auto hide-scrollbar border-b border-line select-none cursor-grab active:cursor-grabbing pb-0">
+          <StaggeredList className="flex overflow-x-auto hide-scrollbar border-b border-line select-none cursor-grab active:cursor-grabbing pb-0">
             {cycles.map((c) => (
-              <div key={c.id} className={c.wait
+              <StaggeredItem key={c.id} className={c.wait
                 ? "flex-shrink-0 w-[200px] border-r border-line p-6 bg-primary/10 hover:bg-primary/20 transition-colors group relative"
                 : "flex-shrink-0 w-[200px] border-r border-line p-6 hover:bg-primary/5 transition-colors group"}>
-                {c.wait && <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-primary pulse" />}
+                {c.wait && <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-primary pulse-once" />}
                 <div className={c.wait ? "text-[10px] opacity-70 text-primary mb-4 font-mono" : "text-[10px] opacity-40 mb-4 font-mono"}>
                   {c.wait ? `${c.id} - [WAIT]` : c.id}
                 </div>
@@ -156,9 +157,9 @@ export default function Home() {
                 <div className="text-[9px] opacity-50 font-mono mt-2 pt-2 border-t border-primary/15">
                   → {c.owner}
                 </div>
-              </div>
+              </StaggeredItem>
             ))}
-          </div>
+          </StaggeredList>
         </RevealOnScroll>
 
         {/* HTB PIPELINE */}
