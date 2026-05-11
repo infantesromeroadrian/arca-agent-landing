@@ -5,33 +5,39 @@
    names so existing utility classes (bg-navy, text-primary, border-line, etc.)
    reorient to the new palette WITHOUT a full rewrite of every component. */
 @theme {
-  /* Legacy aliases (now mapped to openclaw values) */
-  --color-navy: #050810;
-  --color-navyDarker: #090E18;
-  --color-primary: #F0F4FF;
-  --color-accent: #F0F4FF;
-  --color-line: rgb(240 244 255 / 0.18);
+  /* ARES Agent palette — extracted from Destripando la Historia / Ares
+     illustrations: deep violet bg, fuchsia/magenta accents, blush highlights,
+     near-black silhouette. Replaces the openclaw cyan/orange system. */
 
-  /* Explicit openclaw tokens for new code */
-  --color-oc-bg: #050810;
-  --color-oc-surface: #090E18;
-  --color-oc-border: #191D28;
-  --color-oc-fg: #F0F4FF;
-  --color-oc-fg-muted: rgb(240 244 255 / 0.62);
-  --color-oc-fg-faint: rgb(240 244 255 / 0.36);
+  /* Legacy aliases (now mapped to ARES values — preserves utility class semantics) */
+  --color-navy: #1a0820;             /* deep violet background */
+  --color-navyDarker: #1f0d2e;       /* surface / cards */
+  --color-primary: #ffd9ea;          /* blush foreground on violet */
+  --color-accent: #ff2d8a;           /* magenta accent */
+  --color-line: rgb(255 217 234 / 0.16);
 
-  /* openclaw accent palette — captured visually from the full-page screenshot.
-     The branding scraper missed these because they live in gradient stops and
-     utility classes, not in CSS vars. */
-  --color-brand: #FF5722;            /* Primary CTA orange */
-  --color-brand-hover: #FF6E40;
-  --color-coral: #FF4444;            /* Icon-circle coral */
-  --color-coral-soft: rgb(255 68 68 / 0.12);
+  /* Explicit ARES tokens for new code */
+  --color-ares-bg: #1a0820;
+  --color-ares-surface: #1f0d2e;
+  --color-ares-border: #3a1f4a;
+  --color-ares-fg: #ffd9ea;
+  --color-ares-fg-muted: rgb(255 217 234 / 0.62);
+  --color-ares-fg-faint: rgb(255 217 234 / 0.36);
+  --color-ares-magenta: #ff2d8a;
+  --color-ares-fuchsia: #ff4488;
+  --color-ares-blush: #ffb4d8;
+  --color-ares-shadow: #0a0214;
+
+  /* Brand / accent tokens (now ARES magenta, not openclaw orange) */
+  --color-brand: #ff2d8a;
+  --color-brand-hover: #ff4488;
+  --color-coral: #ff4488;            /* icon-circle uses fuchsia, not orange */
+  --color-coral-soft: rgb(255 68 136 / 0.14);
   --color-syntax-pink: #ff6b9d;
-  --color-syntax-green: #00ff88;
-  --color-tab-active: #00ff88;
-  --color-glow-cyan: rgb(0 212 255 / 0.22);
-  --color-glow-purple: rgb(107 70 193 / 0.18);
+  --color-syntax-green: #b388eb;     /* now violet — fits ARES */
+  --color-tab-active: #ff2d8a;       /* tab active uses magenta */
+  --color-glow-cyan: rgb(255 45 138 / 0.30);    /* hero glow now magenta */
+  --color-glow-purple: rgb(107 35 130 / 0.40);  /* deeper violet glow */
 
   /* Font stacks — openclaw uses Clash Display (display/heading) + Satoshi (body) */
   --font-mono: "Satoshi", "Courier Prime", ui-monospace, monospace;
@@ -50,8 +56,8 @@
 
 @layer base {
   body {
-    background-color: #050810;
-    color: #F0F4FF;
+    background-color: #1a0820;
+    color: #ffd9ea;
     font-family: "Satoshi", system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: 17.6px;
     line-height: 1.55;
@@ -60,8 +66,8 @@
   }
 
   ::selection {
-    background-color: #FF5722;
-    color: #050810;
+    background-color: #ff2d8a;
+    color: #1a0820;
   }
 }
 
@@ -80,25 +86,25 @@
     inset: -10% -5% 30% -5%;
     z-index: -1;
     background:
-      radial-gradient(ellipse 55% 45% at 50% 0%, rgb(0 212 255 / 0.20), transparent 65%),
-      radial-gradient(ellipse 40% 35% at 25% 10%, rgb(107 70 193 / 0.18), transparent 60%),
-      radial-gradient(ellipse 38% 32% at 78% 20%, rgb(255 87 34 / 0.10), transparent 60%);
+      radial-gradient(ellipse 55% 45% at 50% 0%, rgb(255 45 138 / 0.32), transparent 65%),
+      radial-gradient(ellipse 40% 35% at 25% 10%, rgb(107 35 130 / 0.32), transparent 60%),
+      radial-gradient(ellipse 38% 32% at 78% 20%, rgb(255 68 136 / 0.20), transparent 60%);
     filter: blur(40px);
     pointer-events: none;
   }
 
-  /* Soft glow ring under a brand text/logo (the ARCA wordmark in hero) */
+  /* Soft glow under the ARES wordmark — magenta + violet */
   .oc-glow {
     text-shadow:
-      0 0 24px rgb(0 212 255 / 0.35),
-      0 0 64px rgb(107 70 193 / 0.20);
+      0 0 24px rgb(255 45 138 / 0.55),
+      0 0 64px rgb(107 35 130 / 0.45);
   }
 
-  /* Primary CTA — openclaw brand orange */
+  /* Primary CTA — ARES magenta */
   .btn-brand {
-    background-color: #FF5722;
-    color: #050810;
-    border: 1px solid #FF5722;
+    background-color: #ff2d8a;
+    color: #1a0820;
+    border: 1px solid #ff2d8a;
     border-radius: 12px;
     transition:
       background-color 200ms var(--ease-out),
@@ -106,20 +112,20 @@
       transform 160ms var(--ease-out);
   }
   .btn-brand:hover {
-    background-color: #FF6E40;
-    border-color: #FF6E40;
+    background-color: #ff4488;
+    border-color: #ff4488;
   }
   .btn-brand:active {
     transform: scale(0.97);
   }
 
-  /* Icon circle — coral red with white symbol inside (openclaw "What It Does") */
+  /* Icon circle — ARES fuchsia */
   .icon-circle {
     width: 44px;
     height: 44px;
     border-radius: 999px;
-    background-color: rgb(255 68 68 / 0.16);
-    color: #FF4444;
+    background-color: rgb(255 68 136 / 0.18);
+    color: #ff4488;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -133,36 +139,36 @@
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 12px;
-    border: 1px solid #191D28;
-    background-color: #090E18;
+    border: 1px solid #3a1f4a;
+    background-color: #1f0d2e;
     font-size: 0.875rem;
     transition: border-color 200ms var(--ease-out), background-color 200ms var(--ease-out);
   }
   .pill:hover {
-    border-color: rgb(255 87 34 / 0.4);
-    background-color: rgb(255 87 34 / 0.04);
+    border-color: rgb(255 45 138 / 0.45);
+    background-color: rgb(255 45 138 / 0.06);
   }
 
-  /* Tab — openclaw Quick Start. Inactive: subtle. Active: green underline highlight */
+  /* Tab — ARES Quick Start. Active: magenta underline highlight */
   .tab {
     padding: 0.6rem 1rem;
     font-size: 0.85rem;
     font-weight: 500;
-    color: rgb(240 244 255 / 0.55);
+    color: rgb(255 217 234 / 0.55);
     border-bottom: 2px solid transparent;
     transition: color 180ms var(--ease-out), border-color 180ms var(--ease-out);
     cursor: default;
   }
   .tab-active {
-    color: #00ff88;
-    border-bottom-color: #00ff88;
+    color: #ff2d8a;
+    border-bottom-color: #ff2d8a;
   }
 
-  /* Terminal syntax colors — openclaw uses pink + green + faint comments */
-  .syntax-comment { color: rgb(240 244 255 / 0.38); }
+  /* Terminal syntax colors — ARES uses pink + violet + faint comments */
+  .syntax-comment { color: rgb(255 217 234 / 0.38); }
   .syntax-cmd     { color: #ff6b9d; }
-  .syntax-flag    { color: #00ff88; }
-  .syntax-str     { color: #F0F4FF; }
+  .syntax-flag    { color: #b388eb; }
+  .syntax-str     { color: #ffd9ea; }
 }
 
 @layer components {
@@ -279,7 +285,7 @@
   display: inline-block;
   width: 8px;
   height: 15px;
-  background-color: #F0F4FF;
+  background-color: #ff2d8a;
   vertical-align: text-bottom;
 }
 
@@ -314,14 +320,14 @@
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #050810;
-  border-top: 1px solid rgb(240 244 255 / 0.08);
+  background: #1a0820;
+  border-top: 1px solid rgb(255 217 234 / 0.08);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(240 244 255 / 0.25);
+  background: rgb(255 45 138 / 0.35);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(240 244 255 / 0.5);
+  background: rgb(255 45 138 / 0.6);
 }
 
 @media (prefers-reduced-motion: reduce) {

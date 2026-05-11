@@ -10,7 +10,7 @@ import {
 import { RevealOnScroll } from "@/app/components/RevealOnScroll";
 
 /* openclaw.ai structural clone — estricto.
-   Hero · ⟩ What ARCA Does · ⟩ Quick Look · ⟩ The Gate Chain ·
+   Hero · ⟩ What ARES Does · ⟩ Quick Look · ⟩ The Gate Chain ·
    ⟩ Built On · ⟩ Pipeline · ⟩ Architecture Decisions · ⟩ 9 Mortal Sins ·
    ⟩ Stack · ⟩ Apply / Contact · Footer
 
@@ -217,7 +217,7 @@ export default function Home() {
       {/* HEADER */}
       <header className="flex items-center justify-between border-b border-line py-6">
         <a href="/" className="font-display text-xl font-semibold tracking-tight">
-          A.R.C.A.
+          ARES Agent
         </a>
         <nav className="hidden gap-8 font-body text-sm md:flex">
           <a href="#what" className="opacity-70 transition-opacity hover:opacity-100">
@@ -246,28 +246,42 @@ export default function Home() {
       <main className="flex-grow">
         {/* ============ HERO ============ */}
         <RevealOnScroll className="oc-hero py-24 md:py-32">
-          <p className="mb-6 font-body text-xs uppercase tracking-[0.18em] opacity-60">
-            <Mark />
-            Adversarial multi-agent system · ML / AI engineering
-          </p>
-          {/* Brand wordmark with cyan/purple glow (openclaw hero pattern) */}
-          <div className="mb-8 flex items-baseline gap-3">
-            <span className="oc-glow font-display text-5xl font-bold tracking-tight md:text-6xl">
-              A.R.C.A.
-            </span>
-            <span className="hidden font-body text-xs uppercase tracking-[0.2em] opacity-50 md:inline">
-              v4.0
-            </span>
-          </div>
-          <h1 className="mb-6 max-w-4xl font-display text-[2.75rem] font-semibold leading-[1.05] tracking-tight md:text-[4.5rem]">
-            {HERO_HEADLINE}
-          </h1>
-          <p className="mb-10 max-w-2xl font-display text-xl font-medium leading-snug opacity-90 md:text-2xl">
-            {HERO_TAGLINE}
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <PrimaryCTA href={GITHUB_URL}>View on GitHub</PrimaryCTA>
-            <GhostCTA href="#adrs">Read the ADRs</GhostCTA>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_auto]">
+            <div>
+              <p className="mb-6 font-body text-xs uppercase tracking-[0.18em] opacity-60">
+                <Mark />
+                Adversarial multi-agent system · ML / AI engineering
+              </p>
+              {/* Brand wordmark with ARES magenta+violet glow */}
+              <div className="mb-8 flex items-baseline gap-3">
+                <span className="oc-glow font-display text-5xl font-bold tracking-tight md:text-6xl">
+                  ARES Agent
+                </span>
+                <span className="hidden font-body text-xs uppercase tracking-[0.2em] opacity-50 md:inline">
+                  v4.0
+                </span>
+              </div>
+              <h1 className="mb-6 max-w-4xl font-display text-[2.75rem] font-semibold leading-[1.05] tracking-tight md:text-[4.5rem]">
+                {HERO_HEADLINE}
+              </h1>
+              <p className="mb-10 max-w-2xl font-display text-xl font-medium leading-snug opacity-90 md:text-2xl">
+                {HERO_TAGLINE}
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <PrimaryCTA href={GITHUB_URL}>View on GitHub</PrimaryCTA>
+                <GhostCTA href="#adrs">Read the ADRs</GhostCTA>
+              </div>
+            </div>
+            {/* Ares throne illustration — visual identity of the agent.
+                eslint-disable-next-line @next/next/no-img-element — webp asset
+                is small (~30KB), Next/Image not needed and avoids extra config. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/ares-hero.webp"
+              alt="ARES on his throne — visual identity"
+              className="hidden h-auto max-h-[420px] w-full max-w-[360px] rounded-[12px] border border-ares-border object-cover shadow-[0_0_60px_rgba(255,45,138,0.25)] lg:block"
+              loading="eager"
+            />
           </div>
 
           {/* Stats strip — openclaw-style flat horizontal */}
@@ -290,7 +304,7 @@ export default function Home() {
         <RevealOnScroll id="what" className="border-t border-line py-20 md:py-24">
           <h2 className="mb-3 font-display text-3xl font-semibold tracking-tight md:text-[2.5rem]">
             <Mark />
-            What ARCA does
+            What ARES does
           </h2>
           <p className="mb-12 max-w-2xl opacity-70">
             Six pillars that turn a single AI coding assistant into a regulated multi-agent
@@ -322,7 +336,7 @@ export default function Home() {
             Quick look
           </h2>
           <p className="mb-12 max-w-2xl opacity-70">
-            ARCA lives inside Claude Code&rsquo;s native extension points: markdown agent
+            ARES lives inside Claude Code&rsquo;s native extension points: markdown agent
             definitions, bash hooks, JSON settings. Clone the repo, run install, work.
           </p>
 
@@ -559,7 +573,7 @@ export default function Home() {
             Take it for a spin
           </h2>
           <p className="mb-10 max-w-2xl text-lg opacity-80">
-            ARCA is open source. Clone it, audit it, fork it. Built for the{" "}
+            ARES Agent is open source. Clone it, audit it, fork it. Built for the{" "}
             <span className="text-brand font-semibold">Anthropic Fellows 2026</span>{" "}
             application.
           </p>
@@ -598,7 +612,7 @@ export default function Home() {
       <footer className="border-t border-line py-10 font-body text-xs opacity-50">
         <div className="flex flex-col items-start justify-between gap-2 md:flex-row md:items-center">
           <span>
-            A.R.C.A. — Adversarial Research &amp; Code Architect · Built by Adrian Infantes
+            ARES Agent — Adversarial Reasoning Engine &amp; Strategist · Built by Adrian Infantes
           </span>
           <span>2026 · MIT License</span>
         </div>
