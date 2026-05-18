@@ -11,6 +11,21 @@ export const metadata: Metadata = {
     description:
       "49 specialized agents, 97 skills, 47 ADRs, 14-cycle ML pipeline (47 phases), 9 mortal sins as quality gates.",
     type: "website",
+    images: [
+      {
+        url: "/arca-logo.png",
+        width: 1419,
+        height: 752,
+        alt: "A.R.C.A — samurai chibi logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "A.R.C.A — AI Research & Code Architect",
+    description:
+      "49 specialized agents, 97 skills, 47 ADRs, 14-cycle ML pipeline. Built with Claude.",
+    images: ["/arca-logo.png"],
   },
 };
 

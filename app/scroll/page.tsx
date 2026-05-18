@@ -216,7 +216,9 @@ export default function Home() {
     <div className="mx-auto flex min-h-screen w-full max-w-[1120px] flex-col bg-navy px-6 font-body text-primary">
       {/* HEADER */}
       <header className="flex items-center justify-between border-b border-line py-6">
-        <a href="/" className="font-display text-xl font-semibold tracking-tight">
+        <a href="/" className="flex items-center gap-2 font-display text-xl font-semibold tracking-tight">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/arca-logo.png" alt="" aria-hidden="true" className="h-7 w-auto" />
           A.R.C.A
         </a>
         <nav className="hidden gap-8 font-body text-sm md:flex">
