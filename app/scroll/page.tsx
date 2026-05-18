@@ -466,6 +466,16 @@ export default function Home() {
               </div>
             ))}
           </div>
+          {/* A.R.C.A navigating the pipeline map — visual interlude between
+              pipeline grid and ADR table. eslint-disable for raw img — small
+              static asset, Next/Image unnecessary. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/arca-explorer.png"
+            alt="A.R.C.A — navigating the architecture map"
+            className="mx-auto mt-14 h-auto w-full max-w-[640px] rounded-[12px] border border-ares-border object-cover shadow-[0_0_60px_rgba(37,99,235,0.20)]"
+            loading="lazy"
+          />
         </RevealOnScroll>
 
         {/* ============ ⟩ ARCHITECTURE DECISIONS ============ */}
@@ -519,6 +529,15 @@ export default function Home() {
             Hardcoded violations that block the cycle and trigger visible escalation. No
             warnings — direct block.
           </p>
+          {/* A.R.C.A in the kitchen of unchecked code — visual metaphor for
+              what the gate chain prevents. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/arca-mess.png"
+            alt="A.R.C.A — the kitchen of unchecked code before the gate chain"
+            className="mx-auto mb-12 h-auto w-full max-w-[640px] rounded-[12px] border border-ares-border object-cover shadow-[0_0_60px_rgba(37,99,235,0.20)]"
+            loading="lazy"
+          />
           <div className="grid gap-3 md:grid-cols-3">
             {sins.map((s) => (
               <div
@@ -565,18 +584,30 @@ export default function Home() {
 
         {/* ============ ⟩ APPLY / CONTACT ============ */}
         <RevealOnScroll className="border-t border-line py-20 md:py-24">
-          <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight md:text-[2.5rem]">
-            <Mark />
-            Take it for a spin
-          </h2>
-          <p className="mb-10 max-w-2xl text-lg opacity-80">
-            A.R.C.A is open source. Clone it, audit it, fork it. Built for the{" "}
-            <span className="text-brand font-semibold">Anthropic Fellows 2026</span>{" "}
-            application.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <PrimaryCTA href={GITHUB_URL}>Star on GitHub</PrimaryCTA>
-            <GhostCTA href={`mailto:${CONTACT_EMAIL}`}>Email Adrian</GhostCTA>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_auto]">
+            <div>
+              <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight md:text-[2.5rem]">
+                <Mark />
+                Take it for a spin
+              </h2>
+              <p className="mb-10 max-w-2xl text-lg opacity-80">
+                A.R.C.A is open source. Clone it, audit it, fork it. Built for the{" "}
+                <span className="text-brand font-semibold">Anthropic Fellows 2026</span>{" "}
+                application.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <PrimaryCTA href={GITHUB_URL}>Star on GitHub</PrimaryCTA>
+                <GhostCTA href={`mailto:${CONTACT_EMAIL}`}>Email Adrian</GhostCTA>
+              </div>
+            </div>
+            {/* A.R.C.A neutral standing — quiet signature next to the CTA. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/arca-neutral.png"
+              alt="A.R.C.A — quiet, waiting for the next directive"
+              className="hidden h-auto max-h-[360px] w-full max-w-[280px] object-contain lg:block"
+              loading="lazy"
+            />
           </div>
         </RevealOnScroll>
 
