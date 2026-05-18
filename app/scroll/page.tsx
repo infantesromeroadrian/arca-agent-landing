@@ -274,7 +274,7 @@ export default function Home() {
                 is small (~30KB), Next/Image not needed and avoids extra config. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/arca-hero.png"
+              src="/arca-hero.gif"
               alt="A.R.C.A — AI Research &amp; Code Architect"
               className="hidden h-auto max-h-[420px] w-full max-w-[360px] rounded-[12px] border border-ares-border object-cover shadow-[0_0_60px_rgba(37,99,235,0.25)] lg:block"
               loading="eager"
