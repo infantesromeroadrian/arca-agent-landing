@@ -25,10 +25,10 @@ const HERO_TAGLINE =
 
 const STATS = [
   { value: "56", label: "Specialized Agents", sub: "48 Opus · 8 Sonnet · 0 Haiku" },
-  { value: "102", label: "Skills Catalog", sub: "Loaded surgically per task" },
+  { value: "140", label: "Skills Catalog", sub: "Loaded surgically per task" },
   { value: "81", label: "Architecture Decisions", sub: "Nygard ADRs" },
   { value: "3", label: "Pipelines", sub: "ML (14 cycles) · HTB (6 phases) · ART (9 phases)" },
-  { value: "52", label: "Bash Hooks", sub: "Wired across 7+ lifecycle events" },
+  { value: "53", label: "Bash Hooks", sub: "Wired across 14 lifecycle events" },
   { value: "30+", label: "MCP Servers", sub: "Engram, GitHub, HTB, Exa, Obsidian, +25" },
 ];
 
@@ -54,7 +54,7 @@ const PILLARS = [
       "Every architectural choice ships as a Nygard ADR: context, alternatives weighed, consequences. Covers architecture, security, governance, pipelines and the meta-system itself.",
   },
   {
-    title: "102-Skill Catalog",
+    title: "140-Skill Catalog",
     body:
       "OWASP security, ML engineering, DevOps, RAG patterns, agent orchestration, HTB CTF methodology, AI red teaming, prompt engineering. @skill-router selects ≤3 per task.",
   },

@@ -3,7 +3,7 @@ import Home from "@/app/scroll/page";
 export const metadata = {
   title: "A.R.C.A — AI Research & Code Architect for ML/AI Engineering",
   description:
-    "56 agents · 3 pipelines (ML + HTB + ART) · 102 skills · 81 ADRs · 30+ MCPs · " +
+    "56 agents · 3 pipelines (ML + HTB + ART) · 140 skills · 81 ADRs · 30+ MCPs · " +
     "9 mortal sins as quality gates. Built by Adrian Infantes — AI Security Engineer.",
 };
 
