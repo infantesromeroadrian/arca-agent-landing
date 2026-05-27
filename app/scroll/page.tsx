@@ -21,42 +21,42 @@ import { RevealOnScroll } from "@/app/components/RevealOnScroll";
 
 const HERO_HEADLINE = "The adversarial agentic system that actually ships code.";
 const HERO_TAGLINE =
-  "49 specialized agents. 47 ADRs. One 14-cycle ML pipeline. Zero AI slop tolerated.";
+  "56 specialized agents. 3 pipelines. 81 ADRs. Zero AI slop tolerated.";
 
 const STATS = [
-  { value: "49", label: "Specialized Agents", sub: "41 Opus · 8 Sonnet · 0 Haiku" },
-  { value: "97", label: "Skills Catalog", sub: "Loaded surgically per task" },
-  { value: "47", label: "Architecture Decisions", sub: "Nygard ADRs, 36 active" },
-  { value: "14", label: "Pipeline Cycles", sub: "47 phases · Discovery → Sunset" },
-  { value: "74", label: "Bash Hooks", sub: "45 entries · 11 lifecycle events" },
-  { value: "20", label: "MCP Servers", sub: "Engram, GitHub, Obsidian, +17" },
+  { value: "56", label: "Specialized Agents", sub: "48 Opus · 8 Sonnet · 0 Haiku" },
+  { value: "102", label: "Skills Catalog", sub: "Loaded surgically per task" },
+  { value: "81", label: "Architecture Decisions", sub: "Nygard ADRs" },
+  { value: "3", label: "Pipelines", sub: "ML (14 cycles) · HTB (6 phases) · ART (9 phases)" },
+  { value: "52", label: "Bash Hooks", sub: "Wired across 7+ lifecycle events" },
+  { value: "30+", label: "MCP Servers", sub: "Engram, GitHub, HTB, Exa, Obsidian, +25" },
 ];
 
 const PILLARS = [
   {
-    title: "49 Specialized Agents",
+    title: "56 Specialized Agents",
     body:
-      "Each with its own model assignment (Opus for reasoning, Sonnet for implementation), specific role, blocking gate and audit responsibility. From @data-validator to @ai-red-teamer.",
+      "Each with its own model assignment (Opus for reasoning, Sonnet for implementation), specific role, blocking gate and audit responsibility. From @data-validator to @ai-redteam-orchestrator.",
   },
   {
     title: "Adversarial Gate Chain",
     body:
-      "Producer → @math-critic → @debt-detector → @code-critic → @chief-architect. No code reaches main without explicit sign-off. 74 bash hooks enforce the chain at PreToolUse / PostToolUse level.",
+      "Producer → @math-critic → @debt-detector → @code-critic → @chief-architect. No code reaches main without explicit sign-off. 52 bash hooks enforce the chain at PreToolUse / PostToolUse level.",
   },
   {
-    title: "14-Cycle ML Pipeline",
+    title: "3 Pipelines (ML · HTB · ART)",
     body:
-      "From C1 Discovery to C14 Sunset, 47 phases with blocking gates at every exit. Excalidraw diagrams mandatory in C1/C4/C6/C10/C12. ADR required in C4. Rollback plan in C10.",
+      "ML: C1→C14 (14 cycles, 47 phases). HTB: F0→F7 (CVE-first CTF with MCP integration). ART: R0→R8 (AI Red Teaming, MITRE ATLAS + OWASP LLM Top 10:2025, ADR-081).",
   },
   {
-    title: "47 Documented Decisions",
+    title: "81 Documented Decisions",
     body:
-      "Every architectural choice ships as a Nygard ADR: context, alternatives weighed, consequences. 36 active records cover architecture, security, governance and the meta-system itself.",
+      "Every architectural choice ships as a Nygard ADR: context, alternatives weighed, consequences. Covers architecture, security, governance, pipelines and the meta-system itself.",
   },
   {
-    title: "97-Skill Catalog",
+    title: "102-Skill Catalog",
     body:
-      "OWASP security, ML engineering, DevOps, RAG patterns, agent orchestration, HTB CTF methodology, prompt engineering. @skill-router selects ≤3 per task — no blind context bloat.",
+      "OWASP security, ML engineering, DevOps, RAG patterns, agent orchestration, HTB CTF methodology, AI red teaming, prompt engineering. @skill-router selects ≤3 per task.",
   },
   {
     title: "Honest Disclosure",
@@ -493,7 +493,7 @@ export default function Home() {
             Architecture decisions
           </h2>
           <p className="mb-12 max-w-2xl opacity-70">
-            47 numbered ADRs. Every architectural choice carries context, alternatives weighed
+            81 numbered ADRs. Every architectural choice carries context, alternatives weighed
             and consequences. Below: the most recent 14.
           </p>
           <div className="overflow-hidden rounded-[12px] border border-line">
@@ -522,7 +522,7 @@ export default function Home() {
           </div>
           <div className="mt-6">
             <GhostCTA href={`${GITHUB_URL}/tree/main/docs/adr`}>
-              Read all 47 ADRs on GitHub
+              Read all 81 ADRs on GitHub
             </GhostCTA>
           </div>
         </RevealOnScroll>

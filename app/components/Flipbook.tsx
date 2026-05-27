@@ -191,7 +191,7 @@ export default function Flipbook() {
     [sins.length, "Mortal sins as gates"],
     [aiSlopSignals.length, "AI-slop signals"],
     [gates.length, "Adversarial gates"],
-    ["20+", "MCPs wired"],
+    ["30+", "MCPs wired"],
     ["100%", "bash hooks · zero startup latency"],
   ];
   pages.push(

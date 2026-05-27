@@ -72,7 +72,7 @@ export const cases: { code: string; title: string; subject: string; body: string
 
 export const stack = [
   { k: "MODELS", v: "Opus 4.7 (1M ctx) · Sonnet 4.6 · Haiku 4.5" },
-  { k: "DISTRIBUTION", v: "41 Opus · 8 Sonnet · 0 Haiku (post 2026-05-03 enterprise sweep + 5 AI Safety Research agents)" },
+  { k: "DISTRIBUTION", v: "48 Opus · 8 Sonnet · 0 Haiku (56 agents across 3 pipelines: ML + HTB + ART)" },
   { k: "ENTERPRISE TIER", v: "16 agents v3.0 regulated-grade (SOC 2 / EU AI Act / GDPR / DORA / HIPAA / PCI-DSS)" },
   { k: "PERSISTENCE", v: "Engram MCP (Local SQLite)" },
   { k: "LLM-AS-JUDGE", v: "Hybrid: Opus 4.7 SDK (high-stakes) + Qwen 2.5 7B (hot-path)" },

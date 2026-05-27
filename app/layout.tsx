@@ -4,12 +4,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "A.R.C.A — AI Research & Code Architect for ML/AI Engineering",
   description:
-    "A.R.C.A — AI Research & Code Architect for ML/AI engineering. 49 specialized agents, 97 skills, 47 ADRs, 14-cycle ML pipeline (47 phases), 9 mortal sins as quality gates. Built with Claude. Applied to the Anthropic Fellows program 2026.",
+    "A.R.C.A — AI Research & Code Architect. 56 specialized agents, 102 skills, 81 ADRs, 3 pipelines (ML 14 cycles + HTB 6 phases + ART 9 phases), 9 mortal sins as quality gates. Built with Claude.",
   authors: [{ name: "Adrian Infantes" }],
   openGraph: {
     title: "A.R.C.A — AI Research & Code Architect",
     description:
-      "49 specialized agents, 97 skills, 47 ADRs, 14-cycle ML pipeline (47 phases), 9 mortal sins as quality gates.",
+      "56 agents, 3 pipelines (ML + HTB + ART), 102 skills, 81 ADRs, 30+ MCPs. AI Security Engineer.",
     type: "website",
     images: [
       {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "A.R.C.A — AI Research & Code Architect",
     description:
-      "49 specialized agents, 97 skills, 47 ADRs, 14-cycle ML pipeline. Built with Claude.",
+      "56 agents, 3 pipelines, 102 skills, 81 ADRs. Built with Claude.",
     images: ["/arca-logo.png"],
   },
 };

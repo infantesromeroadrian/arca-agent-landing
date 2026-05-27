@@ -3,8 +3,8 @@ import Home from "@/app/scroll/page";
 export const metadata = {
   title: "A.R.C.A — AI Research & Code Architect for ML/AI Engineering",
   description:
-    "49 specialized agents · 97 skills · 47 ADRs · 14-cycle ML pipeline (47 phases) · " +
-    "9 mortal sins as quality gates. Built by Adrian Infantes for the Anthropic Fellows 2026.",
+    "56 agents · 3 pipelines (ML + HTB + ART) · 102 skills · 81 ADRs · 30+ MCPs · " +
+    "9 mortal sins as quality gates. Built by Adrian Infantes — AI Security Engineer.",
 };
 
 /* Root route renders the openclaw-style scroll edition.
