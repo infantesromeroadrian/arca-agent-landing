@@ -57,9 +57,9 @@ export const cases: { code: string; title: string; subject: string; body: string
   { code: "ERR_MIT_01", title: "ARCA-SEC-1", subject: "$ARGUMENTS hardening (Superseded 2026-05-03)",
     body: "Heredoc terminator injection was structurally irreducible in bash. Mitigation accepted via inverted-style canary tests (T7b/T16b). ADR-007 superseded on 2026-05-03 when /justify feature removed entirely (operational friction outweighed value once @code-critic + @maintainability-engineer gates matured). Pattern documented as reference for future shell-parser slash commands." },
   { code: "ARCH_04", title: "E.2 Auto-ADR", subject: "Closing sin #4",
-    body: "Closes mortal sin #4 (architecture without ADR). PostToolUse heuristic detects decisional output from architect-ai without ADR. Claude Opus 4.7 LLM-as-judge (via Code SDK) validates 7 Nygard sections prior to local persistence." },
+    body: "Closes mortal sin #4 (architecture without ADR). PostToolUse heuristic detects decisional output from architect-ai without ADR. Claude Opus 4.8 LLM-as-judge (via Code SDK) validates 7 Nygard sections prior to local persistence." },
   { code: "GATE_V2", title: "E.3 Diff Compress", subject: "Gate evaluation tuning",
-    body: "v1 word-count was defeated by Lorem Ipsum bodies. v2 captures diff, 90s countdown, free-text summary, Claude Opus 4.7 judge (via Code SDK) with random fence prompt-injection guard. Verdicts: APPROVED / INCOHERENT / TOO_SHALLOW (fail-closed to v1)." },
+    body: "v1 word-count was defeated by Lorem Ipsum bodies. v2 captures diff, 90s countdown, free-text summary, Claude Opus 4.8 judge (via Code SDK) with random fence prompt-injection guard. Verdicts: APPROVED / INCOHERENT / TOO_SHALLOW (fail-closed to v1)." },
   { code: "VAULT_T3", title: "Obsidian Tier-3", subject: "Vault as auto-doc second-brain",
     body: "Stop hook writes Status.md per project on every session close, then auto-pushes the ARCA-relevant subset (Status / CICLO-N / Templates / Engram digests) to a private companion repo arca-vault-notes. Plan-A 'git init the vault root' rejected: 7+ GB and personal medical data. ADR-010 documents the rationale." },
   { code: "CC_2_1_X", title: "Claude Code 2.1.x adoption", subject: "10 platform knobs wired to ARCA",
@@ -71,11 +71,11 @@ export const cases: { code: string; title: string; subject: string; body: string
 ];
 
 export const stack = [
-  { k: "MODELS", v: "Opus 4.7 (1M ctx) · Sonnet 4.6 · Haiku 4.5" },
-  { k: "DISTRIBUTION", v: "48 Opus · 8 Sonnet · 0 Haiku (56 agents across 3 pipelines: ML + HTB + ART)" },
+  { k: "MODELS", v: "Opus 4.8 (1M ctx) · Sonnet 4.6 · Haiku 4.5" },
+  { k: "DISTRIBUTION", v: "49 Opus · 8 Sonnet · 0 Haiku (57 agents across 3 pipelines: ML + HTB + ART)" },
   { k: "ENTERPRISE TIER", v: "16 agents v3.0 regulated-grade (SOC 2 / EU AI Act / GDPR / DORA / HIPAA / PCI-DSS)" },
   { k: "PERSISTENCE", v: "Engram MCP (Local SQLite)" },
-  { k: "LLM-AS-JUDGE", v: "Hybrid: Opus 4.7 SDK (high-stakes) + Qwen 2.5 7B (hot-path)" },
+  { k: "LLM-AS-JUDGE", v: "Hybrid: Opus 4.8 SDK (high-stakes) + Qwen 2.5 7B (hot-path)" },
   { k: "RUNTIME", v: "100% bash hooks (Zero startup latency)" },
   { k: "PLAN TIER", v: "Claude MAX flat-rate" },
   { k: "COMPUTE NODE", v: "RTX 2000 Ada Lovelace SM 8.9 (8GB VRAM)" },

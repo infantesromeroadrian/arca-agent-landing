@@ -21,10 +21,10 @@ import { RevealOnScroll } from "@/app/components/RevealOnScroll";
 
 const HERO_HEADLINE = "The adversarial agentic system that actually ships code.";
 const HERO_TAGLINE =
-  "56 specialized agents. 3 pipelines. 81 ADRs. Zero AI slop tolerated.";
+  "57 specialized agents. 3 pipelines. 83 ADRs. Zero AI slop tolerated.";
 
 const STATS = [
-  { value: "56", label: "Specialized Agents", sub: "48 Opus · 8 Sonnet · 0 Haiku" },
+  { value: "56", label: "Specialized Agents", sub: "49 Opus · 8 Sonnet · 0 Haiku" },
   { value: "140", label: "Skills Catalog", sub: "Loaded surgically per task" },
   { value: "81", label: "Architecture Decisions", sub: "Nygard ADRs" },
   { value: "3", label: "Pipelines", sub: "ML (14 cycles) · HTB (6 phases) · ART (9 phases)" },
@@ -97,7 +97,7 @@ const GATE_STEPS = [
 ];
 
 const BUILT_ON = [
-  "Claude Opus 4.7",
+  "Claude Opus 4.8",
   "Anthropic SDK",
   "MCP",
   "LangGraph",
@@ -522,7 +522,7 @@ export default function Home() {
           </div>
           <div className="mt-6">
             <GhostCTA href={`${GITHUB_URL}/tree/main/docs/adr`}>
-              Read all 81 ADRs on GitHub
+              Read all 83 ADRs on GitHub
             </GhostCTA>
           </div>
         </RevealOnScroll>
