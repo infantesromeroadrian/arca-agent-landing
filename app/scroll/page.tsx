@@ -21,10 +21,10 @@ import { RevealOnScroll } from "@/app/components/RevealOnScroll";
 
 const HERO_HEADLINE = "The adversarial agentic system that actually ships code.";
 const HERO_TAGLINE =
-  "57 specialized agents. 3 pipelines. 90 ADRs. Zero AI slop tolerated.";
+  "58 specialized agents. 3 pipelines. 90 ADRs. Zero AI slop tolerated.";
 
 const STATS = [
-  { value: "56", label: "Specialized Agents", sub: "49 Opus · 8 Sonnet · 0 Haiku" },
+  { value: "56", label: "Specialized Agents", sub: "50 Opus · 8 Sonnet · 0 Haiku" },
   { value: "140", label: "Skills Catalog", sub: "Loaded surgically per task" },
   { value: "81", label: "Architecture Decisions", sub: "Nygard ADRs" },
   { value: "3", label: "Pipelines", sub: "ML (14 cycles) · HTB (6 phases) · ART (9 phases)" },
@@ -46,7 +46,7 @@ const PILLARS = [
   {
     title: "3 Pipelines (ML · HTB · ART)",
     body:
-      "ML: C1→C14 (14 cycles, 47 phases). HTB: F0→F7 (CVE-first CTF with MCP integration). ART: R0→R8 (AI Red Teaming, MITRE ATLAS + OWASP LLM Top 10:2025, ADR-081).",
+      "ML: C1→C14 (14 cycles, 65 phases). HTB: F0→F7 (CVE-first CTF with MCP integration). ART: R0→R8 (AI Red Teaming, MITRE ATLAS + OWASP LLM Top 10:2025, ADR-081).",
   },
   {
     title: "81 Documented Decisions",
@@ -62,6 +62,11 @@ const PILLARS = [
     title: "Honest Disclosure",
     body:
       "Inverted-style canary tests assert known bugs still occur, so a future change cannot silently mask a structural limit. 19 AI-slop signals detected pre-merge. Zero hidden state.",
+  },
+  {
+    title: "Dynamic Orchestration",
+    body:
+      "A 4th mode for the long tail no fixed pipeline covers. @architect-ai proposes a bespoke agent DAG — which subagents, in what order, with which adversarial critics per node — for Adrian's approval before any agent executes. Two-layer gate enforcement: a schema-floor validator rejects under-gated proposals at declaration, a runtime hook hard-blocks at invocation. /orchestrate · ADR-089.",
   },
 ];
 
@@ -189,7 +194,18 @@ function IconHonest() {
     </svg>
   );
 }
-const PILLAR_ICONS = [IconAgents, IconGate, IconCycle, IconAdr, IconSkill, IconHonest];
+/* Bespoke agent DAG — one root node branching into an ordered chain of
+   downstream nodes, signalling the on-demand graph @architect-ai composes
+   for the dynamic orchestration mode. */
+function IconOrchestrate() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="4" cy="10" r="2" /><circle cx="11" cy="5" r="2" /><circle cx="11" cy="15" r="2" /><circle cx="17" cy="10" r="2" />
+      <path d="M5.7 8.8 L9.3 6.2 M5.7 11.2 L9.3 13.8 M12.7 6.2 L16 8.8 M12.7 13.8 L16 11.2" />
+    </svg>
+  );
+}
+const PILLAR_ICONS = [IconAgents, IconGate, IconCycle, IconAdr, IconSkill, IconHonest, IconOrchestrate];
 
 function GhostCTA({
   href,
@@ -312,7 +328,7 @@ export default function Home() {
             What A.R.C.A does
           </h2>
           <p className="mb-12 max-w-2xl opacity-70">
-            Six pillars that turn a single AI coding assistant into a regulated multi-agent
+            Seven pillars that turn a single AI coding assistant into a regulated multi-agent
             engineering team. Pure configuration — no runtime, no server, no container.
           </p>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -457,7 +473,7 @@ export default function Home() {
             The 14-cycle pipeline
           </h2>
           <p className="mb-12 max-w-2xl opacity-70">
-            From Discovery to Sunset across 47 phases. Each cycle has a blocking gate at its
+            From Discovery to Sunset across 65 phases. Each cycle has a blocking gate at its
             exit — owned by a specific agent.
           </p>
           <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7">
@@ -473,6 +489,22 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+          {/* The 3 fixed pipelines stay authoritative; dynamic orchestration is
+              the 4th MODE for the long tail — not a 4th pipeline. Kept terse to
+              match the section's flat register. */}
+          <div className="mt-10 rounded-[12px] border border-line bg-navyDarker p-6 md:flex md:items-baseline md:gap-6">
+            <div className="mb-3 font-body text-[11px] uppercase tracking-[0.18em] text-brand md:mb-0 md:whitespace-nowrap">
+              4th mode · /orchestrate
+            </div>
+            <p className="text-sm leading-relaxed opacity-75">
+              ML, HTB and ART are the three fixed pipelines. For the long tail no fixed
+              pipeline covers, <span className="opacity-100">@architect-ai</span> proposes a
+              bespoke agent DAG — chosen subagents, their order, and the adversarial critics
+              gating each node — for Adrian&rsquo;s approval <span className="opacity-100">before</span>{" "}
+              any agent executes. A schema-floor validator rejects under-gated proposals at
+              declaration; a runtime hook hard-blocks at invocation. ADR-089.
+            </p>
           </div>
           {/* A.R.C.A navigating the pipeline map — visual interlude between
               pipeline grid and ADR table. eslint-disable for raw img — small

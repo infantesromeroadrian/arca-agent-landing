@@ -7,6 +7,7 @@ import {
   CONTACT_EMAIL,
   GITHUB_URL,
   cycles,
+  dynamicOrchestration,
   gates,
   sins,
   stack,
@@ -94,7 +95,7 @@ export default function Flipbook() {
     );
   }
 
-  const TOTAL = 19;
+  const TOTAL = 20;
   const pages: React.ReactNode[] = [];
 
   // 1. Cover
@@ -165,7 +166,8 @@ export default function Flipbook() {
     ["10", "Hardware · Stack · Cases", "p16"],
     ["11", `ADR sample · #${sampleADR.n} ${sampleADR.title.split(" — ")[0]}`, "p17"],
     ["12", `Enterprise compliance · ${enterprisePosture.length} frameworks`, "p18"],
-    ["13", "Closing / CTA", "p19"],
+    ["13", "Dynamic Orchestration · 4th mode", "p19"],
+    ["14", "Closing / CTA", "p20"],
   ];
   pages.push(
     <Page n={3} total={TOTAL} muted key="p3">
@@ -533,9 +535,39 @@ export default function Flipbook() {
     </Page>,
   );
 
-  // 19. Closing / CTA
+  // 19. Dynamic Orchestration — the 4th MODE (not a 4th pipeline).
+  // The 3 fixed pipelines (ML / HTB / ART) stay authoritative; this is the
+  // catch-all for the long tail. Mirrors the gate-chain card register from p13.
   pages.push(
-    <Page n={19} total={TOTAL} key="p19">
+    <Page n={19} total={TOTAL} muted key="p19">
+      {sectionTitle("12b", "Dynamic Orchestration · 4th mode")}
+      <p className="text-[13px] tracking-[0.2em] uppercase opacity-60 mb-3">
+        {dynamicOrchestration.command} · {dynamicOrchestration.adr}
+      </p>
+      <p className="text-lg leading-relaxed opacity-85 mb-5">
+        {dynamicOrchestration.intro}
+      </p>
+      <p className="text-[14px] tracking-[0.3em] uppercase opacity-60 mb-2">propose → approve → enforce</p>
+      <ol className="space-y-3 mb-5">
+        {dynamicOrchestration.flow.map((f) => (
+          <li key={f.step} className="border-l-2 border-primary/60 pl-3">
+            <p className="font-mono opacity-90 text-[15px]">
+              <span className="opacity-60 mr-2">{f.step}</span>{f.name}
+            </p>
+            <p className="opacity-70 leading-relaxed text-[15px] mt-1">{f.body}</p>
+          </li>
+        ))}
+      </ol>
+      <div className="border-l-2 border-primary pl-4">
+        <p className="text-[15px] italic opacity-90">&ldquo;{dynamicOrchestration.tagline}&rdquo;</p>
+        <p className="text-[14px] tracking-[0.3em] uppercase opacity-50 mt-2">— two-layer gate enforcement: schema floor + runtime hook</p>
+      </div>
+    </Page>,
+  );
+
+  // 20. Closing / CTA
+  pages.push(
+    <Page n={20} total={TOTAL} key="p20">
       <div className="h-full flex flex-col justify-between">
         <div>
           {sectionTitle("13", "End of handbook")}
@@ -560,6 +592,17 @@ export default function Flipbook() {
       </div>
     </Page>,
   );
+
+  // Paridad invariant: react-pageflip's two-up landscape layout (showCover +
+  // usePortrait=false) needs an EVEN interior page count or the last page is
+  // left orphaned. TOTAL drives both the footer numerator and this guard — if
+  // they ever diverge, fail loudly in dev instead of collapsing the book.
+  if (process.env.NODE_ENV !== "production" && pages.length !== TOTAL) {
+    throw new Error(
+      `Flipbook page count (${pages.length}) does not match TOTAL (${TOTAL}). ` +
+        "react-pageflip needs an even interior count — add/remove a page in pairs.",
+    );
+  }
 
   // Render
   return (

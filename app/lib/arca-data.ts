@@ -21,6 +21,24 @@ export const cycles = [
   { id: "C14", name: "Sunset", owner: "mlops-engineer" },
 ];
 
+// Dynamic Orchestration — the 4th MODE (NOT a 4th pipeline). The 3 fixed
+// pipelines (ML / HTB / ART) stay authoritative; dynamic mode is the catch-all
+// for the long tail. @architect-ai proposes a bespoke agent DAG for Adrian's
+// approval BEFORE any agent executes. Two-layer gate enforcement. See ADR-089.
+export const dynamicOrchestration = {
+  command: "/orchestrate",
+  adr: "ADR-089",
+  tagline: "A bespoke agent DAG, proposed and approved before a single agent runs.",
+  intro:
+    "ML, HTB and ART are the three fixed pipelines — authoritative for the work they were designed around. Dynamic orchestration is the 4th MODE, not a 4th pipeline: the catch-all for the long tail no fixed pipeline covers.",
+  flow: [
+    { step: "01", name: "Propose", body: "@architect-ai composes a bespoke agent DAG for the task: which subagents participate, in what order, and which adversarial critics / blocking gates sit on each node." },
+    { step: "02", name: "Approve", body: "The DAG goes to Adrian for explicit approval BEFORE any agent executes. No agent runs against an unapproved graph." },
+    { step: "03", name: "Schema floor", body: "A schema-floor validator rejects under-gated proposals at declaration time — a DAG missing the critics a node's output demands never reaches approval." },
+    { step: "04", name: "Runtime block", body: "A runtime hook hard-blocks at invocation: even an approved-looking node cannot execute if its required gate did not sign off. Two layers, declaration and invocation." },
+  ],
+};
+
 export const htbPhases = [
   { id: "F0", name: "Setup", desc: "Directory scaffolding (nmap/, loot/, exploits/, notes/, flags/)." },
   { id: "F1", name: "Recon", desc: "@htb-recon ProjectDiscovery stack 2026 + ATT&CK mapping → loot/recon.json." },
@@ -72,7 +90,7 @@ export const cases: { code: string; title: string; subject: string; body: string
 
 export const stack = [
   { k: "MODELS", v: "Opus 4.8 (1M ctx) · Sonnet 4.6 · Haiku 4.5" },
-  { k: "DISTRIBUTION", v: "49 Opus · 8 Sonnet · 0 Haiku (57 agents across 3 pipelines: ML + HTB + ART)" },
+  { k: "DISTRIBUTION", v: "50 Opus · 8 Sonnet · 0 Haiku (58 agents across 3 pipelines: ML + HTB + ART)" },
   { k: "ENTERPRISE TIER", v: "16 agents v3.0 regulated-grade (SOC 2 / EU AI Act / GDPR / DORA / HIPAA / PCI-DSS)" },
   { k: "PERSISTENCE", v: "Engram MCP (Local SQLite)" },
   { k: "LLM-AS-JUDGE", v: "Hybrid: Opus 4.8 SDK (high-stakes) + Qwen 2.5 7B (hot-path)" },
