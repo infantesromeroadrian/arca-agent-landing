@@ -21,7 +21,7 @@ import { RevealOnScroll } from "@/app/components/RevealOnScroll";
 
 const HERO_HEADLINE = "The adversarial agentic system that actually ships code.";
 const HERO_TAGLINE =
-  "57 specialized agents. 3 pipelines. 83 ADRs. Zero AI slop tolerated.";
+  "57 specialized agents. 3 pipelines. 90 ADRs. Zero AI slop tolerated.";
 
 const STATS = [
   { value: "56", label: "Specialized Agents", sub: "49 Opus · 8 Sonnet · 0 Haiku" },
@@ -522,7 +522,7 @@ export default function Home() {
           </div>
           <div className="mt-6">
             <GhostCTA href={`${GITHUB_URL}/tree/main/docs/adr`}>
-              Read all 83 ADRs on GitHub
+              Read all 90 ADRs on GitHub
             </GhostCTA>
           </div>
         </RevealOnScroll>
