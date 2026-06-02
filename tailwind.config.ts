@@ -9,20 +9,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        // ARES Agent palette — legacy aliases preserve existing class semantics
+        // ARCA Agent palette — legacy aliases preserve existing class semantics
         navy: "#1a0820",
         navyDarker: "#1f0d2e",
         primary: "#ffd9ea",
         accent: "#ff2d8a",
-        // explicit ARES tokens (preferred for new code)
-        "ares-bg": "#1a0820",
-        "ares-surface": "#1f0d2e",
-        "ares-border": "#3a1f4a",
-        "ares-fg": "#ffd9ea",
-        "ares-magenta": "#ff2d8a",
-        "ares-fuchsia": "#ff4488",
-        "ares-blush": "#ffb4d8",
-        "ares-shadow": "#0a0214",
+        // explicit ARCA tokens (preferred for new code)
+        "arca-bg": "#1a0820",
+        "arca-surface": "#1f0d2e",
+        "arca-border": "#3a1f4a",
+        "arca-fg": "#ffd9ea",
+        "arca-magenta": "#ff2d8a",
+        "arca-fuchsia": "#ff4488",
+        "arca-blush": "#ffb4d8",
+        "arca-shadow": "#0a0214",
         // Brand/accent
         brand: "#ff2d8a",
         "brand-hover": "#ff4488",

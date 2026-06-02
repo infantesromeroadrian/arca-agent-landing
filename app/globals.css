@@ -16,17 +16,17 @@
   --color-accent: #2563eb;           /* samurai blue accent */
   --color-line: rgb(224 236 255 / 0.16);
 
-  /* Explicit A.R.C.A tokens (kept as --color-ares-* for token semantics stability) */
-  --color-ares-bg: #0a1226;
-  --color-ares-surface: #0f1c3a;
-  --color-ares-border: #1e3a6e;
-  --color-ares-fg: #e0ecff;
-  --color-ares-fg-muted: rgb(224 236 255 / 0.62);
-  --color-ares-fg-faint: rgb(224 236 255 / 0.36);
-  --color-ares-magenta: #2563eb;
-  --color-ares-fuchsia: #3b82f6;
-  --color-ares-blush: #93c5fd;
-  --color-ares-shadow: #020410;
+  /* Explicit A.R.C.A. tokens (preferred for new code) */
+  --color-arca-bg: #0a1226;
+  --color-arca-surface: #0f1c3a;
+  --color-arca-border: #1e3a6e;
+  --color-arca-fg: #e0ecff;
+  --color-arca-fg-muted: rgb(224 236 255 / 0.62);
+  --color-arca-fg-faint: rgb(224 236 255 / 0.36);
+  --color-arca-magenta: #2563eb;
+  --color-arca-fuchsia: #3b82f6;
+  --color-arca-blush: #93c5fd;
+  --color-arca-shadow: #020410;
 
   /* Brand / accent tokens (now samurai blue) */
   --color-brand: #2563eb;

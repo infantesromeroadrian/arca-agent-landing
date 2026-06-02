@@ -297,7 +297,7 @@ export default function Home() {
               playsInline
               poster="/arca-hero.png"
               aria-label="A.R.C.A — AI Research & Code Architect"
-              className="hidden h-auto max-h-[420px] w-full max-w-[360px] rounded-[12px] border border-ares-border object-cover shadow-[0_0_60px_rgba(37,99,235,0.25)] lg:block"
+              className="hidden h-auto max-h-[420px] w-full max-w-[360px] rounded-[12px] border border-arca-border object-cover shadow-[0_0_60px_rgba(37,99,235,0.25)] lg:block"
             >
               <source src="/arca-hero.mp4" type="video/mp4" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -513,7 +513,7 @@ export default function Home() {
           <img
             src="/arca-explorer.png"
             alt="A.R.C.A — navigating the architecture map"
-            className="mx-auto mt-14 h-auto w-full max-w-[640px] rounded-[12px] border border-ares-border object-cover shadow-[0_0_60px_rgba(37,99,235,0.20)]"
+            className="mx-auto mt-14 h-auto w-full max-w-[640px] rounded-[12px] border border-arca-border object-cover shadow-[0_0_60px_rgba(37,99,235,0.20)]"
             loading="lazy"
           />
         </RevealOnScroll>
@@ -575,7 +575,7 @@ export default function Home() {
           <img
             src="/arca-mess.png"
             alt="A.R.C.A — the kitchen of unchecked code before the gate chain"
-            className="mx-auto mb-12 h-auto w-full max-w-[640px] rounded-[12px] border border-ares-border object-cover shadow-[0_0_60px_rgba(37,99,235,0.20)]"
+            className="mx-auto mb-12 h-auto w-full max-w-[640px] rounded-[12px] border border-arca-border object-cover shadow-[0_0_60px_rgba(37,99,235,0.20)]"
             loading="lazy"
           />
           <div className="grid gap-3 md:grid-cols-3">
