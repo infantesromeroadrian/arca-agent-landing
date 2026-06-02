@@ -1,5 +1,5 @@
 // Data constants for the A.R.C.A. landing — used by both /scroll (legacy) and / (flipbook).
-// Last sync with arca-claude-code roster: 2026-05-03 (post v3.0 enterprise rewrites).
+// Last sync with arca-claude-code roster: 2026-06-02 (full 58-agent roster + ADR-081/085/089/091/092).
 
 export const GITHUB_URL = "https://github.com/infantesromeroadrian/arca-claude-code";
 export const CONTACT_EMAIL = "infantesromeroadrian@gmail.com";
@@ -46,6 +46,8 @@ export const htbPhases = [
   { id: "F3", name: "Cred Hunt", desc: "@credential-hunter cross-service reuse + AD attacks (Kerberoast/AS-REP/BloodHound CE) + cloud creds." },
   { id: "F4", name: "Exploit", desc: "@exploit-executor PoC #1 + LOLBAS/GTFOBins + AT&CK mapping + minimal toolkit." },
   { id: "F5", name: "Flag Gate", desc: "@flag-validator <60s GO/ABORT + container escape + cloud metadata check." },
+  { id: "F6", name: "Privesc", desc: "@exploit-executor privilege escalation to root/Administrator + lateral movement + persistence." },
+  { id: "F7", name: "Writeup", desc: "Report + writeup.md: timeline, CVE chain, ATT&CK mapping, remediation, evidence trail." },
 ];
 
 export const gates = [
@@ -86,11 +88,13 @@ export const cases: { code: string; title: string; subject: string; body: string
     body: "skills/claude-config-audit fires every Monday 07:07 via systemd user timer. Delegates to @claude-code-guide which fetches docs.anthropic.com/claude-code in vivo (no training-data trust) and runs a 20-point structured checklist over 6 categories: hook payloads, env vars, skill runtime, subagent scoping, multi-process state, common misuses. Output is severity-graded; BLOCKER findings emit a flag that gates further edits to settings.json and hooks/. Born after a manual audit on 2026-05-01 caught 3 latent bugs in the same session." },
   { code: "ENT_V3", title: "Enterprise rewrite sweep v3.0", subject: "16 agents promoted to regulated-grade", highlight: true,
     body: "On 2026-05-03 sixteen agents underwent enterprise-grade rewrite (~10,400 LOC added) calibrated for SOC 2 Type II, EU AI Act (Art 15/50/55/73), GDPR Art 22, HIPAA BAA, DORA Art 17, PCI-DSS Level 1, FedRAMP, ISO/IEC 42001, NIST AI RMF + AI 600-1 GenAI Profile, MITRE ATT&CK v15+ / ATLAS, OWASP LLM Top 10:2025, SLSA Level 3, WCAG 2.2 + EU European Accessibility Act (effective 28 June 2025). Spans MLOps + serving + cloud + DevOps + security + frontend + HTB pipeline. Rationale documented per agent in commits 6cbc4dd through a8c3cb2." },
+  { code: "NARRATIVE", title: "Scrollytelling deck + NotebookLM corpus", subject: "Bilingual ES/EN explainer artifacts",
+    body: "presentation/index.html ships a 12-scene bilingual (ES/EN) scrollytelling deck with 10 diagrams walking through ARCA's identity, pipelines and gate chain. Paired with two NotebookLM overview documents — ARCA_OVERVIEW.md (ES) and ARCA_OVERVIEW.en.md (EN) — that feed an audio-overview/podcast generation flow for non-technical stakeholders." },
 ];
 
 export const stack = [
   { k: "MODELS", v: "Opus 4.8 (1M ctx) · Sonnet 4.6 · Haiku 4.5" },
-  { k: "DISTRIBUTION", v: "50 Opus · 8 Sonnet · 0 Haiku (58 agents across 3 pipelines: ML + HTB + ART)" },
+  { k: "DISTRIBUTION", v: "50 Opus · 8 Sonnet · 0 Haiku (58 agents · 3 fixed pipelines ML + HTB + ART + 1 dynamic orchestration mode)" },
   { k: "ENTERPRISE TIER", v: "16 agents v3.0 regulated-grade (SOC 2 / EU AI Act / GDPR / DORA / HIPAA / PCI-DSS)" },
   { k: "PERSISTENCE", v: "Engram MCP (Local SQLite)" },
   { k: "LLM-AS-JUDGE", v: "Hybrid: Opus 4.8 SDK (high-stakes) + Qwen 2.5 7B (hot-path)" },
@@ -148,10 +152,18 @@ export const agentCategories: { title: string; agents: { name: string; model: "o
     { name: "ai-engineer", model: "opus", phases: "C4, C6" },
     { name: "agent-engineer", model: "opus", phases: "C4, C5, C8" },
     { name: "rag-engineer", model: "opus", phases: "C4, C5, C8" },
+    { name: "rl-engineer", model: "opus", phases: "C5, C6 — reward modeling + policy optimization" },
+    { name: "distributed-training-engineer", model: "opus", phases: "C6 — multi-GPU/multi-node FSDP + DeepSpeed" },
+    { name: "checkpoint-manager", model: "opus", phases: "C6, C7 — checkpoint lineage + resumable training" },
+    { name: "compound-ai-architect", model: "opus", phases: "C4 — multi-model compound system design" },
   ]},
   { title: "GPU / Performance", agents: [
     { name: "gpu-engineer", model: "opus", phases: "C2, C6" },
     { name: "perf-engineer", model: "opus", phases: "C8, C9" },
+  ]},
+  { title: "Systems & Infrastructure", agents: [
+    { name: "network-engineer", model: "opus", phases: "C4, C6 — Cisco + containerlab/FRR + Packet Tracer" },
+    { name: "rust-systems-engineer", model: "opus", phases: "C4, C6 — wgpu/Vulkan + Wayland + PTY internals" },
   ]},
   { title: "Production (v3.0 enterprise)", agents: [
     { name: "mlops-engineer", model: "opus", phases: "C7, C8, C12, C13 — 4-eyes + lineage + EU AI Act" },
@@ -174,6 +186,14 @@ export const agentCategories: { title: string; agents: { name: string; model: "o
     { name: "chief-architect", model: "opus", phases: "C10, C14 — BLOCKING + 3 triggers no-estándar" },
     { name: "tester", model: "opus", phases: "C8" },
     { name: "ai-red-teamer", model: "opus", phases: "C2, C4, C8, C9, C10, C12, C13 — NIST AI RMF + ATLAS + OWASP LLM" },
+    { name: "ai-redteam-orchestrator", model: "opus", phases: "R0-R8 — Pipeline ART master (ADR-081)" },
+    { name: "formal-verifier", model: "opus", phases: "C8 — formal methods + property proofs" },
+  ]},
+  { title: "AI Safety & Research", agents: [
+    { name: "alignment-researcher", model: "opus", phases: "R6 — alignment findings + reward hacking probes" },
+    { name: "interpretability-researcher", model: "opus", phases: "C8 — mechanistic interpretability + attribution" },
+    { name: "evals-engineer", model: "opus", phases: "R5 — dangerous capabilities eval (ASL gating)" },
+    { name: "trust-and-safety-engineer", model: "opus", phases: "R7 — defense validation + safety policy" },
   ]},
   { title: "HTB Pipeline (CVP-only, v3.0 enterprise)", agents: [
     { name: "htb-orchestrator", model: "opus", phases: "all HTB — PTES + ATT&CK + OSCP+/CPTS alignment" },
@@ -182,6 +202,8 @@ export const agentCategories: { title: string; agents: { name: string; model: "o
     { name: "credential-hunter", model: "opus", phases: "F3 — AD attacks + cloud creds" },
     { name: "exploit-executor", model: "opus", phases: "F4, F6 — toolkit escalation + LOLBAS/GTFOBins" },
     { name: "flag-validator", model: "opus", phases: "F5 — container escape + cloud metadata" },
+    { name: "bug-bounty-hunter", model: "opus", phases: "CVP — responsible disclosure + bounty triage" },
+    { name: "mcp-security-auditor", model: "opus", phases: "CVP — MCP server threat surface audit" },
   ]},
   { title: "Utilities — Preflight", agents: [
     { name: "token-optimizer", model: "sonnet", phases: "all — FIRST in delegation" },
@@ -211,7 +233,14 @@ export const skillFamilies = [
   { name: "Pipeline / Utilities", count: 13, items: "requirements-engineering · agile-ml · cicd · git · testing · python-init · ..." },
   { name: "Reviews / Voting", count: 6, items: "review-pr · voting-review · team-debug · team-ml-review · team-refactor · team-security" },
   { name: "Vercel ecosystem", count: 15, items: "vercel:ai-sdk · vercel:nextjs · vercel:deploy · vercel:shadcn · ..." },
+  { name: "Specialized / domain", count: 57, items: "red-team (pentest-llm-redteam · ml-security · web2-recon) · networking (clab2pkt · packet-tracer) · rust-systems · interpretability · evals · alignment · diagnose · aidesigner-frontend · graphify · karpathy · ..." },
 ];
+
+// The skillFamilies counts sum to exactly 143 — the canonical skill catalog
+// size (every skill carries a SKILL.md per ADR-022). The first 11 families
+// are named samples; "Specialized / domain" is the catch-all remainder so the
+// total stays truthful without fabricating per-skill family breakdowns.
+export const skillTotal = 143;
 
 export const adrs = [
   { n: "001", title: "Opus 4.6 as mandatory model for code-critic", date: "2026-03-24", status: "Accepted" },
@@ -228,7 +257,17 @@ export const adrs = [
   { n: "012", title: "Async subagent notification stall — fail-safe to v1 fallback", date: "2026-05-01", status: "Accepted" },
   { n: "013", title: "Scheduled-git guardrails — block git ops from cron context", date: "2026-05-01", status: "Accepted" },
   { n: "014", title: "Slash-command test harness — bash hermetic fixtures", date: "2026-05-01", status: "Accepted" },
+  { n: "081", title: "Dedicated AI Red Teaming Pipeline (ART — 9 phases R0-R8)", date: "2026-05-25", status: "Accepted" },
+  { n: "085", title: "Elevate the 4 Karpathy principles to constitutional", date: "2026-05-30", status: "Accepted" },
+  { n: "089", title: "Dynamic Orchestration — @architect-ai proposes per-project agent DAG", date: "2026-05-30", status: "Accepted" },
+  { n: "091", title: "Always-On Orchestration Reflex — UserPromptSubmit steering", date: "2026-05-30", status: "Accepted" },
+  { n: "092", title: "Client-Facing Leak Gate — block ARCA jargon in client repos", date: "2026-06-02", status: "Accepted" },
 ];
+
+// The adrs array above is a representative sample of milestone decisions, not
+// the full ledger. The repo carries 92 numbered ADRs (001-092); docs/adr/README.md
+// is an index, not an ADR. Aggregate count surfaced in metrics + sampleADR.related.
+export const adrTotal = 92;
 
 export const aiSlopSignals = [
   "Comments repeating what code says",
@@ -290,12 +329,12 @@ export const metrics = {
     },
     {
       title: "Activity baseline",
-      window: "2026 to date",
+      window: "session/commit/telemetry counts are a 2026-05-03 snapshot; ADR + agent counts current as of 2026-06-02",
       rows: [
-        { v: 415, l: "Claude Code session starts" },
-        { v: 415, l: "Commits to arca-claude-code main" },
-        { v: 5800, l: "Hook telemetry events recorded" },
-        { v: 14, l: "ADRs written (007 superseded)" },
+        { v: 415, l: "Claude Code session starts (2026-05-03 snapshot)" },
+        { v: 415, l: "Commits to arca-claude-code main (2026-05-03 snapshot)" },
+        { v: 5800, l: "Hook telemetry events recorded (2026-05-03 snapshot)" },
+        { v: 92, l: "ADRs written (001-092; 007 superseded)" },
         { v: 16, l: "Agents v3.0 enterprise-grade rewrites (2026-05-03 sweep)" },
       ],
     },

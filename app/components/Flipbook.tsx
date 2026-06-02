@@ -14,6 +14,7 @@ import {
   agentCategories,
   skillFamilies,
   adrs,
+  adrTotal,
   aiSlopSignals,
   forbiddenPatterns,
   cases,
@@ -162,7 +163,7 @@ export default function Flipbook() {
     ["06", `Skills Catalog · ${TOTAL_SKILLS} specialized`, "p11-12"],
     ["07", "Adversarial Gates + Mortal Sins", "p13"],
     ["08", `AI Slop — ${aiSlopSignals.length} signals`, "p14"],
-    ["09", `ADRs · ${adrs.length} architectural records`, "p15"],
+    ["09", `ADRs · ${adrTotal} architectural records`, "p15"],
     ["10", "Hardware · Stack · Cases", "p16"],
     ["11", `ADR sample · #${sampleADR.n} ${sampleADR.title.split(" — ")[0]}`, "p17"],
     ["12", `Enterprise compliance · ${enterprisePosture.length} frameworks`, "p18"],
@@ -189,7 +190,7 @@ export default function Flipbook() {
     [TOTAL_AGENTS, "Specialized agents"],
     [TOTAL_SKILLS, "Skills"],
     [cycles.length, "Pipeline ML cycles"],
-    [adrs.length, "ADRs"],
+    [adrTotal, "ADRs"],
     [sins.length, "Mortal sins as gates"],
     [aiSlopSignals.length, "AI-slop signals"],
     [gates.length, "Adversarial gates"],
@@ -582,7 +583,7 @@ export default function Flipbook() {
         </div>
         <div className="space-y-2 text-lg">
           <a href={GITHUB_URL} className="block underline opacity-90 hover:opacity-100">→ Source on GitHub (arca-claude-code)</a>
-          <a href={`${GITHUB_URL}/tree/main/docs/adr`} className="block underline opacity-90 hover:opacity-100">→ Read all {adrs.length} ADRs</a>
+          <a href={`${GITHUB_URL}/tree/main/docs/adr`} className="block underline opacity-90 hover:opacity-100">→ Read all {adrTotal} ADRs</a>
           <a href="/scroll" className="block underline opacity-90 hover:opacity-100">→ Prefer scroll? Open the scroll edition</a>
           <a href={`mailto:${CONTACT_EMAIL}?subject=A.R.C.A.%20%E2%80%94%20Fellows%202026`}
              className="block mt-4 border border-primary px-4 py-3 text-center bg-primary text-navyDarker font-semibold tracking-widest uppercase">
