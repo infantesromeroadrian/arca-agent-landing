@@ -140,6 +140,7 @@ export const agentCategories: { title: string; agents: { name: string; model: "o
   { title: "Discovery & Planning", agents: [
     { name: "project-planner", model: "opus", phases: "C1 — BLOCKING gate, recurrente cada sprint" },
     { name: "architect-ai", model: "opus", phases: "C1, C4, C14" },
+    { name: "team-composer", model: "opus", phases: "C1 — project-level roster selection (ADR-093)" },
   ]},
   { title: "Data", agents: [
     { name: "data-engineer", model: "opus", phases: "C2, C6, C7" },
