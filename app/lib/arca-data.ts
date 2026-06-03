@@ -1,5 +1,5 @@
 // Data constants for the A.R.C.A. landing — used by both /scroll (legacy) and / (flipbook).
-// Last sync with arca-claude-code roster: 2026-06-02 (full 58-agent roster + ADR-081/085/089/091/092).
+// Last sync with arca-claude-code roster: 2026-06-03 (full 59-agent roster + ADR-081/085/089/091/092/093).
 
 export const GITHUB_URL = "https://github.com/infantesromeroadrian/arca-claude-code";
 export const CONTACT_EMAIL = "infantesromeroadrian@gmail.com";
@@ -94,7 +94,7 @@ export const cases: { code: string; title: string; subject: string; body: string
 
 export const stack = [
   { k: "MODELS", v: "Opus 4.8 (1M ctx) · Sonnet 4.6 · Haiku 4.5" },
-  { k: "DISTRIBUTION", v: "50 Opus · 8 Sonnet · 0 Haiku (58 agents · 3 fixed pipelines ML + HTB + ART + 1 dynamic orchestration mode)" },
+  { k: "DISTRIBUTION", v: "51 Opus · 8 Sonnet · 0 Haiku (59 agents · 3 fixed pipelines ML + HTB + ART + 1 dynamic orchestration mode)" },
   { k: "ENTERPRISE TIER", v: "16 agents v3.0 regulated-grade (SOC 2 / EU AI Act / GDPR / DORA / HIPAA / PCI-DSS)" },
   { k: "PERSISTENCE", v: "Engram MCP (Local SQLite)" },
   { k: "LLM-AS-JUDGE", v: "Hybrid: Opus 4.8 SDK (high-stakes) + Qwen 2.5 7B (hot-path)" },
@@ -265,9 +265,9 @@ export const adrs = [
 ];
 
 // The adrs array above is a representative sample of milestone decisions, not
-// the full ledger. The repo carries 92 numbered ADRs (001-092); docs/adr/README.md
+// the full ledger. The repo carries 93 numbered ADRs (001-093); docs/adr/README.md
 // is an index, not an ADR. Aggregate count surfaced in metrics + sampleADR.related.
-export const adrTotal = 92;
+export const adrTotal = 93;
 
 export const aiSlopSignals = [
   "Comments repeating what code says",
@@ -334,7 +334,7 @@ export const metrics = {
         { v: 415, l: "Claude Code session starts (2026-05-03 snapshot)" },
         { v: 415, l: "Commits to arca-claude-code main (2026-05-03 snapshot)" },
         { v: 5800, l: "Hook telemetry events recorded (2026-05-03 snapshot)" },
-        { v: 92, l: "ADRs written (001-092; 007 superseded)" },
+        { v: 93, l: "ADRs written (001-093; 007 superseded)" },
         { v: 16, l: "Agents v3.0 enterprise-grade rewrites (2026-05-03 sweep)" },
       ],
     },
