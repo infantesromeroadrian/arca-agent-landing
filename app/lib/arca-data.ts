@@ -52,11 +52,11 @@ export const htbPhases = [
 
 export const gates = [
   { id: "gate.01", name: "@math-critic", label: "Blocking",
-    body: "Validates loss functions, gradients, statistical validity, attention scaling, and sampling strategies. Blocks structurally before any code evaluation occurs." },
+    body: "Validates loss functions, gradients, statistical validity, attention scaling, and sampling strategies. Blocks structurally before any code evaluation occurs. Zero invention — only validates what it can prove." },
   { id: "gate.02", name: "@debt-detector", label: "Blocking",
     body: "Catches unused imports/functions, TODOs without tickets, logical duplication >3 sites across the workspace, and enforces cyclomatic complexity limits (max 10)." },
   { id: "gate.03", name: "@code-critic", label: "Terminal",
-    body: 'Analyzes 19 isolated "AI Slop" signals. Audits architecture, strict security adherence, runtime performance bounds, and deep maintainability limits. No code is final without approval.' },
+    body: 'Analyzes 19 isolated "AI Slop" signals. Audits architecture, strict security adherence, runtime performance bounds, and deep maintainability limits. No code is final without approval. Zero invention — rejects without evidence, never fakes a PASS.' },
   { id: "gate.04", name: "@maintainability-engineer", label: "Parallel-Blocking",
     body: "Runs in parallel with @code-critic at C8 Quality. Catches longevity decay (naming-versionado embebido, magic constants, premature abstractions, undocumented invariants, implicit coupling, behavior-validating tests, reversibility risk). Both gates blocking — either rejection halts the cycle." },
 ];
