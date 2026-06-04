@@ -322,12 +322,17 @@ export default function Flipbook() {
           {group.map((cat) => (
             <div key={cat.title} className="border-l-2 border-primary/50 pl-3">
               <p className="text-[14px] tracking-[0.2em] uppercase opacity-60 mb-1">{cat.title}</p>
-              <ul className="text-[15px] opacity-90 space-y-1.5">
+              <ul className="text-[15px] opacity-90 space-y-2">
                 {cat.agents.map((a) => (
-                  <li key={a.name} className="flex items-baseline gap-2">
-                    <span className="font-mono">@{a.name}</span>
-                    <span className="text-[15px] opacity-50 uppercase tracking-widest">[{a.model}]</span>
-                    <span className="text-[14px] opacity-60 ml-auto">{a.phases}</span>
+                  <li key={a.name}>
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-mono">@{a.name}</span>
+                      <span className="text-[15px] opacity-50 uppercase tracking-widest">[{a.model}]</span>
+                      <span className="text-[14px] opacity-60 ml-auto">{a.phases}</span>
+                    </div>
+                    {a.desc && (
+                      <p className="text-[13px] opacity-55 leading-snug mt-0.5">{a.desc}</p>
+                    )}
                   </li>
                 ))}
               </ul>
