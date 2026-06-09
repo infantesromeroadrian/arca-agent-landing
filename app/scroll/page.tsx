@@ -21,12 +21,12 @@ import { RevealOnScroll } from "@/app/components/RevealOnScroll";
 
 const HERO_HEADLINE = "The adversarial agentic system that actually ships code.";
 const HERO_TAGLINE =
-  "59 specialized agents. 3 pipelines. 93 ADRs. Zero AI slop tolerated.";
+  "59 specialized agents. 3 pipelines. 97 ADRs. Zero AI slop tolerated.";
 
 const STATS = [
   { value: "59", label: "Specialized Agents", sub: "51 Opus · 8 Sonnet · 0 Haiku" },
   { value: "143", label: "Skills Catalog", sub: "Loaded surgically per task" },
-  { value: "93", label: "Architecture Decisions", sub: "Nygard ADRs" },
+  { value: "97", label: "Architecture Decisions", sub: "Nygard ADRs" },
   { value: "3", label: "Pipelines", sub: "ML (14 cycles) · HTB (8 phases) · ART (9 phases)" },
   { value: "54", label: "Bash Hooks", sub: "Wired across 14 lifecycle events" },
   { value: "30+", label: "MCP Servers", sub: "Engram, GitHub, HTB, Exa, Obsidian, +25" },
@@ -49,7 +49,7 @@ const PILLARS = [
       "ML: C1→C14 (14 cycles, 65 phases). HTB: F0→F7 (CVE-first CTF with MCP integration). ART: R0→R8 (AI Red Teaming, MITRE ATLAS + OWASP LLM Top 10:2025, ADR-081).",
   },
   {
-    title: "93 Documented Decisions",
+    title: "97 Documented Decisions",
     body:
       "Every architectural choice ships as a Nygard ADR: context, alternatives weighed, consequences. Covers architecture, security, governance, pipelines and the meta-system itself.",
   },
@@ -525,7 +525,7 @@ export default function Home() {
             Architecture decisions
           </h2>
           <p className="mb-12 max-w-2xl opacity-70">
-            93 numbered ADRs. Every architectural choice carries context, alternatives weighed
+            97 numbered ADRs. Every architectural choice carries context, alternatives weighed
             and consequences. Below: 19 milestone records.
           </p>
           <div className="overflow-hidden rounded-[12px] border border-line">
@@ -554,7 +554,7 @@ export default function Home() {
           </div>
           <div className="mt-6">
             <GhostCTA href={`${GITHUB_URL}/tree/main/docs/adr`}>
-              Read all 93 ADRs on GitHub
+              Read all 97 ADRs on GitHub
             </GhostCTA>
           </div>
         </RevealOnScroll>

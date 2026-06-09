@@ -266,9 +266,9 @@ export const adrs = [
 ];
 
 // The adrs array above is a representative sample of milestone decisions, not
-// the full ledger. The repo carries 93 numbered ADRs (001-093); docs/adr/README.md
+// the full ledger. The repo carries 97 numbered ADRs (001-097); docs/adr/README.md
 // is an index, not an ADR. Aggregate count surfaced in metrics + sampleADR.related.
-export const adrTotal = 93;
+export const adrTotal = 97;
 
 export const aiSlopSignals = [
   "Comments repeating what code says",
@@ -335,7 +335,7 @@ export const metrics = {
         { v: 415, l: "Claude Code session starts (2026-05-03 snapshot)" },
         { v: 415, l: "Commits to arca-claude-code main (2026-05-03 snapshot)" },
         { v: 5800, l: "Hook telemetry events recorded (2026-05-03 snapshot)" },
-        { v: 93, l: "ADRs written (001-093; 007 superseded)" },
+        { v: 97, l: "ADRs written (001-097; 007 superseded)" },
         { v: 16, l: "Agents v3.0 enterprise-grade rewrites (2026-05-03 sweep)" },
       ],
     },
