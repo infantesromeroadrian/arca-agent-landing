@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "A.R.C.A — AI Research & Code Architect for ML/AI Engineering",
   description:
-    "A.R.C.A — AI Research & Code Architect. 59 specialized agents, 143 skills, 97 ADRs, 3 pipelines (ML 14 cycles + HTB 8 phases + ART 9 phases), 9 mortal sins as quality gates. Built with Claude.",
+    "A.R.C.A — AI Research & Code Architect. 59 specialized agents, 143 skills, 97 ADRs, 3 pipelines (ML 14 cycles + HTB 6 phases + ART 9 phases), 9 mortal sins as quality gates. Built with Claude.",
   authors: [{ name: "Adrian Infantes" }],
   openGraph: {
     title: "A.R.C.A — AI Research & Code Architect",

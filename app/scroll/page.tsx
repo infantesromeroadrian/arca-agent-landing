@@ -27,7 +27,7 @@ const STATS = [
   { value: "59", label: "Specialized Agents", sub: "51 Opus · 8 Sonnet · 0 Haiku" },
   { value: "143", label: "Skills Catalog", sub: "Loaded surgically per task" },
   { value: "97", label: "Architecture Decisions", sub: "Nygard ADRs" },
-  { value: "3", label: "Pipelines", sub: "ML (14 cycles) · HTB (8 phases) · ART (9 phases)" },
+  { value: "3", label: "Pipelines", sub: "ML (14 cycles) · HTB (6 phases) · ART (9 phases)" },
   { value: "54", label: "Bash Hooks", sub: "Wired across 14 lifecycle events" },
   { value: "30+", label: "MCP Servers", sub: "Engram, GitHub, HTB, Exa, Obsidian, +25" },
 ];
@@ -41,7 +41,7 @@ const PILLARS = [
   {
     title: "Adversarial Gate Chain",
     body:
-      "Producer → @math-critic → @debt-detector → @code-critic → @chief-architect. No code reaches main without explicit sign-off. 54 bash hooks enforce the chain at PreToolUse / PostToolUse level.",
+      "Producer → @math-critic → @debt-detector → @code-critic → @chief-architect. No code reaches main without explicit sign-off. 57 bash hooks enforce the chain at PreToolUse / PostToolUse level.",
   },
   {
     title: "3 Pipelines (ML · HTB · ART)",
