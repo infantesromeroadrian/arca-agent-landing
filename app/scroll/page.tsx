@@ -21,14 +21,14 @@ import { RevealOnScroll } from "@/app/components/RevealOnScroll";
 
 const HERO_HEADLINE = "The adversarial agentic system that actually ships code.";
 const HERO_TAGLINE =
-  "59 specialized agents. 3 pipelines. 97 ADRs. Zero AI slop tolerated.";
+  "59 specialized agents. 3 pipelines. 111 ADRs. Zero AI slop tolerated.";
 
 const STATS = [
-  { value: "59", label: "Specialized Agents", sub: "51 Opus · 8 Sonnet · 0 Haiku" },
-  { value: "143", label: "Skills Catalog", sub: "Loaded surgically per task" },
-  { value: "97", label: "Architecture Decisions", sub: "Nygard ADRs" },
+  { value: "59", label: "Specialized Agents", sub: "51 Opus · 4 Sonnet · 4 Haiku" },
+  { value: "145", label: "Skills Catalog", sub: "Loaded surgically per task" },
+  { value: "111", label: "Architecture Decisions", sub: "Nygard ADRs" },
   { value: "3", label: "Pipelines", sub: "ML (14 cycles) · HTB (6 phases) · ART (9 phases)" },
-  { value: "54", label: "Bash Hooks", sub: "Wired across 14 lifecycle events" },
+  { value: "63", label: "Bash Hooks", sub: "Wired across 14 lifecycle events" },
   { value: "30+", label: "MCP Servers", sub: "Engram, GitHub, HTB, Exa, Obsidian, +25" },
 ];
 
@@ -41,7 +41,7 @@ const PILLARS = [
   {
     title: "Adversarial Gate Chain",
     body:
-      "Producer → @math-critic → @debt-detector → @code-critic → @chief-architect. No code reaches main without explicit sign-off. 57 bash hooks enforce the chain at PreToolUse / PostToolUse level.",
+      "Producer → @math-critic → @debt-detector → @code-critic → @chief-architect. No code reaches main without explicit sign-off. 63 bash hooks enforce the chain at PreToolUse / PostToolUse level.",
   },
   {
     title: "3 Pipelines (ML · HTB · ART)",
@@ -49,12 +49,12 @@ const PILLARS = [
       "ML: C1→C14 (14 cycles, 65 phases). HTB: F0→F7 (CVE-first CTF with MCP integration). ART: R0→R8 (AI Red Teaming, MITRE ATLAS + OWASP LLM Top 10:2025, ADR-081).",
   },
   {
-    title: "97 Documented Decisions",
+    title: "111 Documented Decisions",
     body:
       "Every architectural choice ships as a Nygard ADR: context, alternatives weighed, consequences. Covers architecture, security, governance, pipelines and the meta-system itself.",
   },
   {
-    title: "143-Skill Catalog",
+    title: "145-Skill Catalog",
     body:
       "OWASP security, ML engineering, DevOps, RAG patterns, agent orchestration, HTB CTF methodology, AI red teaming, prompt engineering. @skill-router selects ≤3 per task.",
   },
@@ -525,7 +525,7 @@ export default function Home() {
             Architecture decisions
           </h2>
           <p className="mb-12 max-w-2xl opacity-70">
-            97 numbered ADRs. Every architectural choice carries context, alternatives weighed
+            111 numbered ADRs. Every architectural choice carries context, alternatives weighed
             and consequences. Below: 19 milestone records.
           </p>
           <div className="overflow-hidden rounded-[12px] border border-line">
@@ -554,7 +554,7 @@ export default function Home() {
           </div>
           <div className="mt-6">
             <GhostCTA href={`${GITHUB_URL}/tree/main/docs/adr`}>
-              Read all 97 ADRs on GitHub
+              Read all 111 ADRs on GitHub
             </GhostCTA>
           </div>
         </RevealOnScroll>

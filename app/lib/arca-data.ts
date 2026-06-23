@@ -94,7 +94,7 @@ export const cases: { code: string; title: string; subject: string; body: string
 
 export const stack = [
   { k: "MODELS", v: "Opus 4.8 (1M ctx) · Sonnet 4.6 · Haiku 4.5" },
-  { k: "DISTRIBUTION", v: "51 Opus · 8 Sonnet · 0 Haiku (59 agents · 3 fixed pipelines ML + HTB + ART + 1 dynamic orchestration mode)" },
+  { k: "DISTRIBUTION", v: "51 Opus · 4 Sonnet · 4 Haiku (59 agents · 3 fixed pipelines ML + HTB + ART + 1 dynamic orchestration mode)" },
   { k: "ENTERPRISE TIER", v: "16 agents v3.0 regulated-grade (SOC 2 / EU AI Act / GDPR / DORA / HIPAA / PCI-DSS)" },
   { k: "PERSISTENCE", v: "Engram MCP (Local SQLite)" },
   { k: "LLM-AS-JUDGE", v: "Hybrid: Opus 4.8 SDK (high-stakes) + Qwen 2.5 7B (hot-path)" },
@@ -234,14 +234,16 @@ export const skillFamilies = [
   { name: "Pipeline / Utilities", count: 13, items: "requirements-engineering · agile-ml · cicd · git · testing · python-init · ..." },
   { name: "Reviews / Voting", count: 6, items: "review-pr · voting-review · team-debug · team-ml-review · team-refactor · team-security" },
   { name: "Vercel ecosystem", count: 15, items: "vercel:ai-sdk · vercel:nextjs · vercel:deploy · vercel:shadcn · ..." },
-  { name: "Specialized / domain", count: 57, items: "red-team (pentest-llm-redteam · ml-security · web2-recon) · networking (clab2pkt · packet-tracer) · rust-systems · interpretability · evals · alignment · diagnose · aidesigner-frontend · graphify · karpathy · ..." },
+  { name: "Specialized / domain", count: 59, items: "red-team (pentest-llm-redteam · ml-security · web2-recon) · networking (clab2pkt · packet-tracer) · rust-systems · interpretability · evals · alignment · diagnose · aidesigner-frontend · graphify · karpathy · ..." },
 ];
 
-// The skillFamilies counts sum to exactly 143 — the canonical skill catalog
+// The skillFamilies counts sum to exactly 145 (7+3+10+3+2+12+2+13+13+6+15+59) — the canonical skill catalog
 // size (every skill carries a SKILL.md per ADR-022). The first 11 families
 // are named samples; "Specialized / domain" is the catch-all remainder so the
 // total stays truthful without fabricating per-skill family breakdowns.
-export const skillTotal = 143;
+// Note: observability-methodology is a directory without a SKILL.md and is
+// excluded; 145 is the count produced by the index builder.
+export const skillTotal = 145;
 
 export const adrs = [
   { n: "001", title: "Opus 4.6 as mandatory model for code-critic", date: "2026-03-24", status: "Accepted" },
@@ -266,9 +268,9 @@ export const adrs = [
 ];
 
 // The adrs array above is a representative sample of milestone decisions, not
-// the full ledger. The repo carries 97 numbered ADRs (001-097); docs/adr/README.md
+// the full ledger. The repo carries 111 numbered ADRs (001-111); docs/adr/README.md
 // is an index, not an ADR. Aggregate count surfaced in metrics + sampleADR.related.
-export const adrTotal = 97;
+export const adrTotal = 111;
 
 export const aiSlopSignals = [
   "Comments repeating what code says",
@@ -335,7 +337,7 @@ export const metrics = {
         { v: 415, l: "Claude Code session starts (2026-05-03 snapshot)" },
         { v: 415, l: "Commits to arca-claude-code main (2026-05-03 snapshot)" },
         { v: 5800, l: "Hook telemetry events recorded (2026-05-03 snapshot)" },
-        { v: 97, l: "ADRs written (001-097; 007 superseded)" },
+        { v: 111, l: "ADRs written (001-111; 007 superseded)" },
         { v: 16, l: "Agents v3.0 enterprise-grade rewrites (2026-05-03 sweep)" },
       ],
     },
