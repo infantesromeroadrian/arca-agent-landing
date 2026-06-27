@@ -234,16 +234,16 @@ export const skillFamilies = [
   { name: "Pipeline / Utilities", count: 13, items: "requirements-engineering · agile-ml · cicd · git · testing · python-init · ..." },
   { name: "Reviews / Voting", count: 6, items: "review-pr · voting-review · team-debug · team-ml-review · team-refactor · team-security" },
   { name: "Vercel ecosystem", count: 15, items: "vercel:ai-sdk · vercel:nextjs · vercel:deploy · vercel:shadcn · ..." },
-  { name: "Specialized / domain", count: 59, items: "red-team (pentest-llm-redteam · ml-security · web2-recon) · networking (clab2pkt · packet-tracer) · rust-systems · interpretability · evals · alignment · diagnose · aidesigner-frontend · graphify · karpathy · ..." },
+  { name: "Specialized / domain", count: 62, items: "red-team (pentest-llm-redteam · ml-security · web2-recon) · networking (clab2pkt · packet-tracer) · rust-systems · interpretability · evals · alignment · diagnose · aidesigner-frontend · graphify · karpathy · ..." },
 ];
 
-// The skillFamilies counts sum to exactly 145 (7+3+10+3+2+12+2+13+13+6+15+59) — the canonical skill catalog
+// The skillFamilies counts sum to exactly 148 (7+3+10+3+2+12+2+13+13+6+15+62) — the canonical skill catalog
 // size (every skill carries a SKILL.md per ADR-022). The first 11 families
 // are named samples; "Specialized / domain" is the catch-all remainder so the
 // total stays truthful without fabricating per-skill family breakdowns.
 // Note: observability-methodology is a directory without a SKILL.md and is
-// excluded; 145 is the count produced by the index builder.
-export const skillTotal = 145;
+// excluded; 148 is the count produced by the current arca-claude-code validator.
+export const skillTotal = 148;
 
 export const adrs = [
   { n: "001", title: "Opus 4.6 as mandatory model for code-critic", date: "2026-03-24", status: "Accepted" },

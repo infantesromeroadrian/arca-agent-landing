@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://arca-agent-landing.vercel.app"),
   title: "A.R.C.A — AI Research & Code Architect for ML/AI Engineering",
   description:
-    "A.R.C.A — AI Research & Code Architect. 59 specialized agents, 145 skills, 111 ADRs, 3 pipelines (ML 14 cycles + HTB 6 phases + ART 9 phases), 9 mortal sins as quality gates. Built with Claude.",
+    "A.R.C.A — AI Research & Code Architect. 59 specialized agents, 148 skills, 111 ADRs, 3 pipelines (ML 14 cycles + HTB 6 phases + ART 9 phases), 9 mortal sins as quality gates. Built with Claude.",
   authors: [{ name: "Adrian Infantes" }],
   openGraph: {
     title: "A.R.C.A — AI Research & Code Architect",
     description:
-      "59 agents, 3 pipelines (ML + HTB + ART), 145 skills, 111 ADRs, 30+ MCPs. AI Security Engineer.",
+      "59 agents, 3 pipelines (ML + HTB + ART), 148 skills, 111 ADRs, 30+ MCPs. AI Security Engineer.",
     type: "website",
     images: [
       {
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "A.R.C.A — AI Research & Code Architect",
     description:
-      "59 agents, 3 pipelines, 145 skills, 111 ADRs. Built with Claude.",
+      "59 agents, 3 pipelines, 148 skills, 111 ADRs. Built with Claude.",
     images: ["/arca-logo.png"],
   },
 };
